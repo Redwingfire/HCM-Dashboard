@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Loan Type" confirm="ConfirmLoanTypeDialog" liveChange="livechangeSearch"
+		cancel="CloseLoanTypeDialog" growingThreshold="100" items="{/}" draggable="true" search="livechangeSearch">
+		<StandardListItem title="{LoanType}" description="{LoanTypeDesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

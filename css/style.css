@@ -1,0 +1,246 @@
+/* Enter your custom styles here */
+
+
+/* table header cells */
+
+.sapMListTblHeader>.sapMTableTH {
+    background: #f7f7f7;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 1px solid #e5e5e5;
+    background-clip: padding-box;
+    vertical-align: middle;
+}
+
+
+/*.sapUiTableHeaderDataCell {
+    background-color: #FCDB98 !important;
+}
+*/
+
+
+/* table item cells styles here */
+
+.sapUiSizeCompact .sapMListTblCell {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    vertical-align: middle;
+    margin-left: 5px solid black;
+    border: 1px solid #ccc;
+}
+
+
+/* Enter your custom styles here */
+
+.sapMText {
+    display: inline-block;
+    box-sizing: border-box;
+    white-space: pre-line;
+    word-wrap: break-word;
+    cursor: text;
+    font-size: 0.875rem;
+    font-family: "72", "72full", Arial, Helvetica, sans-serif;
+    line-height: normal;
+    color: #32363a;
+    padding-bottom: 0rem;
+}
+
+.sapMFlexItem {
+    position: relative;
+    padding-top: 0.2rem;
+}
+
+.dialogWidth {
+    width: 1000px;
+}
+
+.sapUiPreviewForm {
+    padding: 0rem 0rem 0rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+.sapUiPreviewTable {
+    padding: 0rem 0rem 2rem 0rem;
+}
+
+.previewPanelDeclaration {
+    padding: 0rem 0rem 0rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+.previewPanelCheckList {
+    padding: 0rem 0rem 0rem 0rem;
+    margin: 0rem 0rem 0rem 0rem;
+}
+
+.declarationClassHBox {
+    padding: 0rem 0rem 1rem 1rem;
+}
+
+.declarationClassHBoxCheckBox {
+    margin: -0.4rem 0rem 0rem 0rem;
+}
+
+.declarationClassHBoxText {
+    padding-left: 0.5rem;
+}
+
+
+/* familydetails - fragment table styles here - start*/
+
+tr[data-Action="INS"] {
+    background-color: #9ACD32 !Important;
+    /*color: green;*/
+}
+
+tr[data-Action="DEL"] {
+    background-color: #f2260f !Important;
+    /*color: red;*/
+}
+
+tr[data-Action="MOD"] {
+    background-color: #FFBF1E !Important;
+    /*color: Yellow;*/
+}
+tr[data-Action="STP"] {
+    background-color: #f5af87 !Important;
+    /*color: orange;*/
+}
+
+/*tr[data-BGR="DISP"] {
+    background-color: #FA8072 !Important;
+        }
+    /*color: Yellow;*/
+
+
+/* familydetails - fragment table styles here - end*/
+
+
+/* Paychange details - fragment table  to simpel form styles here - start*/
+
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 0rem !important;
+    line-height: 0rem !important;
+}
+
+
+/* Paychange details - fragment table  to simpel form styles here - end*/
+
+
+/*.sapUiSizeCompact .sapMTB.sapMListHdrTBar {*/
+
+
+/*    height: 3rem;*/
+
+
+/*    margin-top: 3rem;*/
+
+
+/*}*/
+
+
+/*.sapUiFormResGrid.sapUiFormToolbar>div:first-child {*/
+
+
+/*    height: 3rem;*/
+
+
+/*    line-height: 3rem;*/
+
+
+/*    padding: 0 0.75rem;*/
+
+
+/*    margin-top: 3rem;*/
+
+
+/*}*/
+
+
+/*.sapMPanelContent:not(.sapMPanelBGTransparent) {*/
+
+
+/*    border-bottom: 0px solid #cccccc;*/
+
+
+/*}*/
+
+
+/*.sapMPanelContent {*/
+
+
+/*    padding: 0.625rem 1rem 3.375rem 1rem;*/
+
+
+/*    box-sizing: border-box;*/
+
+
+/*    overflow: auto;*/
+
+
+/*    white-space: normal;*/
+
+
+/*}*/
+
+.leftMargin {
+    margin-left: 1.5rem!important;
+    color: #191970
+}
+
+.sapUiLargeMarginBegin {
+    margin-left: 1rem!important;
+}
+
+.faIcon {
+    /*border-radius: 60px;*/
+    box-shadow: 0 0 2px #888;
+    padding: .2em .4em;
+    background-color: #f0fff0;
+    /*height: 36%;*/
+}
+
+.myCustomText {
+    font-size: 10px
+}
+
+.customFormattedText {
+    margin-right: 5px;
+    font-size: 16px;
+    margin-top: -1rem;
+}
+
+.customButton span {
+    font-size: 15px;
+    border: none;
+    background: 0 0;
+    font-size: 12px;
+    /*border-radius: 50%;*/
+    /*margin-left: 2rem;*/
+}
+
+.customHBox {
+    width: 40%;
+    justify-content: flex-end
+}
+
+.sapUiDSC.sapUiContentPadding>div:first-child {
+    padding: 0rem;
+    box-sizing: border-box;
+}
+
+.sapMObjStatusText {
+    font-weight: bold;
+}
+
+.sapUxAPObjectPageHeaderContent {
+    background-image: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(../image/background.jpg);
+    padding-bottom: 0!important;
+    padding: 13px
+}
+
+.sapUiMedia-Std-Desktop .sapUShellApplicationContainer.sapUShellApplicationContainerLimitedWidth {
+    width: 100% !important;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+}

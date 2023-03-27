@@ -1,0 +1,81 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="Send Back Details">
+		<Table>
+			<columns>
+				<Column vAlign="Middle" width="4rem" visible="false">
+					<Text text="Level"/>
+				</Column>
+				<Column vAlign="Middle">
+					<Text text="Designation"/>
+				</Column>
+					<!--	cfms_ctm_npv -addedd field on 24_2_23-->
+				<Column vAlign="Middle">
+					<Text text="Processor Id"/>
+				</Column>
+				<!--	cfms_ctm_npv -addedd field on 24_2_23-->
+				<Column vAlign="Middle">
+					<Text text="Processor Name"/>
+				</Column>
+			
+				<Column vAlign="Middle">
+					<Text text="Office"/>
+				</Column>
+				<Column vAlign="Middle">
+					<Text text="Role"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added By"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added On"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Status"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Updated on"/>
+				</Column>
+			</columns>
+			<ColumnListItem>
+				<Text text="{SendBackApproverModel>/Seqno}"/>
+				<Text text="{SendBackApproverModel>/PositionName}({SendBackApproverModel>/PositionId})"/>
+				<Link text="{SendBackApproverModel>/Pernr}" emphasized="true" press="onemphrinfo"/>
+				<!--<Text text="{SendBackApproverModel>/PositionId}"/>-->
+				<Text text="{SendBackApproverModel>/EmpName}({SendBackApproverModel>/Pernr})"/>
+				<Text text="{SendBackApproverModel>/OfficeName} ({SendBackApproverModel>/OfficeId})"/>
+				<Text text="{path: 'SendBackApproverModel>/Wfrole', formatter:'.formatter.StatusValid'}"/>
+				<Text text="{SendBackApproverModel>/AddedBy}({SendBackApproverModel>/AddedByName})"/>
+				<Text text="{path:'SendBackApproverModel>/AddedOn', formatter:'.formatter.SystemDateConversion'}"/>
+				<Text text="{SendBackApproverModel>/ActionTaken}"/>
+				<Text text="{path:'SendBackApproverModel>/UpdatedOn', formatter:'.formatter.SystemDateConversion'}"/>
+			</ColumnListItem>
+		</Table>
+		<layout:VerticalLayout class="sapUiSmallMarginTop">
+			<layout:HorizontalLayout>
+				<HBox class="sapUiTinyMarginBegin">
+					<VBox>
+						<CheckBox id="TermsCheckBoxSendBackId" text="Terms and Conditions*:"/>
+						<Text id="SendBackDialogTermsTextId" wrapping="true" class="sapUiMediumMarginBegin" width="50rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+			<layout:HorizontalLayout class="sapUiSmallMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<VBox>
+						<Label id="SendBackRemarksLabelId" text="Remarks:" required="true"/>
+						<TextArea id="SendBackDialogRemarksId" placeholder="Please Enter your Remarks Here..." class="sapUiMediumMarginBegin" width="40rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+		<buttons>
+			<Button text="Confirm" type="Emphasized" press="OnPressSendToBack"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelSendBack"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

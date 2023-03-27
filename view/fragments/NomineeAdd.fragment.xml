@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true"
+		title="Add Nominee Member">
+		<!--Add new ESR for {FamilyAddMembDialogModel>/EmployeeName}({FamilyAddMembDialogModel>/Pernr})-->
+		<form:SimpleForm>
+			<Label text="Add Nominee" required="true"/>
+			<Input id="NomineeActionId" valueHelpOnly="true" showValueHelp="true"  valueHelpRequest="HandleRequestofNominee"/>
+		<!--	<Label text="Action Reason" required="true"/>
+			<Input id="DetailActionReasonId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="HandleRequestofActionReason"/>
+			<Label text="Effected On" required="true"/>
+			<DatePicker id="EffectedOnId" displayFormat="dd.MM.yyyy" valueFormat="yyyyMMdd"/>-->
+		</form:SimpleForm>
+		<buttons>
+			<Button text="Add" type="Emphasized" press="NomineeNewAddConfirm"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelNominee"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

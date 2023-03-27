@@ -1,0 +1,135 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="idBasicComponentsdetailsDisplayPopup" contentHeight="80%" contentWidth="100%"
+		title="Basic Components Details - Display" resizable="true" draggable="true">
+		<f:SimpleForm id="idBasicComponentsdetailsDisplay" editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+			adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<Text text="{i18n>NewDetails}"/>
+				<!--Member Type-->
+				<Label text="Wage Type" design="Bold" required="true"/>
+				<Input value="{BasicComponentFormModel>CurrWageType}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{BasicComponentFormModel>NewWageType}" editable="false"/>
+				<Label text="Wage Type Description" design="Bold" required="true"/>
+				<Input value="{BasicComponentFormModel>CurrWagetypeText}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{BasicComponentFormModel>NewWagetypeText}" editable="false" liveChange="onValueNameChange"/>
+				<Label text="Wage Type Amount" design="Bold" required="true"/>
+				<Input value="{BasicComponentFormModel>CurrAmount}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{BasicComponentFormModel>NewAmount}" editable="false" liveChange="onValueNameChange"/>
+				<Label text="Start Date" design="Bold" required="true"/>
+				<!--<ComboBox editable="false" selectedKey="{BasicComponentFormModel>Gender}" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox editable="false" selectedKey="{BasicComponentFormModel>GenderNew}" change="genderFamilyChange">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<DatePicker placeholder="Date"
+					value="{path: 'BasicComponentFormModel>CurrBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker  placeholder="Date"
+					dateValue="{path: 'BasicComponentFormModel>NewBegda',formatter:'.formatter.DOBchange'}" valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy"
+					editable="false" change="dateofBirthFamily" maxDate="{path:'BasicComponentFormModel>DateOfBirthNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'BasicComponentFormModel>DateOfBirthNew', formatter:'.formatter.DOBmindate'}"/>
+				<Label text="End Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'BasicComponentFormModel>CurrEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Input value="{BasicComponentFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker placeholder="Date"
+					dateValue="{path: 'BasicComponentFormModel>NewEndda',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"
+					displayFormat="dd.MM.yyyy" editable="false" change="dateofBirthFamily"
+					maxDate="{path:'BasicComponentFormModel>DateOfBirthNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'BasicComponentFormModel>DateOfBirthNew', formatter:'.formatter.DOBmindate'}"/>
+				<!--<Label text="Aadhaar Number" design="Bold" required="true"/>-->
+				<!--<Input value="{BasicComponentFormModel>Aadharnumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{BasicComponentFormModel>AadharnumberNew}" editable="false" maxLength="12" change="handleAadharno"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Phone Number" design="Bold"/>-->
+				<!--<Input value="{BasicComponentFormModel>PhoneNumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{BasicComponentFormModel>PhoneNumberNew}" editable="false" maxLength="10" change="oHandlePhoneNoChange"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Marital Status" design="Bold" required="false"/>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>MaritalStatus}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>MaritalStatusNew}" editable="false" change="changeMaritalStatus">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Married Since" design="Bold" required="{= ${BasicComponentFormModel>MaritalStatusNew} === '1' ? true : false}"/>-->
+				<!--<DatePicker placeholder="Date" value="{path: 'BasicComponentFormModel>MarriedSince',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"-->
+				<!--	displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" id="IdMarriedSinceNew" dateValue="{path: 'BasicComponentFormModel>MarriedSinceNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	change="dateofMarriedSince" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+				<!--editable="{path:'BasicComponentFormModel>MaritalStatusNew',formatter:'.formatter.maritalSince'}"/>-->
+				<!--<DatePicker placeholder="Date of Birth"-->
+				<!--	dateValue="{path: 'BasicComponentFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" change="dateofBirthFamily"/>-->
+				<!--<Label text="Disablity" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>Disablity}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>DisablityNew}" editable="false" change="DisablityCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{BasicComponentFormModel>Disablity}" editable="false"/>
+				<Input value="{BasicComponentFormModel>Disablity}" editable="true"/>-->
+				<!--<Label text="Alive" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>Alive}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>AliveNew}" editable="false" change="aliveFamilyCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Date of Death" design="Bold" required="{path:'BasicComponentFormModel>/AliveNew',formatter:'.formatter.alive'}"/>-->
+				<!--<DatePicker placeholder="Date"-->
+				<!--	value="{path: 'BasicComponentFormModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+				<!--	valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" dateValue="{path: 'BasicComponentFormModel>DateOfDeathNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="dateofDeathFamily"/>-->
+				<!--editable="{= ${BasicComponentFormModel>AliveNew} === 'N' ? true : false}"-->
+				<!--<Input value="{BasicComponentFormModel>DateOfDeath}" editable="false"/>-->
+				<!--<Input value="{BasicComponentFormModel>DateOfDeath}" editable="true"/>-->
+				<!--<Label text="Govt Employe" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>GovtEmploye}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{BasicComponentFormModel>GovtEmployeNew}" editable="false" change="onfamGovEmpchange">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{BasicComponentFormModel>GovtEmploye}" editable="false"/>
+				<Input value="{BasicComponentFormModel>GovtEmployeNew}" editable="true"/>-->
+				<!--<Label text="Service Type" design="Bold" required="{path:'BasicComponentFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{BasicComponentFormModel>ServiceType}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{BasicComponentFormModel>ServiceTypeNew}" editable="false"/>-->
+				<!--editable="{= ${BasicComponentFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Employee Code" design="Bold" required="{path:'BasicComponentFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{BasicComponentFormModel>Employeecode}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{BasicComponentFormModel>EmployeecodeNew}" editable="false"/>-->
+				<!--editable="{= ${BasicComponentFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Opetation" design="Bold" required="true"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<!--<Button text="Ok" type="Emphasized" class="sapUiSmallMarginEnd" press="onOkFamilyDailog"/>-->
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelBasicComponentsdetailsDisplay"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

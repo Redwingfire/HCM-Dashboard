@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Eligible Loan Amount" confirm="ConfirmEligibleLoanAmountDialog" growingThreshold="100"
+		liveChange="livechangeSearch" search="livechangeSearch" cancel="CloseAdvanceForwhomDialog"
+		items="{ path: '/', sorter: { path: 'EligibleAmount' } }" draggable="true">
+		<StandardListItem title="{EligibleAmount} - {EligibleAmtDesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

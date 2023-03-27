@@ -1,0 +1,94 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="Approver Path ">
+		<!--for {DetailEmployeeHeaderModel>/EmployeeName}'s Transfer-Admin Ground-->
+		<!--EmpName-->
+		<Table items="{ApproverPathModel>/results}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<Button id="AddApproverPathBtnIdAddApprover" text="Add Approver" press="onAddApprovPositionValueHelp" visible="false" />
+					<!--onapproverPathAddApprover  after selected item final call-->
+					<Button id="AddApproverPathBtnIdAddChecker" text="Add Checker" press="onAddApprovPositionValueHelp" visible="false"  />
+					<ToolbarSpacer/>
+					<Button id="AddApproverPathBtnId" text="Add New" press="OnPressNewApproverPath" visible="false"/>
+					<!--<Button text="Delete"/>-->
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column vAlign="Middle" width="4rem" visible="true">
+					<Text text="Level"/>
+				</Column>
+				<Column vAlign="Middle" width="6rem">
+					<Text text="Role"/>
+				</Column>
+				<Column vAlign="Middle" width="15rem">
+					<Text text="Designation"/>
+				</Column>
+				<Column vAlign="Middle" width="6rem">
+					<Text text="Processor Name"/>
+				</Column>
+				<Column vAlign="Middle" width="6rem">
+					<Text text="Processor Id"/>
+				</Column>
+				<Column vAlign="Middle" width="10rem">
+					<Text text="Office"/>
+				</Column>
+				<!--<Column vAlign="Middle">-->
+				<!--	<Text text="Role"/>-->
+				<!--</Column>-->
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added By"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added On"/>
+				</Column>
+				<Column vAlign="Middle" width="6rem">
+					<Text text="Status"/>
+				</Column>
+				<Column vAlign="Middle" width="6rem">
+					<Text text="Updated on"/>
+				</Column>
+				<Column width="3rem" vAlign="Middle">
+					<Text text=""/>
+				</Column>
+			</columns>
+			<ColumnListItem>
+				<Text text="{ApproverPathModel>Seqno}"/>
+				<Select selectedKey="{ApproverPathModel>Wfrole}" enabled="{ApproverPathModel>WfroleEdit}" change="OnSelectWorkFlowRole">
+					<core:Item key="" text=""/>
+					<core:Item key="M" text="MAKER" enabled="false"/>
+					<core:Item key="C" text="CHECKER"/>
+					<core:Item key="A" text="APPROVER"/>
+				</Select>
+				<Input editable="{ApproverPathModel>PositionEdit}" tooltip="{ApproverPathModel>PositionName} ({ApproverPathModel>PositionId})"
+					value="{ApproverPathModel>PositionName} ({ApproverPathModel>PositionId})" valueHelpOnly="true" showValueHelp="true"
+					valueHelpRequest="onnewApprovPositionValueHelp"/>
+				<!--valueHelpRequest="HandleRequestDesiginationApproverPath" onnewPositionValueHelp-->
+				<Text text="{ApproverPathModel>EmpName}"/>
+				<!--<Text text="{ApproverPathModel>Pernr}"/>-->
+				<Link text="{ApproverPathModel>Pernr}" emphasized="true" press="onemphrinfo"/>
+				<Text text="{ApproverPathModel>OfficeName}"/>
+				 <!--({ApproverPathModel>OfficeId})-->
+				<!--<Select selectedKey="{ApproverPathModel>Wfrole}" enabled="{ApproverPathModel>WfroleEdit}" change="OnSelectWorkFlowRole">-->
+				<!--	<core:Item key="" text=""/>-->
+				<!--	<core:Item key="M" text="MAKER" enabled="false"/>-->
+				<!--	<core:Item key="C" text="CHECKER"/>-->
+				<!--	<core:Item key="A" text="APPROVER"/>-->
+				<!--</Select>-->
+				<Text text="{ApproverPathModel>AddedByName}({ApproverPathModel>AddedBy})"/>
+				<Text text="{path:'ApproverPathModel>AddedOn', formatter:'.formatter.SystemDateConversion'}"/>
+				<Text text="{ApproverPathModel>ActionTaken}"/>
+				<Text text="{path:'ApproverPathModel>UpdatedOn', formatter:'.formatter.SystemDateConversion'}"/>
+				<Button icon="{ApproverPathModel>DeleteBtn}" enabled="{ApproverPathModel>DeleteBtnVisible}" press="OnPressDeleteApproverPath"/>
+			</ColumnListItem>
+		</Table>
+		<buttons>
+			<Button id="SaveApproverPathBtnId" text="Save" type="Emphasized" press="OnPressSaveApproverPath"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelApproverPath"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

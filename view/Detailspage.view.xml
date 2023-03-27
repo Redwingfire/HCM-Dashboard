@@ -1,0 +1,77 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.hcm.dashZHCM_DASHBOARD.controller.Detailspage" xmlns:html="http://www.w3.org/1999/xhtml" >
+	<App>
+		<pages>
+			<Page id="page" title="{inboxNav>/procesTitle} - {inboxNav>/empInf}" showNavButton="true" navButtonPress="onNavBack">
+				<!--{emp>/EmployeeName}-->
+				<HeaderContainer>
+					<core:Fragment fragmentName="com.hcm.dashZHCM_DASHBOARD.view.fragments.Header" type="XML"/>
+				</HeaderContainer>
+				<content>
+					<Bar>
+						<contentLeft>
+							<Label text="{i18n>ReferenceNumber}" design="Bold"/>
+							<Text text="{StausModel>/ReferenceNumber}" class="sapUiSmallMarginBeginEnd"/>
+						</contentLeft>
+						<contentMiddle>
+							<Label text="{i18n>OverallStatus}" design="Bold"/>
+							<Text text="{StausModel>/OverallStatus}" />
+							<Link text="{StausModel>/RequestPendingWithPernr}" emphasized="true" press="onemphrinfo" visible="{= ${StausModel>/RequestPendingWithPernr} === '00000000' ? false : true }"/>
+							<!--class="sapUiSmallMarginBeginEnd"-->
+						</contentMiddle>
+						<contentRight>
+							<Label text="{i18n>RequestStatus}" design="Bold"/>
+							<Text text="{StausModel>/ReqStatus}" class="sapUiSmallMarginBeginEnd"/>
+						</contentRight>
+					</Bar>
+					<VBox id="idfragmentshow"></VBox>
+					<!--<core:Fragment fragmentName="com.hcm.dashZHCM_DASHBOARD.view.fragments.Basicdetails" type="XML"/>-->
+				</content>
+				<footer>
+					<Bar class="sapContrast sapContrastPlus" id="__bar0">
+						<contentLeft>
+								<Button id ="idonONBEHALF"  visible="{path: 'ButtonVisibleModel>/14/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://accept" text="Request on Behalf of"
+								type="Accept" press="onONBEHALF"/>
+							<!--{= ${ButtonVisibleModel>/7/Hide} === 'X' ? false : true }"-->
+							<Button visible="{path: 'ButtonVisibleModel>/1/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://hr-approval" type="Accept"
+								press="onPressApproveDetail" text="Approve"/>
+							<Button visible="{path: 'ButtonVisibleModel>/7/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://decline" type="Reject"
+								press="onPressRejectDetail" text="Reject"/>
+							<Button visible="{path: 'ButtonVisibleModel>/11/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://action" type="Attention"
+								press="onPressSendDetail" text="Sent to Next Level"/>
+							<Button visible="{path: 'ButtonVisibleModel>/9/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://cause" type="Reject"
+								press="onPressBackToMakerDetail" text="Return to Maker"/>
+							<Button visible="{path: 'ButtonVisibleModel>/12/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://response" type="Attention"
+								press="onPressSentBackDetail" text="Sent Back"/>
+						</contentLeft>
+						<contentRight>
+							<Button visible="{path: 'ButtonVisibleModel>/13/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://edit" text="{i18n>Edit}"
+								press="onEditDetails" type="Emphasized" id="idEditButton"/>
+								<!--Process Flow-->
+							<Button visible="{path: 'ButtonVisibleModel>/0/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://process" text="Approvers Flow"
+								press="onPressApproverPathDetail"/>
+							<Button visible="{path: 'ButtonVisibleModel>/2/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://attachment" text="Attachment"
+								press="onPressAttachmentDetail"/>
+							<Button visible="{path: 'ButtonVisibleModel>/4/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://document-text"
+								type="Attention" text="CFMS Copy" press="onPressCFMSAckDetail"/>
+							<Button visible="{path: 'ButtonVisibleModel>/5/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://add-activity"
+								text="CheckList" press="onPressCheckListDetail"/>
+								<!--appwrover remaks to Remarks-->
+							<Button visible="{path: 'ButtonVisibleModel>/8/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://edit" text="Remarks"
+								type="Attention" press="onPressRemarksDetail"/>
+								<!--Delete button changed to Withdraw-->
+							<Button visible="{path: 'ButtonVisibleModel>/6/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://delete" type="Reject"
+								text="Withdraw" press="onPressDiscardDetail"/>
+							<!--	Save button changed to Submit-->
+							<Button id="idSaveSubmit" visible="{path: 'ButtonVisibleModel>/10/Hide', formatter: '.formatter.buttonVisible'}" icon="sap-icon://accept" text="Save"
+								type="Accept" press="onSavePress"/>
+							<!--visible="{path: 'ButtonVisibleModel>/10/Hide', formatter: '.formatter.buttonVisible'}"-->
+							<!--{path: 'ButtonVisibleModel>/10/Hide', formatter: '.formatter.buttonVisible'}-->
+							<Button id="idBtnBack" text="{i18n>Back}" icon="sap-icon://nav-back" type="Transparent" press="onBack"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,271 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:m="sap.uxap">
+	<VBox>
+		<!--<m:ObjectPageLayout id="idIconTabBarFiori2">-->
+		<!--	<m:sections >-->
+		<!--		<m:ObjectPageSection title="Family Member Details">-->
+		<!--			<m:subSections>-->
+		<!--				<m:ObjectPageSubSection title="">-->
+		<!--cfms_ctm_npv-->
+		<IconTabBar id="idFamilyBar" select="onSelIcTabFamily" expandable="false" upperCase="false"
+			selectedKey="{oMainViewModel>/SelectedTabFamily}">
+			<items>
+				<IconTabFilter id="idFamilyDetails" iconColor="" text="Family Details" key="Family">
+					<!--<ScrollContainer>-->
+					<Table id="idFamilyTable" itemPress="familyTablItempress" mode="MultiSelect" inset="false" items="{FamilyModel>/}" visible="true"
+						alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders" class="sapUiLargeMarginTop">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Total Records: 0" id="idFamilyTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="green" tooltip="Newly Added Members"/>
+								<Text text="Newly Added"/>
+								<core:Icon src="sap-icon://border" size="16px" color="#" tooltip="Existing Record Members"/>
+								<Text text="Existing Record"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="red" tooltip="Mark for Deletion Members"/>
+								<Text text="Marked for Delete"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5d222" tooltip="Mark for Update Members"/>
+								<Text text="Marked for Update"/>
+								<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+								<ToolbarSpacer/>
+								<Button text="Add Member" icon="sap-icon://add-contact" type="Emphasized" press="onAddfamilyRow" tooltip="Add Row" enabled="{oViewModel>/Editable}"/>
+								<Button text="Delete" icon="sap-icon://delete" type="Reject" press="onDeletefamilyRow" tooltip="Delete Row" class="sapUiSmallMarginEnd" enabled="{oViewModel>/Editable}"/>
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center">
+								<Label text="Family Member" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="First Name" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Last Name" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Gender" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Date of Birth" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Aadhaar Number" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Phone Number" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Govt Employe" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Service Type" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Employee Code" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Marital Status" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Married Since" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Disablity" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Alive" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Date of Death" design="Bold"/>
+							</Column>
+							<!--	<Column visible="false" hAlign="Center">
+					<Label text="Operation" design="Bold"/>
+				</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<customData>
+									<core:CustomData key="Action" value="{FamilyModel>Operation}" writeToDom="true"/>
+								</customData>
+								<cells>
+									<Text text="{FamilyModel>MembertypeDesc}" editable="false"/>
+									<Text text="{FamilyModel>FirstName}" editable="false"/>
+									<Text text="{FamilyModel>LastName}" editable="false"/>
+									<!--{FamilyModel>Gender}-->
+									<Text text="{FamilyModel>GenderDesc}" editable="false"/>
+									<!--{= ${FamilyModel>Gender} === '01' ? 'Yes' : 'No'}-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+									<!-- {path: 'FamilyModel>DateOfBirth', formatter: '.formatter.oDateFormatter'}-->
+									<Text text="{path: 'FamilyModel>DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>
+									<!---->
+									<Text text="{FamilyModel>Aadharnumber}" editable="false"/>
+									<!--<Text text="{path: 'FamilyModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{path: 'FamilyModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<Text text="{FamilyModel>PhoneNumber}" editable="false"/>
+									<Text text="{= ${FamilyModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>
+									<Text text="{FamilyModel>ServiceType}" editable="false"/>
+									<Text text="{FamilyModel>Employeecode}" editable="false"/>
+									<Text text="{FamilyModel>MaritalStatus}" editable="false"/>
+									<!--	<ComboBox selectedKey="{FamilyModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+									<Text text="{path: 'FamilyModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>
+									<!--	<DatePicker placeholder="Date"
+							value="{path: 'FamilyModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+									<!--<Input value="{FamilyModel>MARRIED_SINCE}"/>-->
+									<Input text="{FamilyModel>Disablity}" editable="false"/>
+									<Text text="{FamilyModel>Alive}" editable="false"/>
+									<!--<ComboBox selectedKey="{FamilyModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+									<!--<Text text="{FamilyModel>DateOfDeath}" editable="false"/>-->
+									<Text text="{path: 'FamilyModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<!--</ScrollContainer>-->
+				</IconTabFilter>
+				<IconTabFilter id="idNomineeTab" iconColor="" text="Nominee Details" key="Nominee">
+					<!--		</m:ObjectPageSubSection>-->
+					<!--	</m:subSections>-->
+					<!--</m:ObjectPageSection>-->
+					<!--<m:ObjectPageSection title="Nominees">-->
+					<!--	<m:subSections>-->
+					<!--		<m:ObjectPageSubSection title="">-->
+					<Table id="idNomineeTable" itemPress="NomineeTablItempress" mode="MultiSelect" inset="false" items="{NomineeModel>/}" visible="true"
+						alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders" class="sapUiLargeMarginTop">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Total Records: 0" id="idNomineeTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="green" tooltip="Newly Added Members"/>
+								<Text text="Newly Added"/>
+								<core:Icon src="sap-icon://border" size="16px" color="#" tooltip="Existing Record Members"/>
+								<Text text="Existing Record"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="red" tooltip="Mark for Deletion Members"/>
+								<Text text="Marked for Delete"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5d222" tooltip="Mark for Update Members"/>
+								<Text text="Marked for Update"/>
+								<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+								<ToolbarSpacer/>
+								<Button text="Add Nominee" icon="sap-icon://add-contact" type="Emphasized" press="onAddNomineeRow" tooltip="Add Nominee" enabled="{oViewModel>/Editable}"/>
+								<Button text="Delete" icon="sap-icon://delete" type="Reject" press="onDeleteNomineeRow" tooltip="Delete Nominee" class="sapUiSmallMarginEnd" enabled="{oViewModel>/Editable}"/>
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center" mergeDuplicates="true">
+								<Label text="Benfit Type" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Sequence No" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text=" Nominee Full Name" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Relation" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Date of Birth" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text=" Share" design="Bold"/>
+							</Column>
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Phone Number" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Govt Employe" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Service Type" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Employee Code" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Marital Status" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Married Since" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Disablity" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Alive" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Date of Death" design="Bold"/>-->
+							<!--</Column>-->
+							<!--	<Column visible="false" hAlign="Center">
+					<Label text="Operation" design="Bold"/>
+				</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<customData>
+									<core:CustomData key="Action" value="{NomineeModel>Operation}" writeToDom="true"/>
+								</customData>
+								<cells>
+									<Text text="{NomineeModel>NomineDesc}" editable="false"/>
+									<Text text="{NomineeModel>Seqno}" editable="false"/>
+									<Text text="{NomineeModel>Nominename}" editable="false"/>
+									<!--{FamilyModel>Gender}-->
+									<Text text="{NomineeModel>Relationdesc}" editable="false"/>
+									<!--{= ${FamilyModel>Gender} === '01' ? 'Yes' : 'No'}-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+									<Text text="{path: 'NomineeModel>DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>
+									<!---->
+									<Text text="{NomineeModel>NomineShare}" editable="false"/>
+									<!--<Text text="{path: 'FamilyModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{path: 'FamilyModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{FamilyModel>PhoneNumber}" editable="false"/>-->
+									<!--<Text text="{= ${FamilyModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>ServiceType}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Employeecode}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>MaritalStatus}" editable="false"/>-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+									<!--<Text text="{path: 'FamilyModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+									<!--	<DatePicker placeholder="Date"
+							value="{path: 'FamilyModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+									<!--<Input value="{FamilyModel>MARRIED_SINCE}"/>-->
+									<!--<Input text="{FamilyModel>Disablity}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Alive}" editable="false"/>-->
+									<!--<ComboBox selectedKey="{FamilyModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+									<!--<Text text="{FamilyModel>DateOfDeath}" editable="false"/>-->
+									<!--<Text text="{path: 'FamilyModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Employee Comments :" design="Bold" required="true"/>
+			<!--<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Reason for Change :"/>
+							</OverflowToolbar>
+						</headerToolbar>-->
+			<TextArea value="{FamilyModel>/0/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

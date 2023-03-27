@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Pay Scale Area"
+		confirm="ConfirmPayscaleAreaDialog" liveChange="livePayscaleAreasearch" cancel="ClosePayScaleAreaDialog" items="{PayScaleAreaDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{PayScaleAreaDialogModel>Payscalearea}" description="{PayScaleAreaDialogModel>Payscaleareadesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

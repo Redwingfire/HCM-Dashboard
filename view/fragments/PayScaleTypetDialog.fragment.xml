@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Pay Scale Type"
+		confirm="ConfirmPayscaleDialog" liveChange="livePayscaleTypetsearch" cancel="ClosePayScaleTypeDialog" items="{PayScaleTypetDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{PayScaleTypetDialogModel>Payscaletype}" description="{PayScaleTypetDialogModel>Payscaletypedesc}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

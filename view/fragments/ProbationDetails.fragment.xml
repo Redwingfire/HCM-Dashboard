@@ -1,0 +1,221 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<IconTabBar id="idIcTabBarLeaveApp" select="onSelIcTabLeaveApp" expandable="false" upperCase="false"
+			selectedKey="{oMainViewModel>/SelectedTab}">
+			<items>
+				<IconTabFilter id="idProbationDetails" iconColor="" text="Probation Info" key="ProbationInfo">
+					<HBox >
+						<!--<Label text="File Effecive Date" design="Bold" class="sapUiLargeMarginTopRight"/>-->
+						<Text text="Probation Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>
+						<DatePicker placeholder="Date " class="sapUiSmallMarginBegin" id="idProbetionEffectDate"
+							value="{path: 'ProbationModel>/ProbationEffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>
+					</HBox>
+					<f:SimpleForm id="idProbationFroem" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="4" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="6" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<!--<core:Title/>-->
+							<core:Title text="Reason for Probation Request :"></core:Title>
+							<Label text="Employee Name" design="Bold"/>
+							<Input value="{ProbationModel>/EmployeeName}({ProbationModel>/Pernr})" editable="false"/>
+							<!--<DatePicker placeholder="From Date"-->
+							<!--	value="{path: 'ProbationModel>/StartDateLong', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+							<!--	displayFormat="dd.MM.yyyy" id="idFromDate" valueFormat="dd.MM.yyyy" editable="false"/>-->
+							<Label text="Employee Designation" design="Bold"/>
+							<Input value="{ProbationModel>/EmployeeDesignation}" editable="false"/>
+							<!--<DatePicker placeholder="To Date"-->
+							<!--	value="{path: 'ProbationModel>/EndDateLong', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+							<!--	displayFormat="dd.MM.yyyy" id="idToDate" valueFormat="dd.MM.yyyy" editable="false"/>-->
+							<Label text="Office Name" design="Bold"/>
+							<Input value="{ProbationModel>/OfficeName}" editable="false"/>
+							<!--<DatePicker placeholder="RequestedOn Date"-->
+							<!--	value="{path: 'ProbationModel>/RequestedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+							<!--	displayFormat="dd.MM.yyyy" id="IdRequestedOnLeave" valueFormat="dd.MM.yyyy" editable="false"/>-->
+							<Label text="Numer of days service on curr post" design="Bold"/>
+							<Input value="{ProbationModel>/NoOfDaysSerOnCurPost}" editable="true" maxLength="5" liveChange="oNumerofdaysserviceoncurrpostLiveChange"/>
+							<!--	{path: 'ProbationModel>/StartTime', type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'HH:mm' }}-->
+							<!--{path: 'ProbationModel>/StartTime', type: 'sap.ui.model.type.Time', formatOptions: '.formatter.Time'}-->
+							<!--	<Label text="{i18n>StartTime}" design="Bold"/>-->
+							<!--<TimePicker id="TPStart" value="" change="handleChange" input="handleInput" formatPattern="HH:mm:ss" valueFormat="HH:mm:ss"-->
+							<!--	displayFormat="HH:mm:ss" editable="false"></TimePicker>-->
+							<!--{path: 'ProbationModel>/StartTime', formatter: '.formatter.Time'}-->
+							<!--<Label text="{i18n>EndTime}" design="Bold"/>-->
+							<!--<TimePicker id="TPEnd" value="{path: 'ProbationModel>/StartTime', formatter: '.formatter.changeTime'}" change="handleChange" input="handleInput"  valueFormat="HH:mm:ss"-->
+							<!--	displayFormat="HH:mm:ss" editable="false"></TimePicker>-->
+							<!--<Label text="{i18n>HalfDay}" design="Bold"/>-->
+							<!--<Input value="{= ${ProbationModel>/HalfDay} === 'X' ? true : false }" editable="false"/>-->
+							<core:Title/>
+							<Label text="DDO Info" design="Bold"/>
+							<Input value="{ProbationModel>/DdoName}({ProbationModel>/DdoId})" editable="false"/>
+							<Label text="Date of Joining in Govt Service" design="Bold"/>
+							<DatePicker placeholder="Date"
+								value="{path: 'ProbationModel>/DateOfJoiningGovtService', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+								displayFormat="dd.MM.yyyy"  valueFormat="dd.MM.yyyy" editable="false"/>
+							<!--<Input value="{ProbationModel>/DateOfJoiningGovtService}" editable="false"/>-->
+							<Label text="Date of joining in the present Post" design="Bold"/>
+								<DatePicker placeholder="Date"
+								value="{path: 'ProbationModel>/DateOfJoiningInCurPost', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+								displayFormat="dd.MM.yyyy"  valueFormat="dd.MM.yyyy" editable="false"/>
+							<!--<Input value="{ProbationModel>/DateOfJoiningInCurPost}" editable="false"/>-->
+							<Label text="Date of regularization" design="Bold"/>
+							<DatePicker placeholder="Date"
+								value="{path: 'ProbationModel>/DateOfRegularization', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+								displayFormat="dd.MM.yyyy"  valueFormat="dd.MM.yyyy" editable="false"/>
+							<!--<Input value="{ProbationModel>/DateOfRegularization}" editable="false"/>-->
+							<!--<Input value="{ProbationModel>/RequestedOn}" editable="false"/>-->
+							<!--	<Label text="{i18n>OnbehalfbyId}" design="Bold"/>
+			<Input value="{ProbationModel>/OnbehalfbyId}"/>-->
+						</f:content>
+					</f:SimpleForm>
+					<Panel width="auto" class="sapUiResponsiveMargin">
+						<Label text="Remarks for Probation Request:" design="Bold" required="true"/>
+						<!--<headerToolbar>-->
+						<!--	<OverflowToolbar>-->
+						<!--		<Title text="{i18n>EmployeeRemarks} :"/>-->
+						<!--	</OverflowToolbar>-->
+						<!--</headerToolbar>-->
+						<TextArea value="{ProbationModel>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+					</Panel>
+				</IconTabFilter>
+				<IconTabFilter id="idRequestOverviewTab" iconColor="" text="Leave info" key="ReqOverView">
+					<Panel id="overviewPanel" expandable="true" expanded="true" headerText="{i18n>overviewTabTitle}" width="auto" expand="onOverviewPanelExpand">
+						<!--leaveRequestOverview-->
+						<!--items="{/LeaveRequestSet}"-->
+						<!--items="{leaveRequestOverviewModel>/}"-->
+						<Table id="leaveRequestTable" fixedLayout="true" inset="false" items="{leaveRequestOverviewModel>/}" busyIndicatorDelay="0"
+							updateFinished="onUpdateFinishedOverview" growing="{= !${device>/system/desktop}}" growingThreshold="15"
+							growingScrollToLoad="{= !${device>/system/desktop}}" visible="{= !${overview>/showCalendar}}"
+							busy="{= ${overview>/isLeaveLoading} || ${global>/isConfigLoading}}" ariaLabelledBy="overviewTitleInvTxt,overviewCountInvTxt">
+							<columns>
+								<!-- Leave Type -->
+								<Column id="leaveTypeCol">
+									<Text id="leaveTypeColTxt" text="{i18n>leaveTypTxt}"/>
+								</Column>
+								<!-- Validity -->
+								<Column id="validFromCol" minScreenWidth="Desktop" demandPopin="true" popinDisplay="{= ${device>/system/phone} ? 'WithoutHeader' : 'Block'}"
+									hAlign="{= ${device>/system/phone} ? 'End' : 'Begin'}">
+									<Text id="validityColTxt" text="{i18n>validityTxt}"/>
+								</Column>
+								<!-- Status -->
+								<Column id="statusCol" minScreenWidth="Tablet" demandPopin="true" popinDisplay="{= ${device>/system/phone} ? 'WithoutHeader' : 'Block'}"
+									hAlign="{= ${device>/system/phone} ? 'End' : 'Center'}">
+									<Text id="statusColTxt" text="{i18n>status}"/>
+								</Column>
+								<!-- Approver -->
+								<!-- <m:Column id="approverCol" minScreenWidth="Desktop" demandPopin="false">
+                                            <m:Text id="approverColTxt" text="{i18n>approverTxt}" class="sapUiMediumMarginBegin" />
+                                        </m:Column> -->
+								<!-- Notes -->
+								<!-- <m:Column id="notesCol" hAlign="Left">
+                                            <m:Text id="notesColTxt" text="{i18n>notesTxt}" />
+                                        </m:Column> -->
+								<!-- Quota Used -->
+								<Column id="quotaUsedCol" hAlign="Center">
+									<Text id="quotaUsedColTxt" text="{i18n>quotaUsedTxt}"/>
+								</Column>
+								<!-- Edit Action -->
+								<!-- <m:Column id="editActionCol" minScreenWidth="Tablet" width="5%" demandPopin="false" hAlign="End">
+                                            <m:Text id="editActionColText" text="{i18n>editActionText}" visible="false" />
+                                        </m:Column> -->
+								<!-- Delete Action -->
+								<Column id="deleteActionCol" minScreenWidth="Tablet" width="5%" demandPopin="false" hAlign="End" visible="false">
+									<Text id="deleteActionColText" text="{i18n>deleteActionText}" visible="false"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation" id="leaveRequestColumnListItem" press="onLeaveRequestPress">
+									<cells>
+										<!-- Leave Type -->
+										<!--<ObjectIdentifier id="leaveTypeCell" title="{leaveRequestOverviewModel>leaveReAbsenceTypeName}" class="sapMTableContentMargin" />-->
+										<ObjectIdentifier id="probationleaveTypeCell" title="{leaveRequestOverviewModel>AbsenceTypeName}" class="sapMTableContentMargin"/>
+										<!-- Validity -->
+										<ObjectAttribute id="validityCell"
+											text="{parts:[ {path:'leaveRequestOverviewModel>StartDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { source : { pattern: 'yyyy-MM-ddTHH:mm:ss X' }, pattern: 'dd.MM.yyyy' }, constraints: { displayFormat : 'Date' }}, {path:'leaveRequestOverviewModel>EndDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { source : { pattern: 'yyyy-MM-ddTHH:mm:ss X' }, pattern: 'dd.MM.yyyy' }, constraints: { displayFormat : 'Date' }} ], formatter:'.formatter.formatOverviewLeaveDates'}"
+											class="sapMTableContentMargin"/>
+										<!-- Status -->
+										<ObjectStatus id="statusCell" text="{leaveRequestOverviewModel>StatusTxt}"
+											state="{path:'StatusID', formatter:'.formatter.getListItemStatus'}" class="sapMTableContentMargin"/>
+										<!-- Approver -->
+										<!-- <m:ObjectAttribute id="approverCell" text="{ApproverEmployeeName}" class="sapMTableContentMargin sapUiMediumMarginBegin" /> -->
+										<!-- Quota Used -->
+										<!-- Approver -->
+										<!-- <m:ObjectAttribute id="notesCell" text="{Notes}" class="sapMTableContentMargin sapUiMediumMarginBegin" /> -->
+										<!-- Quota Used -->
+										<ObjectNumber id="quotaUsedCell" emphasized="true"
+											number="{path:'leaveRequestOverviewModel>QuotaUsed', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 5, minFractionDigits: 0 }, formatter:'.formatter.formatUsedQuota'}"
+											unit="{TimeUnitTxt}"/>
+										<!-- Edit Action -->
+										<!-- <m:Button id="editBtn" text="Edit" press="onEditPress" visible="{IsModifiable}" type="Accept" tooltip="{i18n>editViewTitle}" /> -->
+										<!-- Delete Action -->
+										<Button id="deleteBtn" text="Delete" press="onDeletePress" visible="{IsDeletable}" type="Reject" tooltip="{i18n>deleteLeaveRequest}"/>
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</Panel>
+				</IconTabFilter>
+				<!--<IconTabFilter id="idLeaveBalanceTab" iconColor="" text="Leave Balance" key="LeaveBalance">-->
+				<!-- <Panel id="entitlementPanel" expandable="true" expanded="true" headerText="{i18n>entitlementTabTitle}" width="auto" expand="onEntitlementPanelExpand">-->
+				<!--items="{path: '/TimeAccountSet'}"-->
+				<!--                           <Table inset="false" items="{path: 'leaveTimeAccountwModel>/'}">-->
+				<!--                               <columns>-->
+				<!--                                   <Column width="12em">-->
+				<!--                                       <Text text="Leave Type" />-->
+				<!--                                   </Column>-->
+				<!--                                   <Column minScreenWidth="Tablet" demandPopin="true">-->
+				<!--                                       <Text text="Validity" />-->
+				<!--                                   </Column>-->
+				<!--                                   <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">-->
+				<!--                                       <Text text="Available" />-->
+				<!--                                   </Column>-->
+				<!--                                   <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">-->
+				<!--                                       <Text text="Planned" />-->
+				<!--                                   </Column>-->
+				<!--                                   <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">-->
+				<!--                                       <Text text="Used" />-->
+				<!--                                   </Column>-->
+				<!--                                   <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">-->
+				<!--                                       <Text text="Entitlement" />-->
+				<!--                                   </Column>-->
+				<!--                               </columns>-->
+				<!--                               <items>-->
+				<!--                                   <ColumnListItem vAlign="Middle">-->
+				<!--                                       <cells>-->
+				<!--                                           <ObjectIdentifier title="{leaveTimeAccountwModel>TimeAccountTypeName}" text="{leaveTimeAccountwModel>ProductId}" />-->
+				<!--                                           <Text-->
+				<!--                                               text="{parts:[ {path:'leaveTimeAccountwModel>DeductionStartDate', type: 'sap.ui.model.odata.type.DateTime',  formatOptions: { -->
+				<!--                                               source : { -->
+				<!--                                                   pattern: 'yyyy-MM-ddTHH:mm:ss X' -->
+				<!--                                               },-->
+				<!--                                               pattern: 'dd.MM.yyyy'-->
+				<!--                                               } , constraints: { displayFormat : 'Date' }}, {path:'leaveTimeAccountwModel>DeductionEndDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { -->
+				<!--                                               source : { -->
+				<!--                                                   pattern: 'yyyy-MM-ddTHH:mm:ss X' -->
+				<!--                                               },-->
+				<!--                                               pattern: 'dd.MM.yyyy'-->
+				<!--                                               }, constraints: { displayFormat : 'Date' }} ], formatter:'.formatter.formatTimeAccountValidity'}"-->
+				<!--                                           />-->
+				<!--                                           <ObjectNumber-->
+				<!--                                               class="sapMTableContentMargin"-->
+				<!--                                               emphasized="true"-->
+				<!--                                               number="{path:'leaveTimeAccountwModel>BalanceAvailableQuantity', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 2, minFractionDigits: 0 }}"-->
+				<!--                                               state="{path:'leaveTimeAccountwModel>BalanceAvailableQuantity', formatter:'.formatter.formatEntitlementStatus'}"-->
+				<!--                                               unit="{leaveTimeAccountwModel>TimeUnitName}"-->
+				<!--                                           />-->
+				<!-- Planned Entitlement -->
+				<!--                                           <ObjectNumber class="sapMTableContentMargin" emphasized="false" number="{path:'leaveTimeAccountwModel>BalancePlannedQuantity', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 2, minFractionDigits: 0 }}" unit="{leaveTimeAccountwModel>TimeUnitName}" />-->
+				<!-- Used Entitlement -->
+				<!--                                           <ObjectNumber class="sapMTableContentMargin" emphasized="false" number="{path:'leaveTimeAccountwModel>BalanceUsedQuantity', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 2, minFractionDigits: 0 }}" unit="{leaveTimeAccountwModel>TimeUnitName}" />-->
+				<!-- Allocated Entitlement -->
+				<!--                                           <ObjectNumber class="sapMTableContentMargin" emphasized="false" number="{path:'leaveTimeAccountwModel>BalanceEntitlementQuantity', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 2, minFractionDigits: 0 }}" unit="{leaveTimeAccountwModel>TimeUnitName}" />-->
+				<!--                                       </cells>-->
+				<!--                                   </ColumnListItem>-->
+				<!--                               </items>-->
+				<!--                           </Table>-->
+				<!--                       </Panel>	-->
+				<!--</IconTabFilter>-->
+			</items>
+		</IconTabBar>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog contentWidth="50%" resizable="true" title="{i18n>holidayTabTitle}"
+		confirm="ConfirmConfirmFestivalDateDialog" growingThreshold="100" liveChange="livechangeSearch" search="livechangeSearch"
+		cancel="CloseAdvanceForwhomDialog" items="{/}" draggable="true">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<ObjectStatus class="sapMTableContentMargin"
+					text="{ path: 'Date', type: 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'dd MMMM yyyy' } }"
+					state="{path:'HolidayType', formatter:'.formatter.getHolidayStatus'}"/>
+				<ObjectStatus class="sapMTableContentMargin" text="{DayName}" state="{path:'HolidayType', formatter:'.formatter.getHolidayStatus'}"/>
+				<ObjectStatus class="sapMTableContentMargin" text="{HolidayName}" state="{path:'HolidayType', formatter:'.formatter.getHolidayStatus'}"/>
+				<ObjectStatus class="sapMTableContentMargin" text="{HolidayType}" state="{path:'HolidayType', formatter:'.formatter.getHolidayStatus'}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<Text text="{i18n>HolidayDate}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>DayName}"/>
+			</Column>
+			<Column  width="15rem">
+				<Text text="{i18n>HolidayName}"/>
+			</Column>
+			<Column>
+				<Text text="{i18n>HolidayType}"/>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

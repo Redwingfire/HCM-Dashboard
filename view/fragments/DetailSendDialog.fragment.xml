@@ -1,0 +1,80 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title=" Next approver Details">
+		<Table>
+			<columns>
+				<Column vAlign="Middle" width="4rem" visible="false">
+					<Text text="Level"/>
+				</Column>
+				<Column vAlign="Middle">
+					<Text text="Designation"/>
+				</Column>
+				<!--	cfms_ctm_npv -addedd field on 24_2_23-->
+				<Column vAlign="Middle">
+					<Text text="Processor Id"/>
+				</Column>
+				<!--	cfms_ctm_npv -addedd field on 24_2_23-->
+				<Column vAlign="Middle">
+					<Text text="Processor Name"/>
+				</Column>
+				<Column vAlign="Middle">
+					<Text text="Office"/>
+				</Column>
+				<Column vAlign="Middle">
+					<Text text="Role"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added By"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Added On"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Status"/>
+				</Column>
+				<Column vAlign="Middle" visible="false">
+					<Text text="Updated on"/>
+				</Column>
+			</columns>
+			<ColumnListItem>
+				<Text text="{NextApproverModel>/Seqno}"/>
+				<Text text="{NextApproverModel>/PositionName}({NextApproverModel>/PositionId})"/>
+				<!--<Text text="{NextApproverModel>/PositionId}"/>-->
+				<Link text="{NextApproverModel>/Pernr}" emphasized="true" press="onemphrinfo"/>
+				<Text text="{NextApproverModel>/EmpName}"/>
+				<Text text="{NextApproverModel>/OfficeName} ({NextApproverModel>/OfficeId})"/>
+				<Text text="{path: 'NextApproverModel>/Wfrole', formatter:'.formatter.StatusValid'}"/>
+				<Text text="{NextApproverModel>/AddedBy}({NextApproverModel>/AddedByName})"/>
+				<Text text="{path:'NextApproverModel>/AddedOn', formatter:'.formatter.SystemDateConversion'}"/>
+				<Text text="{NextApproverModel>/ActionTaken}"/>
+				<Text text="{path:'NextApproverModel>/UpdatedOn', formatter:'.formatter.SystemDateConversion'}"/>
+			</ColumnListItem>
+		</Table>
+		<layout:VerticalLayout class="sapUiSmallMarginTop">
+			<layout:HorizontalLayout>
+				<HBox class="sapUiTinyMarginBegin">
+					<VBox>
+						<CheckBox id="TermsCheckBoxSendId" text="Terms and Conditions*:"/>
+						<Text id="SendDialogTermsTextId" wrapping="true" class="sapUiMediumMarginBegin" width="50rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+			<layout:HorizontalLayout class="sapUiSmallMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<VBox>
+						<Label id="SendRemarksLabelId" text="Remarks:" required="true"/>
+						<TextArea id="SendDialogRemarksId" placeholder="Please Enter your Remarks Here..." class="sapUiMediumMarginBegin" width="40rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+		<buttons>
+			<Button text="Confirm" type="Emphasized" press="OnPressSendToNext"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelSend"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

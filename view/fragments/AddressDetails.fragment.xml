@@ -1,0 +1,276 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<IconTabBar id="idIcTabBar" select="onSelIcTab" expandable="false" upperCase="false" selectedKey="{oMainViewModel>/SelectedTab}">
+			<items>
+				<IconTabFilter id="idAddressTab" iconColor="" text="Address Details" key="Address">
+					<f:SimpleForm id="idcurrAddress" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Current Address"/>
+							<Label/>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<Label text="House No and Street Name" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Housenum}" id="curAddr1" editable="false" />
+							<Input value="{AdressModel>/HousenumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" maxLength="60"/>
+							<Label text="Address Line2" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Address}" id="curAddr2" editable="false"/>
+							<Input value="{AdressModel>/AddressNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<Label text="City" design="Bold" required="true"/>
+							<Input value="{AdressModel>/City}" id="curAddr3" editable="false"/>
+							<Input value="{AdressModel>/CityNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<Label text="State" design="Bold" required="true"/>
+							<ComboBox selectedKey="{AdressModel>/State}" items="{StateModel>/}" editable="false" >
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<ComboBox selectedKey="{AdressModel>/StateNew}" items="{StateModel>/}" visible="{oViewModel>/EditVisibility}" change="onchangebAddressStaeCombo"
+								editable="{oViewModel>/Editable}">
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<!--<Input value="{AdressModel>/StateNew}" visible="{oViewModel>/EditVisibility}" />-->
+							<Label text="Country" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Country}" editable="false"/>
+							<Input value="{AdressModel>/CountryNew}" visible="{oViewModel>/EditVisibility}" editable="false"/>
+							<Label text="District" design="Bold" required="true"/>
+							<Input value="{AdressModel>/DistrictTxt}" name="{AdressModel>/District}" editable="false"/>
+							<Input value="{AdressModel>/DistrictTxtNew}" name="{AdressModel>/DistrictNew}" visible="{oViewModel>/EditVisibility}"
+								editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="hanldeDistrict"/>
+							<Label text="Mandal" design="Bold" required="true"/>
+							<Input value="{AdressModel>/MandalTxt}" name="{AdressModel>/Mandal}" editable="false"/>
+							<Input value="{AdressModel>/MandalTxtNew}" name="{AdressModel>/MandalNew}" visible="{oViewModel>/EditVisibility}"
+								editable="{oViewModel>/Editable}" valueHelpRequest="hanldeMandal" showValueHelp="true" valueHelpOnly="true"/>
+							<Label text="Postal Code" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Postalcode}" editable="false"/>
+							<Input value="{AdressModel>/PostalcodeNew}" visible="{oViewModel>/EditVisibility}" maxLength="6" liveChange="oHandlePhoneNoLiveChange"
+								editable="{oViewModel>/Editable}" change="OnPostalCodeValidate"/>
+							<!--**************************************************************************************-->
+							<!--<core:Title text="Permanent Address"/>-->
+							<!--<Label text="House/Building Number" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Phousenum}" id="perAddr1" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PhousenumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="Street" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Perarea}" id="perAddr2" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PerareaNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="City" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Percity}" id="perAddr3" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PercityNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="State" design="Bold"/>-->
+							<!--<ComboBox selectedKey="{AdressModel>/Perstate}" items="{StateModel>/}" editable="false">-->
+							<!--	<core:Item key="{StateModel>key}" text="{StateModel>value}"/>-->
+							<!--</ComboBox>-->
+							<!--<ComboBox selectedKey="{AdressModel>/PerstateNew}" items="{StateModel>/}" visible="{oViewModel>/EditVisibility}"-->
+							<!--	editable="{oViewModel>/Editable}">-->
+							<!--	<core:Item key="{StateModel>key}" text="{StateModel>value}"/>-->
+							<!--</ComboBox>-->
+							<!--<Label text="Country" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Percountry}" id="perAddr5" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PercountryNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="District" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/PdistrictTxt}" name="{AdressModel>/Pdistrict}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PdistrictTxtNew}" name="{AdressModel>/PdistrictIdNew}" visible="{oViewModel>/EditVisibility}"-->
+							<!--	editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="hanldeDistrict"/>-->
+							<!--<Label text="Mandal" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/PmandalTxt}" name="{AdressModel>/Pmondal}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PmandalTxtNew}" name="{AdressModel>/PmandalidNew}" visible="{oViewModel>/EditVisibility}"-->
+							<!--	editable="{oViewModel>/Editable}" valueHelpRequest="hanldeMandal" showValueHelp="true" valueHelpOnly="true"/>-->
+							<!--<Label text="Postal Code" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Perpostalcode}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PerpostalcodeNew}" visible="{oViewModel>/EditVisibility}" maxLength="6" liveChange="oHandlePhoneNoLiveChange"-->
+							<!--	editable="{oViewModel>/Editable}"/>-->
+							<!--***********************************************-->
+							<!--<core:Title text="HomeTown Address"/>-->
+							<!--<Label text="House/Building Number" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Hhousenum}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HhousenumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="Address Line2" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Haddress}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HaddressNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="City" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Hcity}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HcityNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="State" design="Bold"/>-->
+							<!--<ComboBox selectedKey="{AdressModel>/Hstate}" items="{StateModel>/}" editable="false">-->
+							<!--	<core:Item key="{StateModel>key}" text="{StateModel>value}"/>-->
+							<!--</ComboBox>-->
+							<!--<ComboBox selectedKey="{AdressModel>/HstateNew}" items="{StateModel>/}" visible="{oViewModel>/EditVisibility}"-->
+							<!--	editable="{oViewModel>/Editable}">-->
+							<!--	<core:Item key="{StateModel>key}" text="{StateModel>value}"/>-->
+							<!--</ComboBox>-->
+							<!--<Label text="Country" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Hcountry}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HcountryNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="District" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/HdistrictTxt}" name="{AdressModel>/Hdistrict}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HdistrictTxtNew}" name="{AdressModel>/HdistrictNew}" showValueHelp="true" valueHelpOnly="true"-->
+							<!--	valueHelpRequest="hanldeDistrict" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<!--<Label text="Mandal" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/HmandalTxt}" name="{AdressModel>/Hmondal}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HmandalTxtNew}" name="{AdressModel>/HmondalNew}" visible="{oViewModel>/EditVisibility}"-->
+							<!--	editable="{oViewModel>/Editable}" valueHelpRequest="hanldeMandal" showValueHelp="true" valueHelpOnly="true"/>-->
+							<!--<Label text="Postal Code" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Hpostalcode}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/HpostalcodeNew}" visible="{oViewModel>/EditVisibility}" maxLength="6" liveChange="oHandlePhoneNoLiveChange"-->
+							<!--	editable="{oViewModel>/Editable}"/>-->
+						</f:content>
+					</f:SimpleForm>
+					<!--***********************************************-->
+				</IconTabFilter>
+				<IconTabFilter id="idPermanentTab" iconColor="" text="Permanent Address " key="Permanent">
+					<f:SimpleForm id="idPermanentform" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="4" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Permanent Address"/>
+							<Label/>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+							<Label text="House No and Street Name" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Phousenum}" editable="false"/>
+							<Input value="{AdressModel>/PhousenumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" maxLength="60"/>
+							<Label text="Street" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Perarea}" editable="false"/>
+							<Input value="{AdressModel>/PerareaNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<!--	<Label text="Address Line2" design="Bold"/>
+			<Input value="{AdressModel>/Perarea}" id="perAddr2" editable="false" />
+			<Input value="{AdressModel>/PerareaNew}" visible="{oViewModel>/EditVisibility}"/>-->
+							<Label text="City" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Percity}" editable="false"/>
+							<Input value="{AdressModel>/PercityNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<Label text="State" design="Bold" required="true"/>
+							<ComboBox selectedKey="{AdressModel>/Perstate}" items="{StateModel>/}" editable="false">
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<ComboBox selectedKey="{AdressModel>/PerstateNew}" items="{StateModel>/}" visible="{oViewModel>/EditVisibility}" change="onchangebAddressStaeCombo"
+								editable="{oViewModel>/Editable}">
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<!--<Input value="{AdressModel>/Perstate}" id="perAddr4" editable="false"/>
+			<Input value="{AdressModel>/PerstateNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<Label text="Country" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Percountry}" editable="false"/>
+							<Input value="{AdressModel>/PercountryNew}" visible="{oViewModel>/EditVisibility}" editable="false"/>
+							<Label text="District" design="Bold" required="true"/>
+							<Input value="{AdressModel>/PdistrictTxt}" name="{AdressModel>/Pdistrict}" editable="false"/>
+							<Input value="{AdressModel>/PdistrictTxtNew}" name="{AdressModel>/PdistrictIdNew}" visible="{oViewModel>/EditVisibility}"
+								editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="hanldeDistrict"/>
+							<Label text="Mandal" design="Bold" required="true"/>
+							<Input value="{AdressModel>/PmandalTxt}" name="{AdressModel>/Pmondal}" editable="false"/>
+							<Input value="{AdressModel>/PmandalTxtNew}" name="{AdressModel>/PmandalidNew}" visible="{oViewModel>/EditVisibility}"
+								editable="{oViewModel>/Editable}" valueHelpRequest="hanldeMandal" showValueHelp="true" valueHelpOnly="true"/>
+							<Label text="Postal Code" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Perpostalcode}" editable="false"/>
+							<Input value="{AdressModel>/PerpostalcodeNew}" visible="{oViewModel>/EditVisibility}" maxLength="6" liveChange="oHandlePhoneNoLiveChange"
+								editable="{oViewModel>/Editable}"  change="OnPostalCodeValidate"/>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="idHomeTowntTab" iconColor="" text="HomeTown Address" key="HomeTown">
+					<f:SimpleForm id="idHomeTownform" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="4" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="HomeTown Address"/>
+							<!--	the new fields are editable based on flag based only- cfms_ctm_npv(27_12_22)-->
+							<Label/>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+							<Label text="House No and Street Name" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Hhousenum}" editable="false"/>
+							<Input value="{AdressModel>/HhousenumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" maxLength="60"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<!--editable="{AdressModel>/Editable}"-->
+							<!--<Label text="Street" design="Bold"/>-->
+							<!--<Input value="{AdressModel>/Perarea}" editable="false"/>-->
+							<!--<Input value="{AdressModel>/PerareaNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<Label text="Address Line2" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Haddress}" editable="false"/>
+							<Input value="{AdressModel>/HaddressNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<!--	<Label text="Address Line2" design="Bold"/>
+			<Input value="{AdressModel>/Perarea}" id="perAddr2" editable="false" />
+			<Input value="{AdressModel>/PerareaNew}" visible="{oViewModel>/EditVisibility}"/>-->
+							<Label text="City" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Hcity}" editable="false"/>
+							<Input value="{AdressModel>/HcityNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<Label text="State" design="Bold" required="true"/>
+							<ComboBox selectedKey="{AdressModel>/Hstate}" items="{StateModel>/}"  editable="false">
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<ComboBox selectedKey="{AdressModel>/HstateNew}" items="{StateModel>/}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" change="onchangebAddressStaeCombo">
+								<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+								<core:Item key="{StateModel>key}" text="{StateModel>value}"/>
+								<!--<core:Item key="2" text="Mrs"/>-->
+							</ComboBox>
+							<!--<Input value="{AdressModel>/Perstate}" id="perAddr4" editable="false"/>
+			<Input value="{AdressModel>/PerstateNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>-->
+							<Label text="Country" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Hcountry}" editable="false"/>
+							<Input value="{AdressModel>/HcountryNew}" visible="{oViewModel>/EditVisibility}" editable="false"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<Label text="District" design="Bold" required="true"/>
+							<Input value="{AdressModel>/HdistrictTxt}" name="{AdressModel>/Hdistrict}" editable="false"/>
+							<Input value="{AdressModel>/HdistrictTxtNew}" name="{AdressModel>/HdistrictNew}" showValueHelp="true" valueHelpOnly="true"
+								valueHelpRequest="hanldeDistrict" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<!--visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"-->
+							<Label text="Mandal" design="Bold" required="true"/>
+							<Input value="{AdressModel>/HmandalTxt}" name="{AdressModel>/Hmondal}" editable="false"/>
+							<Input value="{AdressModel>/HmandalTxtNew}" name="{AdressModel>/HmondalNew}" visible="{oViewModel>/EditVisibility}"
+								valueHelpRequest="hanldeMandal" showValueHelp="true" valueHelpOnly="true" editable="{oViewModel>/Editable}"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+							<!--editable="{oViewModel>/Editable}"-->
+							<Label text="Postal Code" design="Bold" required="true"/>
+							<Input value="{AdressModel>/Hpostalcode}" editable="false"/>
+							<Input value="{AdressModel>/HpostalcodeNew}" visible="{oViewModel>/EditVisibility}" maxLength="6" liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"  change="OnPostalCodeValidate"/>
+							<!--editable="{= ${AdressModel>/Flag} === 'X' ? true : false }"-->
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="idCommunication" iconColor="" text="Mobile and Email " key="Communication">
+					<f:SimpleForm id="idCommunicationform" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+						labelSpanM="4" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Communication Details"/>
+							<Label></Label>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}"/>
+							<Label text="Office MailId" design="Bold"/>
+							<Input value="{AdressModel>/OfficeMailId}" editable="false"/>
+							<Input value="{AdressModel>/OfficeMailIdNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" type="Email"
+								change="oHanldeEmailChange"/>
+							<Label text="Office Mobile Number" design="Bold"/>
+							<Input value="{AdressModel>/OfficeMobileNum}" editable="false"/>
+							<Input value="{AdressModel>/OfficeMobileNumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" maxLength="10"
+								change="oHandlePhoneNoChange" liveChange="oHandlePhoneNoLiveChange"/>
+							<Label text="Private MailId" design="Bold"/>
+							<Input value="{AdressModel>/PrivateMailId}" editable="false"/>
+							<Input value="{AdressModel>/PrivateMailIdNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" type="Email"
+								change="oHanldeEmailChange"/>
+							<Label text="Private Mobile Number" design="Bold"/>
+							<Input value="{AdressModel>/PrivateMobileNum}" editable="false"/>
+							<Input value="{AdressModel>/PrivateMobileNumNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" maxLength="10"
+								change="oHandlePhoneNoChange" liveChange="oHandlePhoneNoLiveChange"/>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Employee Comments :" design="Bold" required="true"/>
+			<!--<headerToolbar>-->
+			<!--	<OverflowToolbar>-->
+			<!--		<Title text="Reason for Change :"/>-->
+			<!--	</OverflowToolbar>-->
+			<!--</headerToolbar>-->
+			<TextArea value="{AdressModel>/ReasonForChange}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

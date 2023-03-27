@@ -1,0 +1,57 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="Attachments ">
+		<!--for {DetailEmployeeHeaderModel>/EmployeeName}'s Transfer-Admin Ground-->
+		<!--<Table items="{AttachmentModel>/results}">-->
+		<!--	<headerToolbar>-->
+		<!--		<OverflowToolbar>-->
+		<!--			<ToolbarSpacer/>-->
+		<!--			<Button id="AddAttachmentBtnId" text="Add New Attachment" press="OnPressNewAttachment"/>-->
+		<!--		</OverflowToolbar>-->
+		<!--	</headerToolbar>-->
+		<!--	<columns>-->
+		<!--		<Column vAlign="Middle" width="7rem">-->
+		<!--			<Text text="Sr. No."/>-->
+		<!--		</Column>-->
+		<!--		<Column vAlign="Middle" width="40rem">-->
+		<!--			<Text text="Attachments description"/>-->
+		<!--		</Column>-->
+		<!--		<Column vAlign="Middle" width="15rem">-->
+		<!--			<Text text="Delete"/>-->
+		<!--		</Column>-->
+		<!--	</columns>-->
+		<!--	<ColumnListItem>-->
+		<!--		<Text text="{AttachmentModel>Seqno}"/>-->
+		<!--		<Link text="{AttachmentModel>AttachemntName}"  press="OnPressOfDownloadAttachment"/>-->
+		<!--		<Button icon="sap-icon://delete" press="OnPressDeleteAttachment"/>-->
+		<!--	</ColumnListItem>-->
+		<!--</Table>-->
+		<UploadCollection id="AttachmentCollectionId" maximumFilenameLength="100" uploadButtonInvisible="false" uploadEnabled="true" maximumFileSize="{fsizemodel>/filesize}"
+			multiple="true" sameFilenameAllowed="false" instantUpload="true"
+			noDataDescription="Drop files or use the &quot;+&quot; button to upload files" change="onChange" selectionChange="onSelectionChange"
+			fileDeleted="OnPressDeleteAttachment" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed"
+			typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="odataupload"
+			uploadUrl="/sap/opu/odata/sap/ZGW_HCM_ELCM_EASY_ACTION_SRV/AttachmentsSet"
+			mimeType="application/pdf,application/msword,application/vnd.ms-excel,ap plication/vnd.ms-powerpoint,application/vnd.openxmlformats-off icedocument.wordprocessingml.document,application/vnd.openxmlf ormats-officedocument.spreadsheetml.sheet,application/vnd.open xmlformats-officedocument.presentationml.presentation,image/pn g,image/jpeg,image/gif,image/bmp,image/webp,text/plain"
+			items="{AttachmentModel>/results}">
+			<!--fileType="pdf,doc,xls,ppt,docx,xlsx,pptx,jpg,png,gif,bmp,webp,txt,csv"-->
+			<items>
+				<UploadCollectionItem documentId="{AttachmentModel>RequestGuid}" enableDelete="{AttachmentModel>DeleteAllowed}"
+					visibleDelete="{AttachmentModel>DeleteAllowed}" fileName="{AttachmentModel>AttachemntName}" mimeType="{AttachmentModel>MymeType}"
+					enableEdit="{AttachmentModel>DeleteAllowed}" visibleEdit="false"
+					url="/sap/opu/odata/sap/ZGW_HCM_ELCM_EASY_ACTION_SRV/AttachmentsSet(RequestGuid='{AttachmentModel>RequestGuid}',Seqno='{AttachmentModel>Seqno}')/$value">
+					<attributes>
+						<ObjectAttribute active="true" press="onpressDownload"/>
+					</attributes>
+				</UploadCollectionItem>
+			</items>
+		</UploadCollection>
+		<buttons>
+			<Button text="Close" type="Emphasized" press="OnPressCancelAttachment"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

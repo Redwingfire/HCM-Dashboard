@@ -1,0 +1,142 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="idAdditionalPaymentsDisplayPopup" contentHeight="80%" contentWidth="100%" title="Additional Payments- Display" resizable="true"
+		draggable="true">
+		<f:SimpleForm id="idAdditionalPaymentsdetailsDisplay" editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+			adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<Text text="{i18n>NewDetails}"/>
+				<!--Member Type-->
+				<Label text="Wage Type" design="Bold" required="true"/>
+				<Input value="{AdditionalPaymentsTabFormModel>CurrWageType}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{AdditionalPaymentsTabFormModel>NewWageType}" editable="false"/>
+				<Label text="Wage Type Description" design="Bold" required="true"/>
+				<Input value="{AdditionalPaymentsTabFormModel>CurrWagetypeText}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{AdditionalPaymentsTabFormModel>NewWagetypeText}" editable="false" liveChange="onValueNameChange"/>
+				<Label text="Wage Type Amount" design="Bold" required="true"/>
+				<Input value="{AdditionalPaymentsTabFormModel>CurrAmount}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{AdditionalPaymentsTabFormModel>NewAmount}" editable="false" liveChange="onValueNameChange"/>
+				<Label text="Start Date" design="Bold" required="true"/>
+				<!--<ComboBox editable="false" selectedKey="{AdditionalPaymentsTabFormModel>Gender}" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox editable="false" selectedKey="{AdditionalPaymentsTabFormModel>GenderNew}" change="genderFamilyChange">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<DatePicker placeholder="Date"
+					value="{path: 'AdditionalPaymentsTabFormModel>CurrBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker placeholder="Date" dateValue="{path: 'AdditionalPaymentsTabFormModel>NewBegda',formatter:'.formatter.DOBchange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="dateofBirthFamily"
+					maxDate="{path:'AdditionalPaymentsTabFormModel>DateOfBirthNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'AdditionalPaymentsTabFormModel>DateOfBirthNew', formatter:'.formatter.DOBmindate'}"/>
+				<Label text="End Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'AdditionalPaymentsTabFormModel>CurrEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Input value="{AdditionalPaymentsTabFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker placeholder="Date" dateValue="{path: 'AdditionalPaymentsTabFormModel>NewEndda',formatter:'.formatter.DOBchange'}"
+					valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="dateofBirthFamily"
+					maxDate="{path:'AdditionalPaymentsTabFormModel>DateOfBirthNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'AdditionalPaymentsTabFormModel>DateOfBirthNew', formatter:'.formatter.DOBmindate'}"/>
+				<Label text="Date of Origin" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'AdditionalPaymentsTabFormModel>CurrDateOfOrgin', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker placeholder="Date" dateValue="{path: 'AdditionalPaymentsTabFormModel>NewDateOfOrgin',formatter:'.formatter.DOBchange'}"
+					valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="NewDateOfOrginChangeAdditionalPayments"
+					maxDate="{path:'AdditionalPaymentsTabFormModel>NewDateOfOrgin', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'AdditionalPaymentsTabFormModel>NewDateOfOrgin', formatter:'.formatter.DOBmindate'}"/>
+				<!--<Label text="Aadhaar Number" design="Bold" required="true"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>Aadharnumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>AadharnumberNew}" editable="false" maxLength="12" change="handleAadharno"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Phone Number" design="Bold"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>PhoneNumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>PhoneNumberNew}" editable="false" maxLength="10" change="oHandlePhoneNoChange"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Marital Status" design="Bold" required="false"/>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>MaritalStatus}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>MaritalStatusNew}" editable="false" change="changeMaritalStatus">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Married Since" design="Bold" required="{= ${AdditionalPaymentsTabFormModel>MaritalStatusNew} === '1' ? true : false}"/>-->
+				<!--<DatePicker placeholder="Date" value="{path: 'AdditionalPaymentsTabFormModel>MarriedSince',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"-->
+				<!--	displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" id="IdMarriedSinceNew" dateValue="{path: 'AdditionalPaymentsTabFormModel>MarriedSinceNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	change="dateofMarriedSince" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+				<!--editable="{path:'AdditionalPaymentsTabFormModel>MaritalStatusNew',formatter:'.formatter.maritalSince'}"/>-->
+				<!--<DatePicker placeholder="Date of Birth"-->
+				<!--	dateValue="{path: 'AdditionalPaymentsTabFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" change="dateofBirthFamily"/>-->
+				<!--<Label text="Disablity" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>Disablity}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>DisablityNew}" editable="false" change="DisablityCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{AdditionalPaymentsTabFormModel>Disablity}" editable="false"/>
+				<Input value="{AdditionalPaymentsTabFormModel>Disablity}" editable="true"/>-->
+				<!--<Label text="Alive" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>Alive}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>AliveNew}" editable="false" change="aliveFamilyCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Date of Death" design="Bold" required="{path:'AdditionalPaymentsTabFormModel>/AliveNew',formatter:'.formatter.alive'}"/>-->
+				<!--<DatePicker placeholder="Date"-->
+				<!--	value="{path: 'AdditionalPaymentsTabFormModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+				<!--	valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" dateValue="{path: 'AdditionalPaymentsTabFormModel>DateOfDeathNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="dateofDeathFamily"/>-->
+				<!--editable="{= ${AdditionalPaymentsTabFormModel>AliveNew} === 'N' ? true : false}"-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>DateOfDeath}" editable="false"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>DateOfDeath}" editable="true"/>-->
+				<!--<Label text="Govt Employe" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>GovtEmploye}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{AdditionalPaymentsTabFormModel>GovtEmployeNew}" editable="false" change="onfamGovEmpchange">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{AdditionalPaymentsTabFormModel>GovtEmploye}" editable="false"/>
+				<Input value="{AdditionalPaymentsTabFormModel>GovtEmployeNew}" editable="true"/>-->
+				<!--<Label text="Service Type" design="Bold" required="{path:'AdditionalPaymentsTabFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>ServiceType}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>ServiceTypeNew}" editable="false"/>-->
+				<!--editable="{= ${AdditionalPaymentsTabFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Employee Code" design="Bold" required="{path:'AdditionalPaymentsTabFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>Employeecode}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{AdditionalPaymentsTabFormModel>EmployeecodeNew}" editable="false"/>-->
+				<!--editable="{= ${AdditionalPaymentsTabFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Opetation" design="Bold" required="true"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<!--<Button text="Ok" type="Emphasized" class="sapUiSmallMarginEnd" press="onOkFamilyDailog"/>-->
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelAdditionalPaymentsDetailsDisplay"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

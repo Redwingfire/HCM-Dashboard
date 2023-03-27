@@ -1,0 +1,265 @@
+<mvc:View controllerName="com.hcm.dashZHCM_DASHBOARD.controller.Masterpage" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:core="sap.ui.core" class="sapUiSizeCompact" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<App id="app">
+		<pages>
+			<Page title="{i18n>title}"
+				class="sapUiContentPadding sapUiResponsivePadding--header sapUiResponsivePadding--subHeader sapUiResponsivePadding--content sapUiResponsivePadding--footer">
+				<headerContent class="sapUiLargeMarginTop">
+					<!--			<l:VerticalLayout width="100%">-->
+					<!--<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">-->
+					<!--	<fb:filterGroupItems>-->
+					<!--		<fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Delivery Date" partOfCurrentVariant="true" visibleInFilterBar="true">-->
+					<!--			<fb:control>-->
+					<!--				<DatePicker/>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--		<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="Region" labelTooltip="Tooltip Example" mandatory="true"-->
+					<!--			partOfCurrentVariant="true" visibleInFilterBar="true">-->
+					<!--			<fb:control>-->
+					<!--				<ComboBox type="Text">-->
+					<!--					<items>-->
+					<!--						<core:Item key="001" text="EMEA"/>-->
+					<!--						<core:Item key="002" text="America"/>-->
+					<!--						<core:Item key="003" text="APJ"/>-->
+					<!--					</items>-->
+					<!--				</ComboBox>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--		<fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="A1" label="Company" labelTooltip="Tooltip GroupItem Example">-->
+					<!--			<fb:control>-->
+					<!--				<Input type="Text"/>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--		<fb:FilterGroupItem groupName="G1" groupTitle="Group1" name="B1" label="Customer">-->
+					<!--			<fb:control>-->
+					<!--				<Input type="Text"/>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--		<fb:FilterGroupItem groupName="G2" groupTitle="Group2" name="A2" label="Supplier" labelTooltip="Tooltip GroupItem Example">-->
+					<!--			<fb:control>-->
+					<!--				<Input type="Text"/>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--		<fb:FilterGroupItem groupName="G2" groupTitle="Group2" name="B2" label="Category">-->
+					<!--			<fb:control>-->
+					<!--				<Input type="Text"/>-->
+					<!--			</fb:control>-->
+					<!--		</fb:FilterGroupItem>-->
+					<!--	</fb:filterGroupItems>-->
+					<!--</fb:FilterBar>-->
+					<!--</l:VerticalLayout>-->
+				</headerContent>
+				<content>
+					<!--<Toolbar>-->
+					<f:SimpleForm id="idFiltesInbox" minWidth="1024" editable="true" layout="ColumnLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<!--<core:Title text=""></core:Title>-->
+							<!--<DatePicker id="idReceivedOn" width="10rem" placeholder="Receoved On" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"-->
+							<!--	change="onBeforeRebindTable"/>-->
+							<Label text="{i18n>ProcessType}" design="Bold" labelFor="idProcessType"/>
+							<ComboBox id="idProcessType" items="{ path: 'processtypeModel>/', sorter: { path: 'ProcessType' } }" selectedKey="ALL"
+								change="onBeforeRebindTable">
+								<core:Item key="{processtypeModel>ProcessType}" text="{processtypeModel>ProcessType}"/>
+							</ComboBox>
+							<Label text="{i18n>ProcessSubType}" design="Bold" labelFor="idProcessSubType"/>
+							<ComboBox id="idProcessSubType" items="{ path: 'processSubtypeModel>/', sorter: { path: 'ProcessSubType' } }" selectedKey="ALL"
+								change="onBeforeRebindTable">
+								<core:Item key="{processSubtypeModel>ProcessSubType}" text="{processSubtypeModel>ProcessSubType}"/>
+							</ComboBox>
+							<core:Title></core:Title>
+							<Label text="{i18n>ReqReceivedOn}" design="Bold" labelFor="idReqReceivedOn"/>
+							<ComboBox id="idReqReceivedOn" items="{ path: 'recivedonModel>/', sorter: { path: 'index' } }" selectedKey="7" change="onBeforeRebindTable">
+								<core:Item key="{recivedonModel>key}" text="{recivedonModel>text}"/>
+							</ComboBox>
+							<Label text="Request Owner" design="Bold" labelFor="idRequestOwner"/>
+							<ComboBox id="idRequestOwner" items="{ path: 'requestOwnerModel>/', sorter:{path: 'RequestOwner'}}" selectedKey="ALL"
+								change="onBeforeRebindTable">
+								<core:Item key="{requestOwnerModel>RequestOwner}" text="{requestOwnerModel>RequestOwner}"/>
+							</ComboBox>
+							<!--<Input value="" valueHelpOnly="true" showValueHelp="false" valueHelpRequest="handleSustitueF4"/>-->
+							<!--<Label text="{i18n>ReferenceNumber}" design="Bold" labelFor="idReferenceNumber"/>
+							<ComboBox id="idReferenceNumber" items="{ReferenceNumberModel>/}" change="onBeforeRebindTable">
+								<core:Item key="{ReferenceNumberModel>ReferenceNumber}" text="{ReferenceNumberModel>ReferenceNumber}"/>
+							</ComboBox>-->
+							<!--<Label text="{i18n>ReqReceivedOn}" design="Bold" labelFor="idReqReceived"/>
+							<ComboBox id="idReqReceived" items="{ReqReceivedOnModel>/}" change="onBeforeRebindTable">
+								<core:Item key="{ReqReceivedOnModel>ReqReceivedOn}" text="{path: 'ReqReceivedOnModel>RequestedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+							</ComboBox>-->
+							<!--<Button text="Go" press="onGo" type="Emphasized"></Button>-->
+						</f:content>
+					</f:SimpleForm>
+					<Table id="idinboxTable" inset="false" items="{inboxModel>/}" visible="true" alternateRowColors="true" growing="true" growingThreshold="50"
+						fixedLayout="false" sticky="ColumnHeaders,HeaderToolbar,InfoToolbar" itemPress="navTableItemPress" >
+						<!--class="sapUiLargeMarginTop"-->
+						<headerToolbar>
+							<Toolbar>
+								<!--<Label text="" design="Bold" id="idRecords" color="#4177bf"/>-->
+								<Title text="Total Records: 0" id="idTableRec" level="H2"></Title>
+								<ToolbarSpacer/>
+								<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>
+								<Button text="Refresh" icon="sap-icon://synchronize" type="Emphasized" press="onReset" tooltip="Reset Filters" class="sapUiSmallMarginEnd"/>
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ProcessType}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ProcessSubType}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ProcessTitle}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>EmployeeDetails}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ReferenceNumber}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ReqCreatedOn}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>ReqReceivedOn}" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="{i18n>PriorityStatus}" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="{i18n>PointInTime}" design="Bold"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<cells>
+									<Text text="{inboxModel>ProcessType}"/>
+									<Text text="{inboxModel>ProcessSubType}"/>
+									<Text text="{inboxModel>ProcessTitle}"/>
+									<Text text="{inboxModel>EmployeeInfo}"/>
+									<Text text="{inboxModel>ReferenceNumber}"/>
+									<Text text="{path: 'inboxModel>RequestedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+									<Text text="{path: 'inboxModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+									<Text text="{inboxModel>Priority}"/>
+									<Text text="{inboxModel>PointInTime}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<!--<smartFilterBar:SmartFilterBar advancedMode="false" useToolbar="true" id="smartFilterBar" showFilterConfiguration="true"-->
+					<!--	entitySet="HCMInboxSet" persistencyKey="SmartFilter_Explored" afterVariantLoad="afterVariantLoad" beforeVariantFetch="beforeVariantSave"-->
+					<!--	showClearButton="true" considerSelectionVariants="true" showClearOnFB="true">-->
+					<!--	<smartFilterBar:controlConfiguration>-->
+					<!--		<smartFilterBar:ControlConfiguration key="ReceivedOn" index="1" label="{/#HCMInbox/ReceivedOn/@sap:label}" width="300px"-->
+					<!--			visibleInAdvancedArea="true">-->
+					<!--			<smartFilterBar:customControl>-->
+					<!--				<DatePicker id="idReceivedOn" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" change="onBeforeRebindTable"/>-->
+					<!--			</smartFilterBar:customControl>-->
+					<!--		</smartFilterBar:ControlConfiguration>-->
+					<!--		<smartFilterBar:ControlConfiguration key="ProcessType" index="2" label="{/#HCMInbox/ProcessType/@sap:label}" visibleInAdvancedArea="true">-->
+					<!--			<smartFilterBar:customControl>-->
+					<!--				<ComboBox id="idProcessType" items="{/HCMInboxSet}" change="onBeforeRebindTable">-->
+					<!--					<core:Item key="{ProcessType}" text="{ProcessType}"/>-->
+					<!--				</ComboBox>-->
+					<!--			</smartFilterBar:customControl>-->
+					<!--		</smartFilterBar:ControlConfiguration>-->
+					<!--		<smartFilterBar:ControlConfiguration key="Priority" index="2" label="{/#HCMInbox/Priority/@sap:label}" visibleInAdvancedArea="true">-->
+					<!--			<smartFilterBar:customControl>-->
+					<!--				<ComboBox id="idPriority" items="{/HCMInboxSet}" change="onBeforeRebindTable">-->
+					<!--					<core:Item key="{Priority}" text="{Priority}"/>-->
+					<!--				</ComboBox>-->
+					<!--			</smartFilterBar:customControl>-->
+					<!--		</smartFilterBar:ControlConfiguration>-->
+					<!--	</smartFilterBar:controlConfiguration>-->
+					<!--</smartFilterBar:SmartFilterBar>-->
+					<!--<smartTable:SmartTable id="smartTable" entitySet="HCMInboxSet" smartFilterId="smartFilterBar" tableType="ResponsiveTable" useExportToExcel="true"-->
+					<!--	useTablePersonalisation="true" header="Line Items" showRowCount="true" beforeRebindTable="onBeforeRebindTable" beforeExport="onBeforeExport"-->
+					<!--	useVariantManagement="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" demandPopin="true"-->
+					<!--	class="sapUiResponsiveContentPadding" data:p13nDialogSettings="{sort:{sortItems:[{ columnKey: 'ProcessType', operation: 'Ascending' }]}}"-->
+					<!--	requestAtLeastFields="ProcessType,ProcessSubType,ProcessTitle,RelationId,EmployeeInfo,ReferenceNumber,RequestedOn,ReceivedOn,Priority,PointInTime">-->
+					<!--	<Table itemPress="navTableItemPress">-->
+					<!--		<columns>-->
+					<!--			<Column id="ProcessType" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "ProcessType","leadingProperty": "ProcessType","sortProperty": "ProcessType","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/ProcessType/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="ProcessSubType" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "ProcessSubType","leadingProperty": "ProcessSubType","sortProperty": "ProcessSubType","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/ProcessSubType/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="ProcessTitle" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "ProcessTitle","leadingProperty": "ProcessTitle","sortProperty": "ProcessTitle","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/ProcessTitle/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="EmployeeInfo" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "EmployeeInfo","leadingProperty": "EmployeeInfo","sortProperty": "EmployeeInfo","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/EmployeeInfo/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="ReferenceNumber" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "ReferenceNumber","leadingProperty": "ReferenceNumber","sortProperty": "ReferenceNumber","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/ReferenceNumber/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="RequestedOn" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "RequestedOn","leadingProperty": "RequestedOn","sortProperty": "RequestedOn","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/RequestedOn/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="ReceivedOn" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "ReceivedOn","leadingProperty": "ReceivedOn","sortProperty": "ReceivedOn","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/ReceivedOn/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="Priority" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "Priority","leadingProperty": "Priority","sortProperty": "Priority","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/Priority/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--			<Column id="PointInTime" hAlign="Begin">-->
+					<!--				<core:CustomData key="p13nData"-->
+					<!--					value='\{"columnKey": "PointInTime","leadingProperty": "PointInTime","sortProperty": "PointInTime","filterProperty": "flm_bill_num", "type": "string"}'/>-->
+					<!--				<Text text="{/#HCMInbox/PointInTime/@sap:label}"/>-->
+					<!--			</Column>-->
+					<!--		</columns>-->
+					<!--		<items>-->
+					<!--			<ColumnListItem type="Navigation" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">-->
+					<!--				<cells>-->
+					<!--					<Text text="{ProcessType}"/>-->
+					<!--					<Text text="{ProcessSubType}"/>-->
+					<!--					<Text text="{ProcessTitle}"/>-->
+					<!--					<Text text="{EmployeeInfo}"/>-->
+					<!--					<Text text="{ReferenceNumber}"/>-->
+					<!--					<Text text="{path: 'RequestedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+					<!--					<Text text="{path: 'ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+					<!--					<Text text="{Priority}"/>-->
+					<!--					<Text text="{PointInTime}"/>-->
+					<!--				</cells>-->
+					<!--			</ColumnListItem>-->
+					<!--		</items>-->
+					<!--	</Table>-->
+					<!--</smartTable:SmartTable>-->
+				</content>
+				<footer>
+					<Bar id="mainPageFooterBar">
+						<contentRight>
+							<!--<Button id="idManageOfficeReqButton" text="Manage Office Request" class="sapUiMediumMarginBegin" icon="sap-icon://manager" type="" visible="{= ${inboxpageFooterBtnDisplayModel>/HideReassign} === true ? false : true }"-->
+							<!--	press="onManagOfficReq"/>-->
+							
+							<!--<Button id="idWorkflowButton" text="Workflow Config"  icon="sap-icon://add-process" type="" visible="{= ${inboxpageFooterBtnDisplayModel>/HideWfconfig} === true ? false : true }"  press="onWorkFlow"/>-->
+							<!--<Button id="idSubstitute" text="Substitute" class="sapUiMediumMarginEnd" icon="sap-icon://visits" type="" visible="{= ${inboxpageFooterBtnDisplayModel>/HideSubstitution} === true ? false : true }"  press="onSubstitute"/>-->
+						</contentRight>
+						<contentLeft></contentLeft>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

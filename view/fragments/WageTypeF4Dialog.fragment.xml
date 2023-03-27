@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Wage Type"
+		confirm="ConfirmWageTypeDialog" liveChange="livechangeWageTypesearch" cancel="CloseWageTypeDialog" items="{FamilyAddMembDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{FamilyAddMembDialogModel>wagedesc}" description="{FamilyAddMembDialogModel>Wagetype}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

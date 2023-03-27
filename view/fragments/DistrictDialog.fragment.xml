@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select District"
+		confirm="ConfirmDistrictDialog" liveChange="liveDistrictsearch" cancel="CloseDistrictDialog" items="{DistrictDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{DistrictDialogModel>Dstrict}" description="{DistrictDialogModel>District_ID}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

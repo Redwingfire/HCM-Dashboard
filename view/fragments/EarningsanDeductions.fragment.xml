@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<HBox>
+		<Table id="idTableEarnings" growing="true" growingThreshold="15" alternateRowColors="true" items="{oGlobalDataModel>/EarningList/results}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Label text="{i18n>TE}" design="Bold"/>
+						<Text text="{oGlobalDataModel>/EmployeeHeader/EarningAmount}"/>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Label text="{i18n>EC}" design="Bold"/>
+				</Column>
+				<Column>
+					<Label text="{i18n>amount}" design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<Text text="{oGlobalDataModel>WagetypeName} {=${oGlobalDataModel>WagetypeName}==='' ? '' : '-'} {oGlobalDataModel>Wagetype}" wrapping="true"/>
+					<Text text="{oGlobalDataModel>WageAmount}" wrapping="true"/>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table id="idTableDeduct" growing="true" growingThreshold="15" class="sapUiTinyMarginBeginEnd"
+			items="{oGlobalDataModel>/DeductionList/results}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<content>
+						<Label text="{i18n>TD}" design="Bold"/>
+						<Text text="{oGlobalDataModel>/EmployeeHeader/DeductionAmount}"/>
+						<ToolbarSpacer/>
+						<Label text="{i18n>NA}" design="Bold"/>
+						<Text text="{oGlobalDataModel>/EmployeeHeader/NetAmount}" class="sapUiLargeMarginEnd"/>
+					</content>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<Label text="{i18n>DC}" design="Bold"/>
+				</Column>
+				<Column>
+					<Label text="{i18n>amount}" design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<Text text="{oGlobalDataModel>WagetypeName} {=${oGlobalDataModel>WagetypeName}==='' ? '' : '-'} {oGlobalDataModel>Wagetype}" wrapping="true"/>
+					<Text text="{oGlobalDataModel>WageAmount}" wrapping="true"/>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</HBox>
+</core:FragmentDefinition>

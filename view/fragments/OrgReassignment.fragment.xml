@@ -1,0 +1,109 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	class="sapUiSizeCompact">
+	<!--<Dialog resizable="true" draggable="true" title="">-->
+	<!--	<l:VerticalLayout id="TransferToLayoutId" visible="false" width="79rem">-->
+	<!--		<l:HorizontalLayout>-->
+	<!--			<HBox width="25rem" class="sapUiMediumMarginBegin">-->
+	<!--				<VBox>-->
+	<!--					<ObjectStatus title="Reference Number" text="{DetailTransferModel>/ReferenceNumber}"/>-->
+	<!--				</VBox>-->
+	<!--			</HBox>-->
+	<!--			<HBox width="35rem" class="sapUiMediumMarginBegin">-->
+	<!--				<VBox>-->
+	<!--					<ObjectStatus title="Overall Status" text="{DetailTransferModel>/OverallStatus}"/>-->
+	<!--				</VBox>-->
+	<!--			</HBox>-->
+	<!--			<HBox width="35rem" class="sapUiMediumMarginBegin">-->
+	<!--				<VBox>-->
+	<!--					<ObjectStatus title="Request Status" text="{DetailTransferModel>/ReqStatus}"/>-->
+	<!--				</VBox>-->
+	<!--			</HBox>-->
+	<!--		</l:HorizontalLayout>-->
+	<!--		<Toolbar xmlns="sap.m">-->
+	<!--			<ToolbarSpacer/>-->
+	<!--			<SegmentedButton id="segmentedBtnId" selectedKey="WthPos" selectionChange="OnChangeofPositionBtn">-->
+	<!--				<items>-->
+	<!--					<SegmentedButtonItem text="With position" key="WthPos"/>-->
+						<!--<SegmentedButtonItem text="Without position" key="WthOutPos"/>-->
+	<!--				</items>-->
+	<!--			</SegmentedButton>-->
+	<!--		</Toolbar>-->
+	<!--		<l:HorizontalLayout>-->
+	<!--			<HBox width="35rem" class="sapUiMediumMarginBeginEnd sapUiTinyMarginTop">-->
+	<!--				<Title id="SeparationTitleId" text="Separation Details" visible="false"/>-->
+	<!--				<Text id="EffectDateTransferTextId" text="Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>-->
+	<!--				<DatePicker id="EffectDateTransferId" value="{path: 'DetailTransferModel>/EffectiveDate', formatter:'.formatter.SystemDateConversion'}"-->
+	<!--					class="sapUiSmallMarginBegin" displayFormat="dd.MM.yyyy"/>-->
+	<!--			</HBox>-->
+	<!--		</l:HorizontalLayout>-->
+			<f:SimpleForm id="idcurrAddress" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+				adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"
+				singleContainerFullSize="false" maxContainerCols="1" visible="true">
+				<f:content>
+					<Label/>
+					<Text id="CurrentTitleStyleId" xmlns="sap.m" text="Current"/>
+					<Text id="ToBeTransferredId" xmlns="sap.m" text="To be transferred" class="sapUiLargeMarginEnd"/>
+					<!--<Label/>-->
+					<Label xmlns="sap.m" text="Position Info" required="false"/>
+					<Input editable="false" xmlns="sap.m" id="CurrPositionId"
+						value="{DetailTransferModel>/FromPositionName}({DetailTransferModel>/FromPositionId})" width="20rem"/>
+					<Input xmlns="sap.m" id="TransferPositionId" value="{DetailTransferModel>/ToPositionName}({DetailTransferModel>/ToPositionId})"
+						valueHelpOnly="true" showValueHelp="true" valueHelpRequest="HandleCDSPositionRequest"/>
+					<Label xmlns="sap.m" text="Job Name" required="false"/>
+					<Input editable="false" xmlns="sap.m" id="CurrJobId" value="{DetailTransferModel>/FromJobName}({DetailTransferModel>/FromJobId})"
+						width="20rem"/>
+					<Input editable="false" xmlns="sap.m" id="TransferJobId" value="{DetailTransferModel>/ToJobName}({DetailTransferModel>/ToJobId})"/>
+					<Label xmlns="sap.m" text="Office Name" required="false"/>
+					<Input width="20rem" editable="false" xmlns="sap.m" id="CurrOfficeId"
+						value="{DetailTransferModel>/FromOfficeName}({DetailTransferModel>/FromOfficeId})"/>
+					<Input editable="false" xmlns="sap.m" id="TransferOfficeId" value="{DetailTransferModel>/ToOfficeName}({DetailTransferModel>/ToOfficeId})"/>
+					<Label xmlns="sap.m" text="DDO Info" required="false"/>
+					<Input width="20rem" editable="false" xmlns="sap.m" id="CurrDDOId"
+						value="{DetailTransferModel>/FromDdoName}({DetailTransferModel>/FromDdoId})"/>
+					<Input editable="false" xmlns="sap.m" id="TransferDDOId" value="{DetailTransferModel>/ToDdoName}({DetailTransferModel>/ToDdoId})"/>
+					<!--Separation Fields-->
+					<Label xmlns="sap.m" id="DateOfBirthLabelId" text="Date of Birth" required="false"/>
+					<Input width="20rem" editable="false" xmlns="sap.m" id="DateOfBirthId"
+						value="{path: 'DetailTransferModel>/DateOfBirth', formatter:'.formatter.SystemDateConversion'}"/>
+					<Label xmlns="sap.m" id="DateOfJoinLabelId" text="Date of Joining" required="false"/>
+					<Input width="20rem" editable="false" xmlns="sap.m" id="DateOfJoinId"
+						value="{path: 'DetailTransferModel>/DateOfJoining', formatter:'.formatter.SystemDateConversion'}"/>
+					<Label xmlns="sap.m" id="DateOfSeparationLabelId" class="sapUiTinyMarginTop" text="Expected Date of Separation" required="true"/>
+					<DatePicker xmlns="sap.m" id="DateOfSeparationId" editable="false" displayFormat="dd.MM.yyyy" valueFormat="yyyyMMdd"
+						change="OnChangeDateofSeparation" value="{path: 'DetailTransferModel>/EffectiveDate', formatter:'.formatter.SystemDateConversion'}"
+						tooltip="Separation date as per the record maintained in the CFMS system" width="20rem"/>
+					<!--<Label xmlns="sap.m" id="TransferPositionLabelId" text="Position Info" required="true"/>-->
+					<!--<Input width="20rem" xmlns="sap.m" id="TransferPositionId"-->
+					<!--	value="{DetailTransferModel>/ToPositionName}({DetailTransferModel>/ToPositionId})" valueHelpOnly="true" showValueHelp="true"-->
+					<!--	valueHelpRequest="HandleCDSPositionRequest"/>-->
+					<!--<Label xmlns="sap.m" id="TransferJobLabelId" text="Job Name" required="false"/>-->
+					<!--<Input width="20rem" editable="false" xmlns="sap.m" id="TransferJobId"-->
+					<!--	value="{DetailTransferModel>/ToJobName}({DetailTransferModel>/ToJobId})"/>-->
+					<!--<Label xmlns="sap.m" id="TransferOfficeLabelId" text="Office Name" required="false"/>-->
+					<!--<Input width="20rem" editable="false" xmlns="sap.m" id="TransferOfficeId"-->
+					<!--	value="{DetailTransferModel>/ToOfficeName}({DetailTransferModel>/ToOfficeId})"/>-->
+					<!--<Label xmlns="sap.m" id="TransferDDOLabelId" text="DDO Info" required="false"/>-->
+					<!--<Input width="20rem" editable="false" xmlns="sap.m" id="TransferDDOId"-->
+					<!--	value="{DetailTransferModel>/ToDdoName}({DetailTransferModel>/ToDdoId})"/>-->
+				</f:content>
+			</f:SimpleForm>
+	<!--	</l:VerticalLayout>-->
+	<!--	<buttons>-->
+	<!--		<Button id="ApproverBtnId" icon="sap-icon://approvals" text="Approve"  visible="false" press="onPressApproveDetail"/>-->
+	<!--		<Button id="RejectBtnId" icon="sap-icon://decline" text="Reject"  visible="false" press="onPressRejectDetail"/>-->
+	<!--		<Button id="SendBtnId" icon="sap-icon://paper-plane" text="Send"  visible="false" press="onPressSendDetail"/>-->
+	<!--		<Button id="SentBackBtnId" icon="sap-icon://slim-arrow-down" text="Sent Back" visible="false" press="onPressSentBackDetail"/>-->
+	<!--		<Button id="ReturnToMakerBtnId" icon="sap-icon://undo" text="Return to Maker" visible="false" press="onPressBackToMakerDetail"/>-->
+	<!--		<Button id="AttachmentBtnId" icon="sap-icon://attachment" text="Attachment" visible="false" press="onPressAttachmentDetail"/>-->
+	<!--		<Button id="CheckListBtnId" icon="sap-icon://survey" text="CheckList" visible="false" press="onPressCheckListDetail"/>-->
+	<!--		<Button id="ApproverPathBtnId" icon="sap-icon://collaborate" text="Process Flow" visible="false"-->
+	<!--			press="onPressApproverPathDetail"/>-->
+	<!--		<Button id="RemarksBtnId" icon="sap-icon://discussion-2" text="Remarks" visible="false" press="onPressRemarksDetail"/>-->
+	<!--		<Button id="CFMSAckBtnId" icon="sap-icon://pdf-attachment" text="CFMS-Acknowledgement" visible="false"-->
+	<!--			press="onPressCFMSAckDetail"/>-->
+	<!--		<Button id="SaveBtnId" icon="sap-icon://save" text="Save" visible="false" press="onPressSaveDetail"/>-->
+	<!--		<Button id="DiscardBtnId" icon="sap-icon://delete" text="Delete" type="Reject" visible="false" press="onPressDiscardDetail"/>-->
+	<!--		<Button icon="sap-icon://nav-back" text="Back" press="onPressBackDetail"/>-->
+	<!--	</buttons>-->
+	<!--</Dialog>-->
+</core:FragmentDefinition>

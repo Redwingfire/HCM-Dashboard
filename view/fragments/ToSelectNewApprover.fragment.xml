@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" draggable="true">
+	<TableSelectDialog noDataText="No Data" title="{i18n>ddoCode}" search="searchapprover" liveChange="searchapprover"
+		confirm="handleSmartValueHelpSelectionForDDO" cancel="onPressCancelCloseVHDDO" multiSelect="false" rememberSelections="false"
+		class="sapUiResponsiveMargin" items="{smartValueHelpDialogSettings>/}" contentWidth="80rem" growingThreshold="100">
+		<customData>
+			<core:CustomData key="attributeContext" value="TechId"/>
+			<core:CustomData key="inputFieldId" value="iv_TECH_mInput"/>
+		</customData>
+		<ColumnListItem selected="{smartValueHelpDialogSettings>isSelected}">
+			<cells>
+				<!--<ObjectIdentifier title="{smartValueHelpDialogSettings>employee_no}" text="{smartValueHelpDialogSettings>employee_name}"/>-->
+				<Text text="{smartValueHelpDialogSettings>employee_no}"/>
+				<Text text="{smartValueHelpDialogSettings>employee_name}"/>
+				<Text text="{smartValueHelpDialogSettings>fundcenter}"/>
+				<Text text="{smartValueHelpDialogSettings>fundcenter_text}"/>
+				<Text text="{smartValueHelpDialogSettings>Plans}"/>
+				<Text text="{smartValueHelpDialogSettings>plans_text}"/>
+				<Text text="{smartValueHelpDialogSettings>orgeh}"/>
+				<Text text="{smartValueHelpDialogSettings>orgeh_text}"/>
+				<Text text="{smartValueHelpDialogSettings>HOO_FLAG}"/>
+				<Text text="{smartValueHelpDialogSettings>city}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<Text text="Employee no"/>
+			</Column>
+			<Column>
+				<Text text="Employee name"/>
+			</Column>
+			<Column>
+				<Text text="DDO"/>
+			</Column>
+			<Column>
+				<Text text="DDO Description"/>
+			</Column>
+			<Column>
+				<Text text="Plans"/>
+			</Column>
+			<Column>
+				<Text text="Plans text"/>
+			</Column>
+			<Column>
+				<Text text="Office"/>
+			</Column>
+			<Column>
+				<Text text="Office Id"/>
+			</Column>
+			<Column>
+				<Text text="HOO"/>
+			</Column>
+			<Column>
+				<Text text="City"/>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog id="DetailRemarksDialogID" resizable="true" stretch="true"
+		title="Remarks " draggable="true">
+		<!--for {DetailEmployeeHeaderModel>/EmployeeName}'s Transfer-Admin Ground-->
+		<List items="{RemarksModel>/results}">
+			<FeedListItem timestamp="{path: 'RemarksModel>CreatedDate', formatter:'.formatter.DateTimeConversion'}" text="{RemarksModel>RemarksBody}"
+				sender="{RemarksModel>Sender} | {RemarksModel>Designation}" senderPress="onemphrinfo"/>
+				<!--sender press property added for employe number click show the pop up cfms_Ctm_npv(20_3_23)-->
+		</List>
+		<FeedInput id="AddRemarksFeedId" post="OnPostofRemarks"/>
+		<buttons>
+			<Button text="Close" type="Emphasized" press="OnPressCancelRemarks"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

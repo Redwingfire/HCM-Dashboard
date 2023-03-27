@@ -1,0 +1,125 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="idFamilyDailogDetailsPopup" contentHeight="80%" contentWidth="100%" title="Family Details - {FamilyFormModel>MembertypeDesc}" resizable="true" draggable="true">
+		<f:SimpleForm id="idFamilyDetails" editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+			adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<Text text="{i18n>NewDetails}"/>
+				<!--Member Type-->
+				<Label text="Family Member" design="Bold" required="true"/>
+				<Input value="{FamilyFormModel>MembertypeDesc}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>MembertypeDesc}" editable="false"/>
+				<Label text="First Name" design="Bold" required="true"/>
+				<Input value="{FamilyFormModel>FirstName}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>FirstNameNew}" editable="true" liveChange="onValueNameChange"/>
+				<Label text="Last Name" design="Bold" required="true"/>
+				<Input value="{FamilyFormModel>LastName}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>LastNameNew}" editable="true" liveChange="onValueNameChange"/>
+				<Label text="Gender" design="Bold" required="true"/>
+				<ComboBox editable="false" selectedKey="{FamilyFormModel>Gender}" visible="{oViewModel>/EditVisibility}">
+					<core:Item key="1" text="Male"/>
+					<core:Item key="2" text="Female"/>
+					<core:Item key="3" text="Transgender"/>
+				</ComboBox>
+				<ComboBox editable="true" selectedKey="{FamilyFormModel>GenderNew}" change="genderFamilyChange">
+					<core:Item key="1" text="Male"/>
+					<core:Item key="2" text="Female"/>
+					<core:Item key="3" text="Transgender"/>
+				</ComboBox>
+				<Label text="Date of Birth" design="Bold" required="true"/>
+				<DatePicker placeholder="Date of Birth"
+					value="{path: 'FamilyFormModel>DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Input value="{FamilyFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker id ="idDateofBirthNewFamilyDailog" placeholder="Date of Birth" dateValue="{path: 'FamilyFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" change="dateofBirthFamily"
+					maxDate="{path:'FamilyFormModel>DateOfBirthNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'FamilyFormModel>DateOfBirthNew', formatter:'.formatter.DOBmindate'}"/>
+				<Label text="Aadhaar Number" design="Bold" required="true"/>
+				<Input value="{FamilyFormModel>Aadharnumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>AadharnumberNew}" editable="true" maxLength="12" change="handleAadharno" liveChange="oHandleAadharLiveChange"/>
+				<Label text="Phone Number" design="Bold"/>
+				<Input value="{FamilyFormModel>PhoneNumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>PhoneNumberNew}" editable="true" maxLength="10" change="oHandlePhoneNoChange"
+					liveChange="oHandleAadharLiveChange"/>
+				<Label text="Marital Status" design="Bold" required="false"/>
+				<ComboBox selectedKey="{FamilyFormModel>MaritalStatus}" editable="false" visible="{oViewModel>/EditVisibility}">
+					<core:Item key="1" text="Married"/>
+					<core:Item key="0" text="Un-Married"/>
+					<core:Item key="2" text="Widow"/>
+					<core:Item key="3" text="Divor"/>
+				</ComboBox>
+				<ComboBox selectedKey="{FamilyFormModel>MaritalStatusNew}" editable="true" change="changeMaritalStatus">
+					<core:Item key="1" text="Married"/>
+					<core:Item key="0" text="Un-Married"/>
+					<core:Item key="2" text="Widow"/>
+					<core:Item key="3" text="Divor"/>
+					<!--<core:Item key="1" text="Married"/>
+					<core:Item key="2" text="Un-Married"/>-->
+				</ComboBox>
+				<Label text="Married Since" design="Bold" required="{= ${FamilyFormModel>MaritalStatusNew} === '1' ? true : false}"/>
+				<DatePicker placeholder="Date" value="{path: 'FamilyFormModel>MarriedSince',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"
+					displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker placeholder="Date" id="IdMarriedSinceNew" dateValue="{path: 'FamilyFormModel>MarriedSinceNew',formatter:'.formatter.DOBchange'}"
+					change="dateofMarriedSince" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"
+					editable="{path:'FamilyFormModel>MaritalStatusNew',formatter:'.formatter.maritalSince'}"/>
+				<!--<DatePicker placeholder="Date of Birth"-->
+				<!--	dateValue="{path: 'FamilyFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" change="dateofBirthFamily"/>-->
+				<Label text="Disablity" design="Bold" required="true"/>
+				<ComboBox selectedKey="{FamilyFormModel>Disablity}" editable="false" visible="{oViewModel>/EditVisibility}">
+					<core:Item key="X" text="Yes"/>
+					<core:Item key="N" text="No"/>
+				</ComboBox>
+				<ComboBox selectedKey="{FamilyFormModel>DisablityNew}" editable="true" change="DisablityCahnge">
+					<core:Item key="X" text="Yes"/>
+					<core:Item key="N" text="No"/>
+				</ComboBox>
+				<!--	<Input value="{FamilyFormModel>Disablity}" editable="false"/>
+				<Input value="{FamilyFormModel>Disablity}" editable="true"/>-->
+				<Label text="Alive" design="Bold" required="true"/>
+				<ComboBox selectedKey="{FamilyFormModel>Alive}" editable="false" visible="{oViewModel>/EditVisibility}">
+					<core:Item key="X" text="Yes"/>
+					<core:Item key="N" text="No"/>
+				</ComboBox>
+				<ComboBox selectedKey="{FamilyFormModel>AliveNew}" editable="true" change="aliveFamilyCahnge">
+					<core:Item key="X" text="Yes"/>
+					<core:Item key="N" text="No"/>
+				</ComboBox>
+				<Label text="Date of Death" design="Bold" required="{path:'FamilyFormModel>/AliveNew',formatter:'.formatter.alive'}"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'FamilyFormModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker placeholder="Date" dateValue="{path: 'FamilyFormModel>DateOfDeathNew',formatter:'.formatter.DOBchange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="{= ${FamilyFormModel>AliveNew} === 'N' ? true : false}"
+					change="dateofDeathFamily"/>
+				<!--<Input value="{FamilyFormModel>DateOfDeath}" editable="false"/>-->
+				<!--<Input value="{FamilyFormModel>DateOfDeath}" editable="true"/>-->
+				<Label text="Govt Employe" design="Bold" required="true"/>
+				<ComboBox selectedKey="{FamilyFormModel>GovtEmploye}" editable="false" visible="{oViewModel>/EditVisibility}">
+					<core:Item key="01" text="Yes"/>
+					<core:Item key="02" text="No"/>
+				</ComboBox>
+				<ComboBox selectedKey="{FamilyFormModel>GovtEmployeNew}" editable="true" change="onfamGovEmpchange">
+					<core:Item key="01" text="Yes"/>
+					<core:Item key="02" text="No"/>
+				</ComboBox>
+				<!--	<Input value="{FamilyFormModel>GovtEmploye}" editable="false"/>
+				<Input value="{FamilyFormModel>GovtEmployeNew}" editable="true"/>-->
+				<Label text="Service Type" design="Bold" required="{path:'FamilyFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>
+				<Input value="{FamilyFormModel>ServiceType}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>ServiceTypeNew}" editable="{= ${FamilyFormModel>GovtEmployeNew} === '01' ? true : false}"/>
+				<Label text="Employee Code" design="Bold" required="{path:'FamilyFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>
+				<Input value="{FamilyFormModel>Employeecode}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{FamilyFormModel>EmployeecodeNew}" editable="{= ${FamilyFormModel>GovtEmployeNew} === '01' ? true : false}"/>
+				<!--<Label text="Opetation" design="Bold" required="true"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="Ok" type="Emphasized" class="sapUiSmallMarginEnd" press="onOkFamilyDailog"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelFamilyDailog"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

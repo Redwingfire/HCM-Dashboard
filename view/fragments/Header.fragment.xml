@@ -1,0 +1,151 @@
+<core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap">
+	<uxap:ObjectPageHeaderContent>
+		<uxap:content>
+			<layout:HorizontalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+					<ObjectStatus title="Name" text="{StausModel>/EmployeeName}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<!--group action purpose defined- cfms_Ctm_npv _ start -->
+					<ObjectStatus title="CreatedByName" text="{StausModel>/CreatedByName}({StausModel>/CreatedBy})" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>
+					<!--group action purpose defined-cfms_Ctm_npv _ end -->
+					<ObjectStatus title="Employee No" active="true" state="Information" press="onemphrinfo" text="{StausModel>/Pernr}"
+						class="sapUiLargeMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<ObjectStatus title="Employee Status" text="{StausModel>/EmployeeStatus}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+					<!-- <ObjectStatus title="Process Name" text="{wfDetailsHeaderModel>/ProcessName}"/> -->
+					<!-- <ObjectStatus title="Functional Area" text="Developement"/>			 -->
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+					<!--group action purpose defined-cfms_Ctm_npv _ start -->
+					<ObjectStatus title="Created On"
+						text="{path: 'StausModel>/CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+						class="sapUiLargeMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>
+					<!--group action purpose defined-cfms_Ctm_npv _ end -->
+					<ObjectStatus title="Department " text="{StausModel>/FundcenterName}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<ObjectStatus title="Designation " text="{StausModel>/PositionName}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<ObjectStatus title="Office " text="{StausModel>/OfficeName}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<!-- <ObjectStatus title="Functional Area" text="Developement"/>			 -->
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+					<!-- <ObjectStatus title="Role" text="{wfDetailsHeaderModel>/WfRole} {wfDetailsHeaderModel>/WfRoleDesc}" class="sapUiLargeMarginBegin"/> -->
+					<!-- <ObjectStatus title="Role" text="Developement"/>			 -->
+				</layout:VerticalLayout>
+				<!-- </layout:HorizontalLayout> -->
+				<!-- <layout:HorizontalLayout> -->
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+					<!-- <ObjectStatus title="Updated on" text="{wfDetailsHeaderModel>/UpdatedOn}"/> -->
+					<!-- <ObjectStatus title="Functional Area" text="Developement"/>			 -->
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiLargeMarginBegin">
+						<!--group action purpose defined-cfms_Ctm_npv _ start -->
+					<ObjectStatus title="No Of Employees " text="{StausModel>/NoOfEmployees}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>
+							<!--group action purpose defined-cfms_Ctm_npv _ end -->
+					<ObjectStatus title="Email " text="{StausModel>/EmailAddress}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					<ObjectStatus title="Mobile " text="{StausModel>/MobileNumber}" class="sapUiLargeMarginBegin"
+						visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>
+					
+				</layout:VerticalLayout>
+			</layout:HorizontalLayout>
+		</uxap:content>
+	</uxap:ObjectPageHeaderContent>
+	
+<!--	old code  - start-->
+	<!--<layout:HorizontalLayout>-->
+	<!--	<layout:VerticalLayout>-->
+	<!--		<HBox>-->
+	<!--			<Label text="" class="sapMObjStatusText" visible="true"/>-->
+	<!--			<Label text="" class="sapUiTinyMarginBegin" visible="true"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="" class="sapMObjStatusText" visible="true"/>-->
+	<!--			<Label text="" class="sapUiTinyMarginBegin" visible="true"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="" class="sapMObjStatusText" visible="true"/>-->
+	<!--			<Label text="" class="sapUiTinyMarginBegin" visible="true"/>-->
+	<!--		</HBox>-->
+	<!--	</layout:VerticalLayout>-->
+	<!--</layout:HorizontalLayout>-->
+	<!--<layout:HorizontalLayout>-->
+	<!--	<layout:VerticalLayout>-->
+		
+			<!--group action purpose defined- cfms_Ctm_npv _ start -->
+			<!--<HBox>-->
+			<!--	<Label text="CreatedByName:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			<!--	<Label text="{StausModel>/CreatedByName}({StausModel>/CreatedBy})" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			
+			<!--</HBox>-->
+			
+			<!--group action purpose defined-cfms_Ctm_npv _ end -->
+	<!--			<HBox>-->
+	<!--			<Label text="Name:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/EmployeeName}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="Employee No:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+			
+	<!--			<Link  text="{StausModel>/Pernr}"  emphasized="true" press="onemphrinfo"  class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+				
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="Employee Status:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/EmployeeStatus}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--	</layout:VerticalLayout>-->
+	<!--</layout:HorizontalLayout>-->
+	<!--<layout:HorizontalLayout>-->
+	<!--	<layout:VerticalLayout>-->
+			<!--group action purpose defined-cfms_Ctm_npv _ start -->
+			<!--<HBox>-->
+			<!--	<Label text="Created On:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			<!--	<Label text="{path: 'StausModel>/CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			<!--</HBox>-->
+			
+			<!--group action purpose defined-cfms_Ctm_npv _ end -->
+	<!--		<HBox>-->
+	<!--			<Label text="Department:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/FundcenterName}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="Designation:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/PositionName}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="Office:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/OfficeName}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--	</layout:VerticalLayout>-->
+	<!--</layout:HorizontalLayout>-->
+	<!--<layout:HorizontalLayout>-->
+	<!--	<layout:VerticalLayout>-->
+			<!--group action purpose defined-cfms_Ctm_npv _ start -->
+			<!--	<HBox>-->
+			<!--	<Label text="No Of Employees:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			<!--	<Label text="{StausModel>/NoOfEmployees}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? false:true}"/>-->
+			<!--</HBox>-->
+			<!--group action purpose defined-cfms_Ctm_npv _ end -->
+	<!--		<HBox>-->
+	<!--			<Label text="Email:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/EmailAddress}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="Mobile:" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="{StausModel>/MobileNumber}" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--		<HBox>-->
+	<!--			<Label text="" class="sapMObjStatusText" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--			<Label text="" class="sapUiTinyMarginBegin" visible="{=${StausModel>/ActionType} ==='SINGLE'? true:false}"/>-->
+	<!--		</HBox>-->
+	<!--	</layout:VerticalLayout>-->
+	<!--</layout:HorizontalLayout>-->
+	
+	<!--	old code  - end-->
+</core:FragmentDefinition>

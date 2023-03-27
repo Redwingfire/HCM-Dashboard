@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--	<SelectDialog resizable="true" title="Select Mandla"-->
+	<!--		confirm="ConfirmMandalDialog" liveChange="liveMandalsearch" cancel="CloseMandalDialog" items=" MandalDialogModel>/}"-->
+	<!--		draggable="true">-->
+	<!--		<StandardListItem title="{MandalDialogModel>Mandal}" description="{MandalDialogModel>Mandal_ID}"/>-->
+	<!--	</SelectDialog>-->
+	<TableSelectDialog  id="IdAddEmployeeTabDailog"  noDataText="No Data Found" title="Select Employee" search="handleSearchEmployee" liveChange="handleSearchEmployee"
+		confirm="handleEmployeeConfirm" cancel="handleEmployeeClose" showClearButton="true" items="{/ZC_EmployeeValueHelp}" growing="true"
+		growingThreshold="100" draggable="true" contentWidth="100%">
+		<ColumnListItem selected="">
+			<!--IFSCDialogModel>-->
+			<cells>
+				<ObjectIdentifier title="{OrganizationUnit} "/>
+				<Text text="{OrganizationUnitText}"/>
+				<Text text="{EmployeeNumber}"/>
+				<Text text="{EmployeeName}"/>
+				<Text text="{PositionID}"/>
+				<Text text="{PositionText}"/>
+				<Text text="{FundsCenterName}"/>
+				<Text text="{FundsCenter}"/>
+				<!--<ObjectNumber number=" WeightMeasure " unit=" WeightUnit "		state="  "/>-->
+				<!--<ObjectNumber number=" " unit=" CurrencyCode "/>-->
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="8em" demandPopin="true">
+				<header>
+					<Text text="Organization"/>
+				</header>
+			</Column>
+			<Column hAlign="End" width="15em" demandPopin="true">
+				<header>
+					<Text text="Organization Description"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" width="8em">
+				<header>
+					<Text text="Employee Number"/>
+				</header>
+			</Column>
+			<Column hAlign="End" demandPopin="true" width="15em">
+				<header>
+					<Text text="Employee Name"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="20em">
+				<header>
+					<Text text="Position Name"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="8em">
+				<header>
+					<Text text="Position"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="20em">
+				<header>
+					<Text text=" DDO Name"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="8em">
+				<header>
+					<Text text="DDo"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

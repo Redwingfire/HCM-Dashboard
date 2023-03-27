@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<TableSelectDialog growing="true" contentWidth="80rem" title="Select Employee" multiSelect="false" liveChange="onLiveChangeSearch"
+		search="onLiveChangeSearch" confirm="ConfirmDisplayDialog" cancel="CloseDisplayDialog" items="{/ZC_EmployeeValueHelp}"
+		growingThreshold="200">
+		<ColumnListItem >
+			<cells>
+				<Text text="{EmployeeNumber}"/>
+				<Text text="{EmployeeName}"/>
+				<Text text="{FundsCenterName}"/>
+				<Text text="{OrganizationUnitText}"/>
+				<Text text="{PositionText}"/>
+				<Text text="{DepartmentText}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="Employee No."/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="Employee Name"/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="DDO"/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="Office"/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="Position"/>
+				</header>
+			</Column>
+			<Column width="12em">
+				<header>
+					<Label design="Bold" text="Departament"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

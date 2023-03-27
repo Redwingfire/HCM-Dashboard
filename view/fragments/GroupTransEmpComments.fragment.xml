@@ -1,0 +1,33 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="for Comments">
+		<!--<layout:VerticalLayout class="sapUiSmallMarginTop">-->
+		<!--<layout:HorizontalLayout>-->
+		<!--	<HBox class="sapUiTinyMarginBegin">-->
+		<!--		<VBox>-->
+		<!--			<CheckBox id="TermsCheckBoxApproveId" text="Terms and Conditions*:"/>-->
+		<!--			<Text id="ApproveDialogTermsTextId" wrapping="true" class="sapUiMediumMarginBegin" width="50rem"/>-->
+		<!--		</VBox>-->
+		<!--	</HBox>-->
+		<!--</layout:HorizontalLayout>-->
+		<!--<layout:HorizontalLayout class="sapUiSmallMarginTop">-->
+		<!--	<HBox class="sapUiSmallMarginBegin">-->
+		<!--		<VBox>-->
+		<content>
+			<Label id="employRemarksLabelId" text="Remarks:" required="true"/>
+			<TextArea id="employRemarksId" editable="{oViewModel>/Editable}" placeholder="Please Enter your Remarks Here..." class="sapUiMediumMarginBeginEnd" width="40rem"/>
+		</content>
+		<!--			</VBox>-->
+		<!--		</HBox>-->
+		<!--	</layout:HorizontalLayout>-->
+		<!--</layout:VerticalLayout>-->
+		<buttons>
+			<Button text="Confirm" type="Emphasized" press="empComentConfirm"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

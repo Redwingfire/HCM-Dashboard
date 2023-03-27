@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select MaritualStatus"
+		confirm="ConfirmMaritualStatusDialog" liveChange="liveMaritualStatusDialogsearch" cancel="CloseMaritualStatusDialog" items="{MaritualStatusModel>/}"
+		draggable="true">
+		<StandardListItem title="{MaritualStatusModel>ValueDesc}" description="{MaritualStatusModel>ValueId}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

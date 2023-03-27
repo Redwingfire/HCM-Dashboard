@@ -1,0 +1,107 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--	<SelectDialog resizable="true" title="Select Mandla"-->
+	<!--		confirm="ConfirmMandalDialog" liveChange="liveMandalsearch" cancel="CloseMandalDialog" items=" MandalDialogModel>/}"-->
+	<!--		draggable="true">-->
+	<!--		<StandardListItem title="{MandalDialogModel>Mandal}" description="{MandalDialogModel>Mandal_ID}"/>-->
+	<!--	</SelectDialog>-->
+	<TableSelectDialog id= "IdApprverflowApprovPosTabDail"  noDataText="No Data Found" title="Select Employee " search="handleSearchApprverFlowApprovePosition" liveChange="handleSearchApprverFlowApprovePosition"
+		confirm="handleApproverFlowApprvPositionConfirm" cancel="handleApproverFlowApprvPositionClose" showClearButton="true" items="{/ZC_PROCESSOR_SEARCH}" growing="true"
+		growingThreshold="100" draggable="true" contentWidth="100%">
+		<ColumnListItem selected="">
+			<!--IFSCDialogModel>-->
+			<cells>
+				<ObjectIdentifier title="{Plans} "/>
+				<Text text="{plans_text}"/>
+				<!--<Text text="{persa_text}"/>-->
+				<!--<Text text="{persa}"/>-->
+				<!--<Text text="{btrtl}"/>-->
+				<Text text="{employee_no}"/>
+				<Text text="{employee_name}"/>
+				<Text text="{fundcenter}"/>
+				<Text text="{fundcenter_text}"/>
+				<Text text="{department_id}"/>
+				<Text text="{orgeh}"/>
+				<Text text="{orgeh_text}"/>
+				<Text text="{HOO_FLAG}"/>
+				<Text text="{city}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="8em" demandPopin="true">
+				<header>
+					<Text text="Position ID"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="15em" demandPopin="true">
+				<header>
+					<Text text="Position Text"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="8em" demandPopin="true">
+				<header>
+					<Text text="Employee no"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="10em" demandPopin="true">
+				<header>
+					<Text text="Employee name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="8em" demandPopin="true">
+				<header>
+					<Text text="DDO"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="12em" demandPopin="true">
+				<header>
+					<Text text="DDO Description"/>
+				</header>
+			</Column>
+			<!--<Column minScreenWidth="Tablet" demandPopin="true" width="10em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Area Text"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column hAlign="End" demandPopin="true" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Area"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Subarea "/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Subarea Text"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="10em">
+				<header>
+					<Text text="Department Id"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
+				<header>
+					<Text text="Object Id"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
+				<header>
+					<Text text="Object Name"/>
+				</header>
+			</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
+				<header>
+					<Text text="HOO"/>
+				</header>
+			</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">
+				<header>
+					<Text text="City"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

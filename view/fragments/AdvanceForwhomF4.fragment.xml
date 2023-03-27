@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Advance For Whom" confirm="ConfirmAdvanceForwhomDialog" growingThreshold="100"
+		liveChange="livechangeSearch" search="livechangeSearch" cancel="CloseAdvanceForwhomDialog"
+		items="{ path: '/', sorter: { path: 'MID' } }" draggable="true">
+		<StandardListItem title="{MIDDescription}" description="{Name}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

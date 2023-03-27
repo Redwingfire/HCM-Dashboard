@@ -1,0 +1,128 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	class="sapUiSizeCompact">
+	<!--<Dialog resizable="true" draggable="true" title="">
+		<l:VerticalLayout id="TransferToLayoutId" visible="false" width="79rem">
+			<l:HorizontalLayout>
+				<HBox width="25rem" class="sapUiMediumMarginBegin">
+					<VBox>
+						<ObjectStatus title="Reference Number" text="{DeputyFrnsrvoutModel>/ReferenceNumber}"/>
+					</VBox>
+				</HBox>
+				<HBox width="35rem" class="sapUiMediumMarginBegin">
+					<VBox>
+						<ObjectStatus title="Overall Status" text="{DeputyFrnsrvoutModel>/OverallStatus}"/>
+					</VBox>
+				</HBox>
+				<HBox width="35rem" class="sapUiMediumMarginBegin">
+					<VBox>
+						<ObjectStatus title="Request Status" text="{DeputyFrnsrvoutModel>/ReqStatus}"/>
+					</VBox>
+				</HBox>
+			</l:HorizontalLayout>
+			<Toolbar xmlns="sap.m">
+				<ToolbarSpacer/>
+				<SegmentedButton id="segmentedBtnId" selectedKey="WthPos" selectionChange="OnChangeofPositionBtn">
+					<items>
+						<SegmentedButtonItem text="With position" key="WthPos"/>
+						<SegmentedButtonItem text="Without position" key="WthOutPos"/>
+					</items>
+				</SegmentedButton>
+			</Toolbar>
+			<l:HorizontalLayout>
+				<HBox width="35rem" class="sapUiMediumMarginBeginEnd sapUiTinyMarginTop">
+					<Title id="SeparationTitleId" text="Separation Details" visible="false"/>
+					<Text id="EffectDateTransferTextId" text="Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>
+					<DatePicker id="EffectDateTransferId" value="{path: 'DeputyFrnsrvoutModel>/EffectiveDate', formatter:'.formatter.SystemDateConversion'}"
+						class="sapUiSmallMarginBegin" displayFormat="dd.MM.yyyy"/>
+				</HBox>
+			</l:HorizontalLayout>-->
+	<VBox>
+		<HBox >
+			<!--<Label text="File Effecive Date" design="Bold" class="sapUiLargeMarginTopRight"/>-->
+			<Text text="Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>
+			<DatePicker placeholder="Date " class="sapUiSmallMarginBegin" id="idFrnservoutEffectDate"
+				value="{path: 'DeputyFrnsrvoutModel>/EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>
+		</HBox>
+		<!--<f:SimpleForm id="idDeputationFrnservout" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"-->
+		<!--	adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"-->
+		<!--	singleContainerFullSize="false" maxContainerCols="1" visible="true">-->
+		<!--	<f:content>-->
+		<f:SimpleForm id="IDCreateDDOFormRB1" minWidth="1024" maxContainerCols="4" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+			labelSpanM="4" emptySpanL="1" emptySpanM="1" columnsL="2" columnsM="2" visible="true">
+			<f:content>
+				<Label text="Current Office Details" design="Bold"/>
+				<Text id="CurrentTitleStyleIdFrnservout" xmlns="sap.m" text=""/>
+				<Label xmlns="sap.m" text="Position Info" required="false" design="Bold"/>
+				<Input editable="false" xmlns="sap.m" id="CurrPositionId"
+					value="{DeputyFrnsrvoutModel>/FromPositionName}({DeputyFrnsrvoutModel>/FromPositionId})" />
+				<!--<Input xmlns="sap.m" id="TransferPositionId" value="{DeputyFrnsrvoutModel>/ToPositionName}({DeputyFrnsrvoutModel>/ToPositionId})" valueHelpOnly="true"-->
+				<!--	showValueHelp="true" valueHelpRequest="onnewPositionValueHelp" visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<!--HandleCDSPositionRequest - old vluehelp function-->
+				<Label xmlns="sap.m" text="Job Name" required="false" design="Bold"/>
+				<Input editable="false" xmlns="sap.m" id="CurrJobId" value="{DeputyFrnsrvoutModel>/FromJobName}" tooltip="{DeputyFrnsrvoutModel>/FromJobId}"
+				/>
+				<!--<Input editable="false" xmlns="sap.m" id="TransferJobId" value="{DeputyFrnsrvoutModel>/ToJobName}({DeputyFrnsrvoutModel>/ToJobId})"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label xmlns="sap.m" text="Office Name" required="false" design="Bold"/>
+				<Input editable="false" xmlns="sap.m" id="CurrOfficeId" value="{DeputyFrnsrvoutModel>/FromOfficeName}"
+					tooltip="{DeputyFrnsrvoutModel>/FromOfficeId}" />
+				<!--<Input editable="false" xmlns="sap.m" id="TransferOfficeId" value="{DeputyFrnsrvoutModel>/ToOfficeName}({DeputyFrnsrvoutModel>/ToOfficeId})"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label xmlns="sap.m" text="DDO Info" required="false" design="Bold"/>
+				<Input editable="false" xmlns="sap.m" id="CurrDDOId" value="{DeputyFrnsrvoutModel>/FromDdoName}" tooltip="{DeputyFrnsrvoutModel>/FromDdoId}"
+					/>
+				<!--<Input editable="false" xmlns="sap.m" id="TransferDDOId" value="{DeputyFrnsrvoutModel>/ToDdoName}({DeputyFrnsrvoutModel>/ToDdoId})"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label text="Department info" design="Bold"/>
+				<Input editable="false" value="{DeputyFrnsrvoutModel>/DeptDesc}({DeputyFrnsrvoutModel>/DepartmentId})" width="25rem"/>
+				<!--<Input editable="false" xmlns="sap.m"  value="{DeputyFrnsrvoutModel>/ToDeptDesc}({DeputyFrnsrvoutModel>/ToDepartmentId})"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label text="Location Info" design="Bold"/>
+				<Input editable="false" value="{DeputyFrnsrvoutModel>/Location}" width="25rem"/>
+				<!--<Input editable="false" xmlns="sap.m" value="{DeputyFrnsrvoutModel>/ToLocation}"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<core:Title text=""/>
+					<Label text="Deputation Office Details" design="Bold"/>
+				<Text  xmlns="sap.m" text=""/>
+				<!--<Text id="ToBeTransferredIdFrnservout" xmlns="sap.m" text="Deputation Office Details" class="sapUiLargeMarginEnd"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label xmlns="sap.m" text="Deputy Designation Name" required="false" design="Bold"/>
+				<Input editable="true" xmlns="sap.m" id="CurrPositionIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvName}"/>
+				<!--<Input xmlns="sap.m" id="TransferPositionIdFrnservout" value="{DeputyFrnsrvoutModel>/ToPositionName}({DeputyFrnsrvoutModel>/ToPositionId})" valueHelpOnly="true"-->
+				<!--	showValueHelp="true" valueHelpRequest="onnewPositionValueHelp" visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+				<Label xmlns="sap.m" text="Deputy Office Address" required="false" design="Bold"/>
+				<TextArea editable="true" xmlns="sap.m" id="CurrJobIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvAddc}"
+				 />
+				<!--<Input editable="false" xmlns="sap.m" id="TransferJobIdFrnservout" value="{DeputyFrnsrvoutModel>/ToJobName}({DeputyFrnsrvoutModel>/ToJobId})"-->
+				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Reason for Deputaion Action:" design="Bold" required="true"/>
+			<headerToolbar>
+				<!--	<OverflowToolbar>
+						<Title text="Reason for Suspention :" required="true"/>
+					</OverflowToolbar>-->
+			</headerToolbar>
+			<TextArea value="{DeputyFrnsrvoutModel>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+	<!--	</l:VerticalLayout>
+		<buttons>
+			<Button id="ApproverBtnId" icon="sap-icon://approvals" text="Approve" visible="false" press="onPressApproveDetail"/>
+			<Button id="RejectBtnId" icon="sap-icon://decline" text="Reject" visible="false" press="onPressRejectDetail"/>
+			<Button id="SendBtnId" icon="sap-icon://paper-plane" text="Send" visible="false" press="onPressSendDetail"/>
+			<Button id="SentBackBtnId" icon="sap-icon://slim-arrow-down" text="Sent Back" visible="false" press="onPressSentBackDetail"/>
+			<Button id="ReturnToMakerBtnId" icon="sap-icon://undo" text="Return to Maker" visible="false" press="onPressBackToMakerDetail"/>
+			<Button id="AttachmentBtnId" icon="sap-icon://attachment" text="Attachment" visible="false" press="onPressAttachmentDetail"/>
+			<Button id="CheckListBtnId" icon="sap-icon://survey" text="CheckList" visible="false" press="onPressCheckListDetail"/>
+			<Button id="ApproverPathBtnId" icon="sap-icon://collaborate" text="Process Flow" visible="false" press="onPressApproverPathDetail"/>
+			<Button id="RemarksBtnId" icon="sap-icon://discussion-2" text="Remarks" visible="false" press="onPressRemarksDetail"/>
+			<Button id="CFMSAckBtnId" icon="sap-icon://pdf-attachment" text="CFMS-Acknowledgement" visible="false" press="onPressCFMSAckDetail"/>
+			<Button id="SaveBtnId" icon="sap-icon://save" text="Save" visible="false" press="onPressSaveDetail"/>
+			<Button id="DiscardBtnId" icon="sap-icon://delete" text="Delete" type="Reject" visible="false" press="onPressDiscardDetail"/>
+			<Button icon="sap-icon://nav-back" text="Back" press="onPressBackDetail"/>
+		</buttons>
+	</Dialog>-->
+</core:FragmentDefinition>

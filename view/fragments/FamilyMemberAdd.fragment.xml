@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true"
+		title="Add Family Member">
+		<!--Add new ESR for {FamilyAddMembDialogModel>/EmployeeName}({FamilyAddMembDialogModel>/Pernr})-->
+		<form:SimpleForm>
+			<Label text="Add Member" required="true"/>
+			<Input id="DetailActionId" valueHelpOnly="true" showValueHelp="true"  valueHelpRequest="HandleRequestofAction"/>
+		<!--	<Label text="Action Reason" required="true"/>
+			<Input id="DetailActionReasonId" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="HandleRequestofActionReason"/>
+			<Label text="Effected On" required="true"/>
+			<DatePicker id="EffectedOnId" displayFormat="dd.MM.yyyy" valueFormat="yyyyMMdd"/>-->
+		</form:SimpleForm>
+		<buttons>
+			<Button text="Add" type="Emphasized" press="MemberNewAddConfirm"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelAction"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

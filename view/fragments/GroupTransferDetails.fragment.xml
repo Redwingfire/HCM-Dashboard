@@ -1,0 +1,135 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<ScrollContainer >
+		<Table id="idGroupTransfer" itemPress="GroupTrnsfTablItempress" mode="MultiSelect" inset="false" items="{GroupTransferModel>/}"
+			visible="true" alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders"
+			class="sapUiLargeMarginTop">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Total Records: 0" id="idTableGroupTransferRec" level="H2"></Title>
+					<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+					<ToolbarSpacer/>
+					<Button text="Add Employee" icon="sap-icon://add-contact" type="Emphasized" press="onAddEmployeeRow" tooltip="Add Row" enabled="{oViewModel>/Editable}"/>
+					<Button text="Delete Employee" icon="sap-icon://delete" type="Reject" press="onDeleteGrouptransferEmpRow" tooltip="Delete Row" enabled="{oViewModel>/Editable}"
+						class="sapUiSmallMarginEnd"/>
+					<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="S No" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Employee Name" design="Bold"/>
+				</Column>
+					<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Employee No" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Current Position" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Current Office" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Current DDO" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="With Position(Yes/No)" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="New Position" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="New Office info" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="New DDO" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="Status" design="Bold"/>
+				</Column>
+					<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Current Department" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Current Location" design="Bold"/>
+				</Column>
+				<!--<Column visible="true" hAlign="Center">-->
+				<!--	<Label text="Refernce Number" design="Bold"/>-->
+				<!--</Column>-->
+				<Column visible="true" hAlign="Center">
+					<Label text="Comments" design="Bold"/>
+				</Column>
+				<!--<Column visible="false" hAlign="Center">-->
+				<!--	<Label text="Married Since" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column visible="false" hAlign="Center">-->
+				<!--	<Label text="Disablity" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column visible="false" hAlign="Center">-->
+				<!--	<Label text="Alive" design="Bold"/>-->
+				<!--</Column>-->
+				<!--<Column visible="false" hAlign="Center">-->
+				<!--	<Label text="Date of Death" design="Bold"/>-->
+				<!--</Column>-->
+				<!--	<Column visible="false" hAlign="Center">
+					<Label text="Operation" design="Bold"/>
+				</Column>-->
+			</columns>
+			<items>
+				<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+					<customData>
+						<core:CustomData key="Action" value="{GroupTransferModel>Operation}" writeToDom="true"/>
+					</customData>
+					<cells>
+						<Text text="{GroupTransferModel>Sno}" editable="false"/>
+						<Text text="{GroupTransferModel>EmployeeName}" editable="false"/>
+						<Link text="{GroupTransferModel>Pernr}"  emphasized="true" press="onemphrinfo" ></Link>
+						<!--<Text text="{GroupTransferModel>Pernr}" editable="false"/>-->
+						<Text text="{GroupTransferModel>FromPositionName}({GroupTransferModel>FromPositionId})" editable="false"/>
+						<Text text="{GroupTransferModel>FromOfficeName}({GroupTransferModel>FromOfficeId})" editable="false"/>
+						<Text text="{GroupTransferModel>FromDdoName}({GroupTransferModel>FromDdoId})" editable="false"/>
+						<!--{= ${GroupTransferModel>Gender} === '01' ? 'Yes' : 'No'}-->
+						<Switch  state="{GroupTransferModel>WithPosition}"  customTextOn="Yes" customTextOff="No" enabled="{oViewModel>/Editable}" change="changewithPositon">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Switch>
+						<!--{ parts: [ {path: 'simple>/Firstname'}, {path: 'simple>/FirstnameNew'} ], formatter: '.formatter.valuStaeFamilyFName' }-->
+						<!--<ComboBox selectedKey="{GroupTransferModel>/withPosition}" editable="true" change="changewithPositon">-->
+						<!--	<core:Item key="Yes" text="Yes"/>-->
+						<!--	<core:Item key="No" text="No"/>-->
+						<!--</ComboBox>-->
+						<Input value="{GroupTransferModel>ToPositionName}({GroupTransferModel>ToPositionId})" showValueHelp="true" editable="{ parts: [ {path: 'GroupTransferModel>WithPosition'}, {path: 'oViewModel>/Editable'} ], formatter: '.formatter.editableTOposition' }"
+						valueHelpOnly="true" valueHelpRequest="onnewPositionValueHelp"/>
+						<!--editable="{GroupTransferModel>WithPosition}" -->
+						<Text text="{GroupTransferModel>ToOfficeName}({GroupTransferModel>Pernr})" editable="false"/>
+						<!--<Text text="{path: 'GroupTransferModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+						<!--<Text text="{path: 'GroupTransferModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+						<Text text="{GroupTransferModel>ToDdoName}({GroupTransferModel>ToDdoId})" editable="false"/>
+						<Text text="{GroupTransferModel>TransStatus}" editable="false"/>
+						<Text text="{GroupTransferModel>DeptDesc}" editable="false"/>
+						<Text text="{GroupTransferModel>FromLocation}" editable="false"/>
+						<core:Icon src="sap-icon://comment" color="#8875E7" press="employeeComments" tooltip="Employee comments"/>
+						<!--	<ComboBox selectedKey="{GroupTransferModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+						<!--<Text text="{path: 'GroupTransferModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+						<!--	<DatePicker placeholder="Date"
+							value="{path: 'GroupTransferModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+						<!--<Input value="{GroupTransferModel>MARRIED_SINCE}"/>-->
+						<!--<Input text="{GroupTransferModel>Disablity}" editable="false"/>-->
+						<!--<Text text="{GroupTransferModel>Alive}" editable="false"/>-->
+						<!--<ComboBox selectedKey="{GroupTransferModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+						<!--<Text text="{GroupTransferModel>Operation}" editable="false"/>-->
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</ScrollContainer>
+</core:FragmentDefinition>

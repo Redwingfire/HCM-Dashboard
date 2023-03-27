@@ -1,0 +1,143 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<IconTabBar id="idITBLoan" select="onSelIcTab" expandable="false" upperCase="false" selectedKey="{oMainViewModel>/SelectedTab}">
+			<items>
+				<IconTabFilter iconColor="" text="Loans" key="LoansCrtWD">
+					<f:SimpleForm id="IdLoansCW" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="6" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Loan Details :"></core:Title>
+							<Label labelFor="idCategory" text="{i18n>LoanCategory}" required="true" design="Bold"/>
+							<ComboBox id="idCategory" selectedKey="{LoansCWModel>/LoanCategoryId}" items="{/VHLoanCategorySet}" placeholder="{i18n>LoanCategory}"
+								change="onchangeLoanCategory" editable="{oViewModel>/Editable}">
+								<core:Item key="{CategoryID}" text="{CategoryDesc}"/>
+							</ComboBox>
+							<Label labelFor="idLoanType" text="{i18n>LoanType}" required="true" design="Bold"/>
+							<Input id="idLoanType" value="{LoansCWModel>/LoanTypeId} {=${LoansCWModel>/LoanTypeId}==='' ? '' : '-'} {LoansCWModel>/LoanTypeDesc}"
+								placeholder="{i18n>LoanType}" showValueHelp="true" name="LoanType" valueHelpOnly="true" valueHelpRequest="oHandleValueHelp"
+								editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idLoanReason" text="{i18n>LoanReason}" required="true" design="Bold"/>
+							<Input id="idLoanReason"
+								value="{LoansCWModel>/LoanReasonId} {=${LoansCWModel>/LoanReasonId}==='' ? '' : '-'} {LoansCWModel>/LoanReasonDesc}"
+								placeholder="{i18n>LoanReason}" showValueHelp="true" name="LoanReason" valueHelpOnly="true" valueHelpRequest="oHandleValueHelp"
+								editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idAdvanceFor" text="{i18n>AdvanceFor}" required="true" design="Bold"/>
+							<Input id="idAdvanceFor" value="{LoansCWModel>/AdvanceFor}" placeholder="{i18n>AdvanceFor}" showValueHelp="true" name="AdvanceForWhom"
+								valueHelpOnly="true" valueHelpRequest="oHandleValueHelp" editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idFamMemberName" text="{i18n>FamMemberName}" design="Bold"/>
+							<Input id="idFamMemberName" value="{LoansCWModel>/FamMemberName}" editable="false"/>
+							<Label labelFor="idLeftOverService" text="{i18n>LeftOverService}" design="Bold"/>
+							<Input id="idLeftOverService" value="{LoansCWModel>/LeftOverService}" editable="false"/>
+							<Label labelFor="idGpfAccountNum" text="{i18n>GpfAccountNum}" design="Bold"/>
+							<Input id="idGpfAccountNum" value="{LoansCWModel>/GpfAccountNum}" editable="false" visible="{oLoanViewModel>/GPFVisible}"/>
+							<Label required="true" labelFor="idFestivalDate" text="{i18n>FestivalDate}" design="Bold"/>
+							<Input id="idFestivalDate" placeholder="{i18n>FestivalDate}" value="{LoansCWModel>/FestivalDate}" showValueHelp="true" name="FestivalDate"
+								valueHelpOnly="true" valueHelpRequest="oHandleLoansFestivalDate" editable="{oViewModel>/Editable}" visible="{oLoanViewModel>/FVisible}"/>
+							<Label labelFor="idFestivalName" text="{i18n>FestivalName}" design="Bold"/>
+							<Input id="idFestivalName" value="{LoansCWModel>/FestivalName}" editable="false" visible="{oLoanViewModel>/FVisible}"/>
+							<core:Title></core:Title>
+							<Label labelFor="idBasicPay" text="{i18n>BasicPay}" design="Bold"/>
+							<Input id="idBasicPay" value="{LoansCWModel>/BasicPay}" editable="false"/>
+							<Label labelFor="idGpfBalance" text="{i18n>GpfBalance}" required="true" tooltip="{i18n>GpfBalanceToolTip}" design="Bold"/>
+							<Input id="idGpfBalance" type="Number" value="{LoansCWModel>/GpfBalance}" tooltip="{i18n>GpfBalanceToolTip}"
+								editable="{oViewModel>/Editable}" visible="{oLoanViewModel>/GPFVisible}"/>
+							<Label labelFor="idEligibleLoanAmt" text="{i18n>EligibleLoanAmt}" required="true" design="Bold"/>
+							<Input id="idEligibleLoanAmt" value="{LoansCWModel>/EligibleLoanAmt}" description="{LoansCWModel>/EligibleLoanAmtDesc}" showValueHelp="true"
+								valueHelpOnly="true" name="EligibleLoanAmt" valueHelpRequest="oHandleValueHelp" editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idRequiredAmt" text="{i18n>RequiredAmt}" required="true" design="Bold"/>
+							<Input id="idRequiredAmt" value="{LoansCWModel>/RequiredAmt}" change="oHandleReqAmountValidate" editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idTotalNumOfInstallments" text="{i18n>TotalNumInst}" required="true" tooltip="{i18n>TotalNumInst}" design="Bold"/>
+							<Input id="idTotalNumOfInstallments" value="{LoansCWModel>/TotalNumOfInstl}" placeholder="{i18n>TotalNumOfInstl}" showValueHelp="true"
+								name="TotalNumOfInstallments" valueHelpOnly="true" valueHelpRequest="oHandleValueHelp" editable="{oViewModel>/Editable}"/>
+							<Label labelFor="idMonthlyInstallmentAmt" text="{i18n>MonthlyInstAmt}" tooltip="{i18n>MonthlyInstAmt}" design="Bold"/>
+							<Input id="idMonthlyInstallmentAmt" value="{LoansCWModel>/MonthlyInstallmentAmt}" editable="false"/>
+							<Label labelFor="idAdditionalLoanAmt" text="{i18n>AdditionalLoanAmt}" tooltip="{i18n>AdditionalLoanAmt}" design="Bold"/>
+							<Input id="idAdditionalLoanAmt" visible="{=Number(${LoansCWModel>/AdditionalLoanAmt})=== 0 ? false : true}"
+								value="{LoansCWModel>/AdditionalLoanAmt}" editable="false"/>
+							<Label labelFor="idPayscaleLimit" text="{i18n>PayscaleLimit}" design="Bold"/>
+							<Input id="idPayscaleLimit" value="{LoansCWModel>/PayscaleLimit}" editable="false" visible="{oLoanViewModel>/FVisible}"/>
+						</f:content>
+					</f:SimpleForm>
+					<Panel width="auto" class="sapUiResponsiveMargin">
+						<Label text="Reason for New Loan :" design="Bold" required="true"/>
+						<TextArea id="idReasonForLoan" value="{LoansCWModel>/ReasonForLoan}" width="100%" editable="{oViewModel>/Editable}"/>
+					</Panel>
+				</IconTabFilter>
+				<IconTabFilter iconColor="" text="Previous Loan Details" key="LoansDetails">
+					<!--<ScrollContainer>-->
+					<Table id="idLoansReqTable" mode="None" inset="false"
+						items="{path: 'LoansCWDetailsModel>/', filters: [{ path: 'ReqStatus', operator: 'EQ', value1: 'APPROVED' }]}" visible="true"
+						alternateRowColors="true" growing="true" growingThreshold="100" sticky="ColumnHeaders">
+						<!--<headerToolbar>-->
+						<!--	<Toolbar>-->
+						<!--		<Title text="Total Records: " id="idLoansReqTitle" class="sapUiLargeMarginEnd" level="H2"></Title>-->
+						<!--		<ToolbarSpacer/>-->
+						<!--	</Toolbar>-->
+						<!--</headerToolbar>-->
+						<columns>
+							<Column hAlign="Center" width="5rem">
+								<Label text="{i18n>LoanCategory}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="5rem">
+								<Label text="{i18n>LoanType}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="5rem">
+								<Label text="{i18n>LoanReason}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>EligibleLoanAmt}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>RequiredAmt}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>MonthlyInstAmt}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>TotalNumInst}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>PaidAmt}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>RemaLoanBal}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="5rem">
+								<Label text="{i18n>ConvertGPF}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" width="4rem">
+								<Label text="{i18n>status}" wrapping="true" wrappingType="Hyphenated" design="Bold"/>
+							</Column>
+						</columns>
+						<items>
+							<!--highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}"-->
+							<ColumnListItem>
+								<cells>
+									<Text text="{LoansCWDetailsModel>LoanCategoryId} {LoansCWDetailsModel>LoanCategoryDesc}"/>
+									<Text text="{LoansCWDetailsModel>LoanTypeId} {LoansCWDetailsModel>LoanTypeDesc}"/>
+									<Text text="{LoansCWDetailsModel>LoanReasonId} {LoansCWDetailsModel>LoanReasonDesc}"/>
+									<Text text="{LoansCWDetailsModel>EligibleLoanAmt} {LoansCWModel>/CurrencyKey}"/>
+									<Text text="{LoansCWDetailsModel>RequiredAmt} {LoansCWModel>/CurrencyKey}"/>
+									<Text text="{LoansCWDetailsModel>MonthlyInstallmentAmt}"/>
+									<Text text="{LoansCWDetailsModel>TotalNumOfInstl}"/>
+									<Text text="{LoansCWDetailsModel>PaidAmount}"/>
+									<Text text="{LoansCWDetailsModel>RemainingLoanBal}"/>
+									<Link press="oHandleConverGpf" text="{LoansCWDetailsModel>FurtherActionDesc}" wrapping="true" wrappingType="Hyphenated"/>
+									<Text text="{LoansCWDetailsModel>ReqStatus}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<!--</ScrollContainer>-->
+				</IconTabFilter>
+				<IconTabFilter iconColor="" text="Earnings and Deductions" key="FamilyDetails">
+					<core:Fragment fragmentName="com.hcm.dashZHCM_DASHBOARD.view.fragments.EarningsanDeductions" type="XML"/>
+				</IconTabFilter>
+				<IconTabFilter iconColor="" text="Family Details" key="FamilyDetails">
+					<core:Fragment fragmentName="com.hcm.dashZHCM_DASHBOARD.view.fragments.FamilyDetailsOfLoans" type="XML"/>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</VBox>
+</core:FragmentDefinition>

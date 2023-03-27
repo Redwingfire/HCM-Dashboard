@@ -1,0 +1,393 @@
+<core:FragmentDefinition xmlns:m="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.uxap">
+	<m:Dialog id="Dialog_pension" title="Persons Information - {formhrinfomodel>/Lastname} {formhrinfomodel>/Firstname}"
+		class="sapUiPopupWithPadding" resizable="true" draggable="true" contentWidth="80%" contentHeight="80%" horizontalScrolling="false"
+		verticalScrolling="false" xmlns:layout="sap.ui.layout">
+		<m:content>
+			<!--	cfms_Ctm_npv fragement for Empoloyee Profile data -->
+			<ObjectPageLayout id="ObjectPageLayoutpension" enableLazyLoading="false" useIconTabBar="false" upperCaseAnchorBar="false"
+				showTitleInHeaderContent="true" showEditHeaderButton="false" alwaysShowContentHeader="true" subSectionLayout="TitleOnTop">
+				<headerTitle>
+					<ObjectPageHeader objectImageURI="{libCommon>/srcPath}" objectImageShape="Circle" isObjectIconAlwaysVisible="false"
+						isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false"></ObjectPageHeader>
+				</headerTitle>
+				<headerContent>
+					<layout:HorizontalLayout>
+						<layout:VerticalLayout>
+							<m:HBox>
+								<m:Label text="Person Name:" class="sapMObjStatusText"/>
+								<m:Label text="{formhrinfomodel>/Lastname} {formhrinfomodel>/Firstname}" class="sapUiTinyMarginBegin"/>
+								<!--({formhrinfomodel>/Pernr})-->
+								<m:Link text="({formhrinfomodel>/Pernr})" empsized="true"/>
+							</m:HBox>
+							<!--<m:HBox>-->
+							<!--	<m:Label text="Person Name:" class="sapMObjStatusText"/>-->
+							<!--	<m:Label text="{formhrinfomodel>/Lastname} {formhrinfomodel>/Firstname}" class="sapUiTinyMarginBegin"/>-->
+							<!--</m:HBox>-->
+							
+							<!--<m:HBox>-->
+							<!--	<m:Link text="({formhrinfomodel>/Pernr})" empsized="true"/>-->
+							<!--</m:HBox>-->
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+					<layout:HorizontalLayout>
+						<layout:VerticalLayout>
+								<m:HBox>
+								<m:Label text="Email:" class="sapMObjStatusText"/>
+								<m:Label text="{formhrinfomodel>/Email}" class="sapUiTinyMarginBegin"/>
+							</m:HBox>
+							
+							<!--<m:HBox>-->
+							<!--	<m:Label text="Email:" class="sapMObjStatusText"/>-->
+							<!--	<m:Label text="{formhrinfomodel>/Email}" class="sapUiTinyMarginBegin"/>-->
+							<!--</m:HBox>-->
+							<!--<m:HBox>-->
+							<!--	<m:Label text="Mobile:" class="sapMObjStatusText"/>-->
+							<!--	<m:Label text="{formhrinfomodel>/OfcMobileNumber}" class="sapUiTinyMarginBegin"/>-->
+							<!--</m:HBox>-->
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+					<layout:HorizontalLayout>
+						<layout:VerticalLayout>
+								<m:HBox>
+								<m:Label text="Mobile:" class="sapMObjStatusText"/>
+								<m:Label text="{formhrinfomodel>/OfcMobileNumber}" class="sapUiTinyMarginBegin"/>
+							</m:HBox>
+							<!--<m:HBox>-->
+							<!--	<m:Label text="Employee Status:" class="sapMObjStatusText"/>-->
+							<!--	<m:Label text="{formhrinfomodel>/EmployeeStatus}" class="sapUiTinyMarginBegin"/>-->
+							<!--</m:HBox>-->
+							<!--<m:HBox></m:HBox>-->
+							<!--<m:HBox>-->
+							<!--	<m:Label text="Employee Availability:" class="sapMObjStatusText"/>-->
+							<!--	<m:Label text="{formhrinfomodel>/Availability}" class="sapUiTinyMarginBegin"/>-->
+							<!--</m:HBox>-->
+						</layout:VerticalLayout>
+					</layout:HorizontalLayout>
+				</headerContent>
+				<sections>
+					<ObjectPageSection id="personalSection1" title="Personal Details">
+						<subSections>
+							<ObjectPageSubSection id="personalinfopen" title=" ">
+								<blocks>
+									<f:SimpleForm visible="true" id="personalinfoformpenEmpProf" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4"
+										labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3"
+										columnsL="2" columnsM="2" singleContainerFullSize="false">
+										<f:content>
+											<core:Title text=""/>
+											<m:Label text="Employee No" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Pernr}" editable="false"/>
+											<m:Label text="First Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Firstname}" editable="false"/>
+											<m:Label text="Last Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Lastname}" editable="false"/>
+											<core:Title/>
+											<m:Label text="Date of Birth" design=""/>
+											<m:Text id="" text="{path: 'formhrinfomodel>/DateOfBirth', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<m:Label text="Office Mobile Number" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/OfcMobileNumber}" editable="false"/>
+											<m:Label text="Office Email address" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/OfcMailId}" editable="false"/>
+											<!--<m:Label text="Display Name " design=""/>-->
+											<!--<m:Text id="" text="{formhrinfomodel>/results/EmployeePersonalInfo/results/0/DisplayName}" editable="false"/>-->
+											<!--<m:Label text="Gender " design=""/>-->
+											<!--<m:Text id="" text="{formhrinfomodel>/results/EmployeePersonalInfo/results/0/Gender}" editable="false"/>-->
+											<!--<m:Label text="Marital Status" design=""/>-->
+											<!--<m:Text id="" text="{formhrinfomodel>/results/EmployeePersonalInfo/results/0/MaritalStatus}" editable="false"/>-->
+											<!--<m:Label text="Marital Since" design=""/>-->
+											<!--<m:Text id=""-->
+											<!--	text="{path: 'formhrinfomodel>/results/EmployeePersonalInfo/results/0/MaritalSince', formatter: 'flm.fiori.PSINDSFLM_FILESExtension.utils.formatter.dateFormatter'} "-->
+											<!--	editable="false"/>-->
+											<!--<m:Label text="Spouse Name" design=""/>-->
+											<!--<m:Text id="" text="{formhrinfomodel>/results/EmployeePersonalInfo/results/0/SpouseName}" editable="false"/>-->
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection id="EventsSectionpen" title="Event">
+						<subSections>
+							<ObjectPageSubSection id="Eventpen" title="Employement Info">
+								<blocks>
+									<f:SimpleForm visible="true" id="" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+										singleContainerFullSize="false">
+										<f:content>
+											<core:Title text=""/>
+											<m:Label text="Date of joing " design=""/>
+											<!--<m:Text id=""  	text="{path: 'formhrinfomodel>/results/EmployementInfo/results/0/DateOfJoining', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"  editable="false"/>-->
+											<!--<m:Text id=""   text="{path: 'formhrinfomodel>/results/EmployementInfo/results/0/DateOfJoining', formatter:'.formatter.dateofJoingEmpProfile'} "  editable="false"/>	-->
+											<m:Text id="" text="{path: 'formhrinfomodel>/DateOfJoining', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<m:Label text="Employee type" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/EmploytypeDesc}" editable="false"/>
+											<m:Label text="Date of Regularization" design=""/>
+											<!--<m:Text id="" text="{formhrinfomodel>/DateOfRegularization}" editable="false"/>-->
+											<m:Text id="" text="{path: 'formhrinfomodel>/DateOfRegularization', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<core:Title/>
+											<m:Label text="Date of propation" design=""/>
+											<!--<m:Text id="" text="{formhrinfomodel>/DateOfPropagation}" editable="false"/>-->
+											<m:Text id="" text="{path: 'formhrinfomodel>/DateOfPropagation', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<m:Label text="Expected date of separation" design=""/>
+											<!--<m:Text id="" 	text="{path: 'formhrinfomodel>/ExpectDateSeperation', formatter: 'flm.fiori.PSINDSFLM_FILESExtension.utils.formatter.dateFormatter'}"-->
+											<!--	editable="false"/>-->
+											<m:Text id="" text="{path: 'formhrinfomodel>/ExpectDateSeperation', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<!--formhrinfomodel>/results/EmployeeLastEventDetails/results/0/DateOfAction-->
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection id="EmpConfSectionpen" title="Office information">
+						<subSections>
+							<ObjectPageSubSection id="empconfpen" title=" ">
+								<blocks>
+									<f:SimpleForm visible="true" id="" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+										singleContainerFullSize="false">
+										<f:content>
+											<core:Title text=""/>
+											<m:Label text="Position Name" design=""/>
+											<!--OfficeInfo-->
+											<m:Text id="" text="{formhrinfomodel>/PositionName}" editable="false"/>
+											<m:Label text="office ID" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Officeid}" editable="false"/>
+											<!--<m:Label text="Cadre" design=""/>-->
+											<!--<m:Text id="" text="{formhrinfomodel>/results/PositionText}" editable="false"/>-->
+											<m:Label text="Office Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/OfficeName}" editable="false"/>
+											<core:Title/>
+											<m:Label text="Location" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Location}" editable="false"/>
+											<m:Label text="Date of joining in the current position" design=""/>
+											<!--text="{formhrinfomodel>/results/OfficeInfo/results/0/DOJCurrentPosition}"-->
+											<m:Text id="" text="{path: 'formhrinfomodel>/DOJCurrentPosition', formatter: '.formatter.dateFormatterEmpProfile'} " editable="false"/>
+											<m:Label text="Department ID" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/Deptid}" editable="false"/>
+											<m:Label text="Department Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/DeptName}" editable="false"/>
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection id="RemunerationSectionpen" title="Reporting Details">
+						<subSections>
+							<ObjectPageSubSection id="Remunerationpen" title=" ">
+								<blocks>
+									<f:SimpleForm visible="true" id="" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+										labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+										singleContainerFullSize="false">
+										<f:content>
+											<core:Title text=""/>
+											<m:Label text="HOO ID" design=""/>
+											<!--<m:Text id="" text="{formhrinfomodel>/HooId}" editable="false"/>-->
+											<m:Link text="{formhrinfomodel>/HooId}" emphasized="true" press="onemphrinfo"/>
+											<m:Label text="HOO Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/HooName}" editable="false"/>
+											<m:Label text="HOD ID" design=""/>
+											<!--<m:Text id="" text="{formhrinfomodel>/HodId}" editable="false"/>-->
+											<m:Link text="{formhrinfomodel>/HodId}" emphasized="true" press="onemphrinfo"/>
+											<m:Label text="HOD Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/HodName}" editable="false"/>
+											<core:Title/>
+											<m:Label text="DDO ID" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/DdoId}" editable="false"/>
+											<m:Label text="DDO Name" design=""/>
+											<m:Text id="" text="{formhrinfomodel>/DdoName}" editable="false"/>
+											<!--<core:Title/>-->
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection id="ActionHistory" title="Action History">
+						<subSections>
+							<ObjectPageSubSection id="ActionHistorysub" title=" ">
+								<blocks>
+									<m:Table items="{DetailEmployeeTableModel>/results}">
+										<!--<headerToolbar>-->
+										<!--<OverflowToolbar>-->
+										<!--	<ToolbarSpacer/>-->
+										<!--	<Button text="Add New ESR" class="sapUiTinyMarginEnd" type="Emphasized" press="OnPressNewESR"/>-->
+										<!--</OverflowToolbar>-->
+										<!--</headerToolbar>-->
+										<m:columns>
+											<m:Column visible="false" hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text="Reference Number"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text=" Action Effective Date"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text="Action Name"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="10rem">
+												<m:Text textAlign="Center" text="Action Reason Name"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text="Status"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="10rem">
+												<m:Text textAlign="Center" text="Updated by"/>
+											</m:Column>
+											<m:Column hAlign="Center" width="5rem">
+												<m:Text textAlign="Center" text="Updated on"/>
+											</m:Column >
+											<m:Column visible="false" hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text="Hide"/>
+											</m:Column>
+											<m:Column visible="false" hAlign="Center" width="6rem">
+												<m:Text textAlign="Center" text="Hide"/>
+											</m:Column>
+										</m:columns>
+										<m:ColumnListItem type="" press="OnNavtoTransfer">
+											<!--<m:customData>-->
+											<!--	<core:CustomData key="Action" value="{DetailEmployeeTableModel>ActionPerformed}" writeToDom="true"/>-->
+											<!--</m:customData>-->
+											<m:Text text="{DetailEmployeeTableModel>ReferenceNumber}"/>
+											<m:Text text="{path: 'DetailEmployeeTableModel>EffectiveDate', formatter: '.formatter.SystemDateConversion'}"/>
+											<m:Text text="{DetailEmployeeTableModel>ActionName}"/>
+											<!--({DetailEmployeeTableModel>ActionId})-->
+											<m:Text text="{DetailEmployeeTableModel>ActionReasonName}"/>
+											<!--({DetailEmployeeTableModel>ActionReasonId})-->
+											<m:Text text="{DetailEmployeeTableModel>ReqStatus}"/>
+											<m:Text text="{DetailEmployeeTableModel>UpdatedByName}({DetailEmployeeTableModel>UpdatedBy})"/>
+											<m:Text text="{path: 'DetailEmployeeTableModel>UpdatedOn', formatter:'.formatter.SystemDateConversion'}"/>
+											<m:Text text="{DetailEmployeeTableModel>ActionPerformed}"/>
+											<m:Text text="{DetailEmployeeTableModel>RequestGuid}"/>
+										</m:ColumnListItem>
+									</m:Table>
+									<!--<f:SimpleForm visible="true" id="" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+									<!--	labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"-->
+									<!--	singleContainerFullSize="false">-->
+									<!--	<f:content>-->
+									<!--		<core:Title text=""/>-->
+									<!--		<m:Label text="Pay Scale Type" design=""/>-->
+									<!--		<m:Text id="" text="{formhrinfomodel>/results/EmployeeRemunerationInfoSet/results/0/PayScaleType}" editable="false"/>-->
+									<!--		<m:Label text="Pay Scale Area" design=""/>-->
+									<!--		<m:Text id="" text="{formhrinfomodel>/results/EmployeeRemunerationInfoSet/results/0/PayScaleArea}" editable="false"/>-->
+									<!--		<core:Title/>-->
+									<!--		<m:Label text="Pay Scale Group" design=""/>-->
+									<!--		<m:Text id="" text="{formhrinfomodel>/results/EmployeeRemunerationInfoSet/results/0/PayScaleGroup}" editable="false"/>-->
+									<!--		<m:Label text="Pay Scale Level" design=""/>-->
+									<!--		<m:Text id="" text="{formhrinfomodel>/results/EmployeeRemunerationInfoSet/results/0/PayScaleLevel}" editable="false"/>-->
+									<!--		<core:Title/>-->
+									<!--	</f:content>-->
+									<!--</f:SimpleForm>-->
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection id="EmpoverView" title="Leave Overview">
+						<subSections>
+							<ObjectPageSubSection id="EmpoverViewsub" title=" ">
+								<blocks>
+							<!--<Panel id="overviewPanel" expandable="true" expanded="true" headerText="{i18n>overviewTabTitle}" width="auto" expand="onOverviewPanelExpand">-->
+							<!--leaveRequestOverview-->
+							  <!--items="{/LeaveRequestSet}"-->
+							   <!--items="{leaveRequestOverviewModel>/}"-->
+                                <m:Table
+                                    id="leaveRequestTable"
+                                    fixedLayout="true"
+                                    inset="false"
+                                   items="{leaveRequestOverviewModel>/}"
+                                    busyIndicatorDelay="0"
+                                    updateFinished="onUpdateFinishedOverview"
+                                    growing="{= !${device>/system/desktop}}"
+                                    growingThreshold="15"
+                                    growingScrollToLoad="{= !${device>/system/desktop}}"
+                                    visible="{= !${overview>/showCalendar}}"
+                                    busy="{= ${overview>/isLeaveLoading} || ${global>/isConfigLoading}}"
+                                    ariaLabelledBy="overviewTitleInvTxt,overviewCountInvTxt"
+                                >
+                                    <m:columns>
+                                        <!-- Leave Type -->
+                                        <m:Column id="leaveTypeCol">
+                                            <m:Text id="leaveTypeColTxt" text="{i18n>leaveTypTxt}" />
+                                        </m:Column>
+                                        <!-- Validity -->
+                                        <m:Column id="validFromCol" minScreenWidth="Desktop" demandPopin="true" popinDisplay="{= ${device>/system/phone} ? 'WithoutHeader' : 'Block'}" hAlign="{= ${device>/system/phone} ? 'End' : 'Begin'}">
+                                            <m:Text id="validityColTxt" text="{i18n>validityTxt}" />
+                                        </m:Column>
+                                        <!-- Status -->
+                                        <m:Column id="statusCol" minScreenWidth="Tablet" demandPopin="true" popinDisplay="{= ${device>/system/phone} ? 'WithoutHeader' : 'Block'}" hAlign="{= ${device>/system/phone} ? 'End' : 'Center'}">
+                                            <m:Text id="statusColTxt" text="{i18n>status}" />
+                                        </m:Column>
+                                        <!-- Approver -->
+                                        <!-- <m:Column id="approverCol" minScreenWidth="Desktop" demandPopin="false">
+                                            <m:Text id="approverColTxt" text="{i18n>approverTxt}" class="sapUiMediumMarginBegin" />
+                                        </m:Column> -->
+                                        <!-- Notes -->
+                                        <!-- <m:Column id="notesCol" hAlign="Left">
+                                            <m:Text id="notesColTxt" text="{i18n>notesTxt}" />
+                                        </m:Column> -->
+                                        <!-- Quota Used -->
+                                        <m:Column id="quotaUsedCol" hAlign="Center">
+                                            <m:Text id="quotaUsedColTxt" text="{i18n>quotaUsedTxt}" />
+                                        </m:Column>
+                                        <!-- Edit Action -->
+                                        <!-- <m:Column id="editActionCol" minScreenWidth="Tablet" width="5%" demandPopin="false" hAlign="End">
+                                            <m:Text id="editActionColText" text="{i18n>editActionText}" visible="false" />
+                                        </m:Column> -->
+                                        <!-- Delete Action -->
+                                        <m:Column id="deleteActionCol" minScreenWidth="Tablet" width="5%" demandPopin="false" hAlign="End" visible="false">
+                                            <m:Text id="deleteActionColText" text="{i18n>deleteActionText}" visible="false" />
+                                        </m:Column>
+                                    </m:columns>
+                                    <m:items>
+                                        <m:ColumnListItem  id="leaveRequestColumnListItem" press="onLeaveRequestPress">
+                                        	<!--type="Navigation"-->
+                                            <m:cells>
+                                                <!-- Leave Type -->
+                                                <!--<ObjectIdentifier id="leaveTypeCell" title="{leaveRequestOverviewModel>leaveReAbsenceTypeName}" class="sapMTableContentMargin" />-->
+                                                 <m:ObjectIdentifier id="empProfileleaveTypeCell" title="{leaveRequestOverviewModel>AbsenceTypeName}" class="sapMTableContentMargin" />
+                                                <!-- Validity -->
+                                                <m:ObjectAttribute
+                                                    id="validityCell"
+                                                    text="{parts:[ {path:'leaveRequestOverviewModel>StartDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { 
+                                                        source : { 
+                                                            pattern: 'yyyy-MM-ddTHH:mm:ss X' 
+                                                        },
+                                                        pattern: 'dd.MM.yyyy'
+                                                        }, constraints: { displayFormat : 'Date' }}, 
+                                                        {path:'leaveRequestOverviewModel>EndDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { 
+                                                        source : { 
+                                                            pattern: 'yyyy-MM-ddTHH:mm:ss X' 
+                                                        },
+                                                        pattern: 'dd.MM.yyyy'
+                                                        }, constraints: { displayFormat : 'Date' }} ], formatter:'.formatter.formatOverviewLeaveDates'}"
+                                                    class="sapMTableContentMargin"
+                                                />
+                                                <!-- Status -->
+                                                <m:ObjectStatus id="statusCell" text="{leaveRequestOverviewModel>StatusTxt}" state="{path:'StatusID', formatter:'.formatter.getListItemStatus'}" class="sapMTableContentMargin" />
+                                                <!-- Approver -->
+                                                <!-- <m:ObjectAttribute id="approverCell" text="{ApproverEmployeeName}" class="sapMTableContentMargin sapUiMediumMarginBegin" /> -->
+                                                <!-- Quota Used -->
+                                                <!-- Approver -->
+                                                <!-- <m:ObjectAttribute id="notesCell" text="{Notes}" class="sapMTableContentMargin sapUiMediumMarginBegin" /> -->
+                                                <!-- Quota Used -->
+                                                <m:ObjectNumber id="quotaUsedCell" emphasized="true" number="{path:'leaveRequestOverviewModel>QuotaUsed', type: 'sap.ui.model.odata.type.Double', formatOptions: { maxFractionDigits: 5, minFractionDigits: 0 }, formatter:'.formatter.formatUsedQuota'}" unit="{TimeUnitTxt}" />
+                                                <!-- Edit Action -->
+                                                <!-- <m:Button id="editBtn" text="Edit" press="onEditPress" visible="{IsModifiable}" type="Accept" tooltip="{i18n>editViewTitle}" /> -->
+                                                <!-- Delete Action -->
+                                                <m:Button id="deleteBtn" text="Delete" press="onDeletePress" visible="{IsDeletable}" type="Reject" tooltip="{i18n>deleteLeaveRequest}" />
+                                            </m:cells>
+                                        </m:ColumnListItem>
+                                    </m:items>
+                                </m:Table>
+                            <!--</Panel>		-->
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+		</m:content>
+		<m:endButton>
+			<m:Button text="Close" press="onCancelempdetailpen"/>
+		</m:endButton>
+	</m:Dialog>
+</core:FragmentDefinition>

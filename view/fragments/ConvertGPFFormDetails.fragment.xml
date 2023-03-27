@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="" class="sapUiPopupWithPadding" contentWidth="80%" contentHeight="50%">
+		<content>
+			<f:SimpleForm id="IdLoansCW" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+				adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="6" columnsXL="2" columnsL="2" columnsM="2"
+				singleContainerFullSize="false" maxContainerCols="1" visible="true">
+				<f:content>
+					<core:Title text="Loan Details :"></core:Title>
+					<Label text="{i18n>LoanCategory}" design="Bold"/>
+					<ComboBox selectedKey="{ConvertGPFModel>/LoanCategoryId}" items="{/VHLoanCategorySet}" placeholder="{i18n>LoanCategory}" editable="false">
+						<core:Item key="{CategoryID}" text="{CategoryDesc}"/>
+					</ComboBox>
+					<Label text="{i18n>LoanType}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/LoanTypeId} {=${ConvertGPFModel>/LoanTypeId}==='' ? '' : '-'} {ConvertGPFModel>/LoanTypeDesc}"
+						placeholder="{i18n>LoanType}" editable="false"/>
+					<Label text="{i18n>LoanReason}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/LoanReasonId} {=${ConvertGPFModel>/LoanReasonId}==='' ? '' : '-'} {ConvertGPFModel>/LoanReasonDesc}"
+						placeholder="{i18n>LoanReason}" editable="false"/>
+					<Label text="{i18n>EligibleLoanAmt}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/EligibleLoanAmt}" editable="false"/>
+					<core:Title></core:Title>
+					<Label text="{i18n>RequiredAmt}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/RequiredAmt}" editable="false"/>
+					<Label text="{i18n>MonthlyInstAmt}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/MonthlyInstallmentAmt}" editable="false"/>
+					<Label text="{i18n>TotalNumInst}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/TotalNumOfInstl}" editable="false"/>
+					<Label text="{i18n>PaidAmt}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/PaidAmount}" editable="false"/>
+					<Label text="{i18n>RemaLoanBal}" design="Bold"/>
+					<Input value="{ConvertGPFModel>/RemainingLoanBal}" editable="false"/>
+					<Label text="{i18n>AdditionalLoanAmt}" required="true" design="Bold"/>
+					<Input id="idAdditionalLoanAmt"/>
+					<!--<Label text="{i18n>RequiredAmt}" required="true" design="Bold"/>-->
+					<!--<Input id="idRequiredAmt" value="{LoansCWModel>/RequiredAmt}" change="oHandleReqAmountValidate" editable="{oViewModel>/Editable}"/>-->
+				</f:content>
+			</f:SimpleForm>
+			<Panel width="auto" class="sapUiResponsiveMargin">
+				<Label text="{i18n>description}" design="Bold"/>
+				<TextArea id="idGPFdescription" width="100%" editable="true"/>
+			</Panel>
+		</content>
+		<beginButton>
+			<Button text="Submit" type="Accept" press="onGPFSubmit"/>
+		</beginButton>
+		<endButton>
+			<Button text="Close" type="Reject" press="onCancGPF"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,121 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--	<SelectDialog resizable="true" title="Select Mandla"-->
+	<!--		confirm="ConfirmMandalDialog" liveChange="liveMandalsearch" cancel="CloseMandalDialog" items=" MandalDialogModel>/}"-->
+	<!--		draggable="true">-->
+	<!--		<StandardListItem title="{MandalDialogModel>Mandal}" description="{MandalDialogModel>Mandal_ID}"/>-->
+	<!--	</SelectDialog>-->
+	<TableSelectDialog id="IdEmpPositionGrouTrans" noDataText="No Data Found" title="Select Employee - New Position"
+		search="handleSearchPosition" liveChange="handleSearchPosition" confirm="handlePositionConfirm" cancel="handleEmpPositionClose"
+		showClearButton="true" items="{/ZC_VACANT_POSITION}" growing="true" growingThreshold="100" draggable="true" contentWidth="100%">
+		<ColumnListItem selected="">
+			<!--IFSCDialogModel>-->
+			<cells>
+				<ObjectIdentifier title="{Plans}"/>
+				<Text text="{plans_text}"/>
+				<Text text="{orgeh}"/>
+				<Text text="{orgeh_text}"/>
+				<Text text="{department_id}"/>
+				<Text text="{department_id}"/>
+				<Text text="{employee_no}"/>
+				<Text text="{employee_name}"/>
+				<Text text="{fundcenter}"/>
+				<Text text="{fundcenter_text}"/>
+				<Text text="{vacancy_status}"/>
+				<Text text=""/>
+				<!--<Text text="{btrtl_text}"/>-->
+				<!--<Text text="{persg}"/>-->
+				<!--<Text text="{persg_text}"/>-->
+				<!--<Text text="{persk}"/>-->
+				<!--<ObjectNumber number=" WeightMeasure " unit=" WeightUnit "		state="  "/>-->
+				<!--<ObjectNumber number=" " unit=" CurrencyCode "/>-->
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="8em" demandPopin="true">
+				<header>
+					<Text text="Position ID"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="15em" demandPopin="true">
+				<header>
+					<Text text="Position Name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" demandPopin="true" width="8em">
+				<header>
+					<Text text="Office Id"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" demandPopin="true" width="10em">
+				<header>
+					<Text text="Office name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" demandPopin="true" width="8em">
+				<header>
+					<Text text="Department Id"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" demandPopin="true" width="10em">
+				<header>
+					<Text text="Department name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="9em" demandPopin="true">
+				<header>
+					<Text text="Employee Id"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="10em" demandPopin="true">
+				<header>
+					<Text text="Employee name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="7em" demandPopin="true">
+				<header>
+					<Text text="DDO Id"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="15em" demandPopin="true">
+				<header>
+					<Text text="DDO Name"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="7em" demandPopin="true">
+				<header>
+					<Text text="Vacant Status"/>
+				</header>
+			</Column>
+			<Column hAlign="Center" width="8em" demandPopin="true">
+				<header>
+					<Text text="Hoo Position"/>
+				</header>
+			</Column>
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Subarea "/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Personnel Subarea Text"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="10em">-->
+			<!--	<header>-->
+			<!--		<Text text="Employee group"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="6em">-->
+			<!--	<header>-->
+			<!--		<Text text="Employee group name"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+			<!--<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="8em">-->
+			<!--	<header>-->
+			<!--		<Text text="Employee subgroup"/>-->
+			<!--	</header>-->
+			<!--</Column>-->
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

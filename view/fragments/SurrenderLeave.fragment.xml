@@ -1,0 +1,189 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<IconTabBar id="idIcSurTabBar" select="onSelIcTab" expandable="false" upperCase="false" selectedKey="{oMainViewModel>/SelectedTab}">
+			<items>
+				<IconTabFilter id="idSurleave" iconColor="" text="Surrender Leave" key="SurrLeave">
+					<f:SimpleForm id="IdSLeave" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+						adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="6" columnsXL="2" columnsL="2" columnsM="2"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<!--<core:Title/>-->
+							<core:Title text="Surrender Leave Details :"></core:Title>
+							<Label text="{i18n>elCreditasDate}" design="Bold"/>
+							<Input value="{SurLeaveModel>/ElCreditAsonDate}" editable="false" liveChange="oHandlePhoneNoLiveChange"/>
+							<!--{path: 'SurLeaveModel>/ElCreditAsonDate', formatter: '.formatter.elCreditasDate'}-->
+							<!--	<DatePicker placeholder="EL credit Date"
+					value="{path: 'SurLeaveModel>/ElCreditAsonDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"/>-->
+							<Label text="{i18n>noofDayswilSur}" design="Bold" required="true"/>
+							<!--{SurLeaveModel>/SurrenderDays}-->
+							<Input value="{path: 'SurLeaveModel>/SurrenderDays', formatter: '.formatter.noofSurDays'}" editable="{oViewModel>/Editable}" maxLength="2"
+								liveChange="oHandlePhoneNoLiveChange" change="handlSurDays"/>
+							<!--	<Label text="{i18n>DocumentId}" design="Bold"/>
+				<Input value="{SurLeaveModel>/QuotaUsed}" editable="true"/>   editable="{oViewModel>/Editable}" -->
+							<Label text="{i18n>CurrentFinancialYear}" design="Bold"/>
+							<Input value="{SurLeaveModel>/CurrentFinancialPeriod}" editable="false"/>
+							<!--<Label text="{i18n>leaveSurreinlasttwoyears}" design="Bold"/>-->
+							<!--<Input value="{SurLeaveModel>/LeavesSurInLastTwoYears}" editable="false" liveChange="oHandlePhoneNoLiveChange"/>-->
+							<Label text="{i18n>EmployeeType}" design="Bold"/>
+							<Input value="{SurLeaveModel>/EmployeeType}" editable="false"/>
+							<core:Title></core:Title>
+							<!--<Label text="{i18n>Isit1stTimeSurrender}" design="Bold"/>-->
+							<!--<ComboBox selectedKey="{SurLeaveModel>/FirstTimeTransfer}" editable="{oViewModel>/Editable}" change="onchangeSurder"-->
+							<!-->-->
+								 <!--visible="{= ${SurLeaveModel>/PreviousSdateFlag} === 'X' ? false : true}"-->
+							<!--	<core:Item key="X" text="Yes"/>-->
+							<!--	<core:Item key="N" text="No"/>-->
+							<!--</ComboBox>-->
+							<!--<Input value="{SurLeaveModel>/OnbehalfbyId}"/>-->
+							<Label text="{i18n>CurrentSurrenderDate}" design="Bold"/>
+							<DatePicker dateValue="{path: 'SurLeaveModel>/SurrenderDate', formatter: '.formatter.dateofSurDate'}" editable="false"
+								valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"/>
+							<!--<Input value="{path: 'SurLeaveModel>/SurrenderDate', formatter: '.formatter.dateofReq'}" editable="true"/>-->
+							<Label text="{i18n>PreviousSurrenderDate}" design="Bold"/>
+							<!--<Input value="{path: 'SurLeaveModel>/LastSurLeaveDate', formatter: '.formatter.dateofReq'}" editable="false"/>-->
+							<DatePicker id="idPreviousSurrenderDate" dateValue="{path: 'SurLeaveModel>/LastSurLeaveDate', formatter: '.formatter.dateofSurDate'}" editable="{path: 'SurLeaveModel>/LastSurLeaveDate', formatter: '.formatter.PreviousSurrenderDateEdit'}"
+								valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"/>
+							<!--<DatePicker dateValue="{path: 'SurLeaveModel>/SurrenderDate', formatter: '.formatter.dateofReq'}" editable="false" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"/>-->
+							<!--<Label text="{i18n>DateOfApplication}" design="Bold"/>-->
+							<!--<Input value="{path: 'SurLeaveModel>/DateOfRequest', formatter: '.formatter.dateofReq'}" editable="false"/>-->
+							<!--<DatePicker dateValue="{path: 'SurLeaveModel>/DateOfRequest', formatter: '.formatter.dateofReq'}" editable="false" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"/>-->
+							<!--<Label text="{i18n>Hasuseravailed286specialcase}" design="Bold"/>-->
+							<!--<ComboBox editable="true" selectedKey="{SurLeaveModel>/Availed286}">-->
+							<!--	<core:Item key="true" text="Yes"/>-->
+							<!--	<core:Item key="false" text="No"/>-->
+							<!--</ComboBox>-->
+							<!--	<Label text="{i18n>SurrenderAmount}" design="Bold"/>
+				<Input value="{SurLeaveModel>/SurrenderAmount}" editable="true"/>-->
+							<!--<Label text="{i18n>Lastsurrendedleavedate}" design="Bold"/>-->
+							<!--<Input value="{path: 'SurLeaveModel>/LastSurLeaveDate', formatter: '.formatter.dateofReq'}" editable="false"/>-->
+						</f:content>
+					</f:SimpleForm>
+					<Panel width="auto" class="sapUiResponsiveMargin">
+						<Label text="Employee Comments :" design="Bold" required="true"/>
+						<!--<headerToolbar>-->
+						<!--	<OverflowToolbar>-->
+						<!--		<Title text="Reason for New Surrender :"/>-->
+						<!--	</OverflowToolbar>-->
+						<!--</headerToolbar>-->
+						<TextArea value="{SurLeaveModel>/ReasonForChange}" width="100%"/>
+					</Panel>
+				</IconTabFilter>
+				<IconTabFilter id="idPreviousReq" iconColor="" text="Surrender Leave Details" key="Previous">
+					<ScrollContainer>
+						<Table id="idPreviousReqTable" itemPress="PreReqTablItempress" mode="" inset="false" items="{SurLeaveTableModel>/}" visible="true"
+							alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders" class="sapUiLargeMarginTop">
+							<headerToolbar>
+								<Toolbar>
+									<Title text="Total Records: 0" id="idSurPreReqTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+									<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+									<ToolbarSpacer/>
+									<!--<Button text="Add Member" icon="sap-icon://add-contact" type="Emphasized" press="onAddfamilyRow" tooltip="Add Row"/>-->
+									<!--<Button text="Delete" icon="sap-icon://delete" type="Reject" press="onDeletefamilyRow" tooltip="Delete Row" class="sapUiSmallMarginEnd"/>-->
+									<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+								</Toolbar>
+							</headerToolbar>
+							<columns>
+								<Column visible="true" hAlign="Center">
+									<Label text="Seq.No" design="Bold"/>
+								</Column>
+								<Column visible="true" hAlign="Center">
+									<Label text="{i18n>CurrentSurrenderDate}" design="Bold"/>
+								</Column>
+								<Column visible="true" hAlign="Center">
+									<Label text="No of Days Surrender" design="Bold"/>
+								</Column>
+								<Column visible="true" hAlign="Center">
+									<Label text="{i18n>CurrentFinancialYear}" design="Bold"/>
+								</Column>
+									<Column visible="true" hAlign="Center">
+									<Label text="Status" design="Bold"/>
+								</Column>
+								<Column visible="true" hAlign="Center">
+									<Label text="Comments" design="Bold"/>
+								</Column>
+								<Column visible="false" hAlign="Center">
+									<Label text="{i18n>PreviousSurrenderDate}" design="Bold"/>
+								</Column>
+								<!--<Column visible="true" hAlign="Center">-->
+								<!--	<Label text="Govt Employe" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Service Type" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="true" hAlign="Center">-->
+								<!--	<Label text="Employee Code" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Marital Status" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Married Since" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Disablity" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Alive" design="Bold"/>-->
+								<!--</Column>-->
+								<!--<Column visible="false" hAlign="Center">-->
+								<!--	<Label text="Date of Death" design="Bold"/>-->
+								<!--</Column>-->
+							</columns>
+							<items>
+								<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+									<!--<customData>-->
+									<!--	<core:CustomData key="Action" value="{SurLeaveTableModel>Operation}" writeToDom="true"/>-->
+									<!--</customData>-->
+									<cells>
+										<Text text="{SurLeaveTableModel>seqNo}" editable="false"/>
+										<Text text="{path: 'SurLeaveTableModel>SurrenderDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+											editable="false"/>
+										<Text text="{SurLeaveTableModel>SurrenderDays}" editable="false"/>
+										<Text text="{SurLeaveTableModel>CurrentFinancialPeriod}" editable="false"/>
+											<Text text="{SurLeaveTableModel>Outcome}" editable="false"/>
+										<Text text="{SurLeaveTableModel>Comments}" editable="false"/>
+									
+										<!--<Text text="{= ${SurLeaveTableModel>FirstTimeTransfer} === 'X' ? 'Yes' : 'No'}" editable="false"/>-->
+										<Text text="{path: 'SurLeaveTableModel>PreviousSurrenderDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+										<!--{= ${SurLeaveTableModel>Gender} === '01' ? 'Yes' : 'No'}-->
+										<!--	<ComboBox selectedKey="{SurLeaveTableModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+										<!---->
+										<!--<Text text="{path: 'SurLeaveTableModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--<Text text="{path: 'SurLeaveTableModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+										<!--<Text text="{path: 'SurLeaveTableModel>DateOfRequest', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+										<!--	editable="false"/>-->
+										<!--<Text text="{= ${SurLeaveTableModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>-->
+										<!--<Text text="{SurLeaveTableModel>ServiceType}" editable="false"/>-->
+										<!--<Text text="{SurLeaveTableModel>Employeecode}" editable="false"/>-->
+										<!--<Text text="{SurLeaveTableModel>MaritalStatus}" editable="false"/>-->
+										<!--	<ComboBox selectedKey="{SurLeaveTableModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+										<!--<Text text="{path: 'SurLeaveTableModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+										<!--	<DatePicker placeholder="Date"
+							value="{path: 'SurLeaveTableModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+										<!--<Input value="{SurLeaveTableModel>MARRIED_SINCE}"/>-->
+										<!--<Input text="{SurLeaveTableModel>Disablity}" editable="false"/>-->
+										<!--<Text text="{SurLeaveTableModel>Alive}" editable="false"/>-->
+										<!--<ComboBox selectedKey="{SurLeaveTableModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+										<!--<Text text="{SurLeaveTableModel>DateOfDeath}" editable="false"/>-->
+										<!--<Text text="{path: 'SurLeaveTableModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>-->
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+					</ScrollContainer>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+	</VBox>
+</core:FragmentDefinition>

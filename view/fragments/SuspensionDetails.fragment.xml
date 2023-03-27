@@ -1,0 +1,104 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<VBox class="sapUiSmallMargin">
+		<HBox >
+			<!--<Label text="File Effecive Date" design="Bold" class="sapUiLargeMarginTopRight"/>-->
+			<Text text="Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>
+			<DatePicker placeholder="Date " class="sapUiSmallMarginBegin" id="idSuspenEffectDate"
+				value="{path: 'SuspentionModel>/EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>
+		</HBox>
+		<!--<IconTabBar id="idIcTabBar" select="onSelIcTab" expandable="false" upperCase="true" selectedKey="{oMainViewModel>/SelectedTab}">-->
+		<!--	<items>-->
+		<!--		<IconTabFilter id="idBasicTab" iconColor="" text="Basic Details" key="Basic" >-->
+		<f:SimpleForm id="idSuspensionform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			adjustLabelSpan="true" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="4" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<core:Title text="Suspension Details :"></core:Title>
+				<!--<Label/>-->
+				<!--<Text text="{i18n>CurrentDetails}"/>-->
+				<!--<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Label text="{i18n>Title}" design="Bold"/>-->
+				<!--<ComboBox editable="false" selectedKey="{SuspentionModel>/Title}">-->
+				<!--	<core:Item key="1" text="Ms"/>-->
+				<!--	<core:Item key="2" text="Mrs"/>-->
+				<!--	<core:Item key="3" text="Mr"/>-->
+				<!--	<core:Item key="4" text="Prof"/>-->
+				<!--	<core:Item key="6" text="Dr"/>-->
+				<!--	<core:Item key="7" text="TGNDR"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox visible="{oViewModel>/EditVisibility}" selectedKey="{SuspentionModel>/TitleNew}" editable="{oViewModel>/Editable}">-->
+				<!--	<core:Item key="1" text="Ms"/>-->
+				<!--	<core:Item key="2" text="Mrs"/>-->
+				<!--	<core:Item key="3" text="Mr"/>-->
+				<!--	<core:Item key="4" text="Prof"/>-->
+				<!--	<core:Item key="6" text="Dr"/>-->
+				<!--	<core:Item key="7" text="TGNDR"/>-->
+				<!--</ComboBox>-->
+				<Label text="Employee Info" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/EmployeeName} ({SuspentionModel>/Pernr})"/>
+				<!--<Input value="{SuspentionModel>/FirstnameNew}" visible="{oViewModel>/EditVisibility}" liveChange="onValueChange" editable="{oViewModel>/Editable}"/>-->
+				<Label text="Office Info" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/PositioName}({SuspentionModel>/PositionId})"/>
+				<!--<Input value="{SuspentionModel>/LastnameNew}" visible="{oViewModel>/EditVisibility}" liveChange="onValueChange" editable="{oViewModel>/Editable}"/>-->
+				<Label text="Position Info" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/PositioName}({SuspentionModel>/PositionId})"/>
+				<!--<DatePicker editable="false" placeholder="Date of Birth"-->
+				<!--	value="{path: 'SuspentionModel>/DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" displayFormat="dd.MM.yyyy"-->
+				<!--	id="dateofBirth" valueFormat="dd.MM.yyyy"/>-->
+				<!--<DatePicker visible="{oViewModel>/EditVisibility}" placeholder="Date of Birth"-->
+				<!--	value="{path: 'SuspentionModel>/DateOfBirthNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" id="dateofBirthNew"-->
+				<!--	valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>-->
+				<Label text="DDO info" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/FromDdoName}({SuspentionModel>/FromDdoId})"/>
+				<!--<ComboBox editable="false" selectedKey="{SuspentionModel>/Gender}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Others"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox visible="{oViewModel>/EditVisibility}" selectedKey="{SuspentionModel>/GenderNew}" editable="{oViewModel>/Editable}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Others"/>-->
+				<!--</ComboBox>-->
+				<Label text="Location" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/LocationText}"/>
+				<Label text="Employee Type" design="Bold"/>
+				<Input editable="false" value="{SuspentionModel>/EmpTypeText}({SuspentionModel>/EmployeeType})"/> 
+				<!--<DatePicker editable="false" value="{SuspentionModel>/Marriedsince}" displayFormat="dd/MM/yyyy"  placeholder="Date"/>-->
+				<!--<DatePicker value="{path: 'SuspentionModel>/MarriedsinceNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+				<!--	visible="{oViewModel>/EditVisibility}" displayFormat="dd/MM/yyyy" id="marriedSinceNew" placeholder="Date" valueFormat="dd.MM.yyyy"-->
+				<!--	editable="{oViewModel>/Editable}"/>-->
+				<!--<core:Title text="Personal ID's Details :"></core:Title>-->
+				<Label text="Employee Group" design="Bold"/>
+				<Input value="{SuspentionModel>/EmpGroupTxt}({SuspentionModel>/EmployeeGroup})" editable="false"/> 
+				<!--<Input value="{SuspentionModel>/AadharNew}" visible="{oViewModel>/EditVisibility}" maxLength="12" change="handleAadharno"-->
+				<!--	liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"/>-->
+				<Label text="Employee Sub Group" design="Bold"/>
+				<Input value="{SuspentionModel>/EmpSubGroupTxt}({SuspentionModel>/EmployeeSubGroup})" editable="false"/> 
+				<!--<Input value="{SuspentionModel>/PannumberNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" change="handlePancard"/>-->
+				<Label text="Date of receipt of the note" design="Bold"/>
+				<DatePicker placeholder="Date " id="idSuspenDateOfReceiptNote"
+					value="{path: 'SuspentionModel>/ReceiptNoteDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>
+				<!--<Input value="{SuspentionModel>/ReceiptNoteDate}"/>-->
+				<Label text="Nature of the case" design="Bold"/>
+				<Input value="{SuspentionModel>/NatureOtTheCase}" editable="false" visible="{= ${SuspentionModel>/ActionReasonId} === '01' ? true : false}"/>
+				<Label text="Date of the order" design="Bold"/>
+				<Input value="{SuspentionModel>/OrderDate}" editable="false"
+					visible="{path:'SuspentionModel>/ActionReasonId',formatter:'.formatter.suspenOrderDate'}"/>
+				<Label text="Mod of the order received " design="Bold"/>
+				<Input value="{SuspentionModel>/OrderMode}" editable="false" visible="{= ${SuspentionModel>/ActionReasonId} === '03' ? true : false}"/>
+			</f:content>
+		</f:SimpleForm>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Reason for Suspention :" design="Bold" required="true"/>
+			<headerToolbar>
+				<!--	<OverflowToolbar>
+						<Title text="Reason for Suspention :" required="true"/>
+					</OverflowToolbar>-->
+			</headerToolbar>
+			<TextArea value="{SuspentionModel>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

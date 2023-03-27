@@ -1,0 +1,80 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="idNomineeDialogPopup" contentHeight="80%" contentWidth="100%" title="Nominee Details - {NomFamilyData>MembertypeDesc}" resizable="true" draggable="true">
+		<f:SimpleForm id="idNomineeFormDetailsDailog" editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+			adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<Text text="{i18n>NewDetails}"/>
+				<!--Member Type-->
+				<Label text="Nominee Full Name" design="Bold" required="true"/>
+				<Input value="{NomineeFormModel>Nominename}" editable="false" visible="{oViewModel>/EditVisibility}" liveChange="onValueChange"/>
+				<ComboBox selectedKey="{NomineeFormModel>NominenameNew}" items="{NomFamilyData>/}" editable="false" change="onNomNamechnage">
+					<core:Item key="{NomFamilyData>LastName}{NomFamilyData>FirstName}" text="{NomFamilyData>LastName} {NomFamilyData>FirstName}"/>
+				</ComboBox>
+				<!--<Input value="{NomineeFormModel>NominenameNew}" editable="true" liveChange="onValueChange"/>-->
+				<!--liveChange="onValueChange"-->
+				<!--<Input value="{NomineeFormModel>MembertypeDesc}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{NomineeFormModel>MembertypeDesc}" editable="false"/>-->
+				<Label text="Relation" design="Bold" required="true"/>
+				<Input value="{NomineeFormModel>Relationdesc}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<ComboBox selectedKey="{NomineeFormModel>RelationNew}" items="{NomFamilyData>/}" editable="false" change="onNomRelationchnage"
+					showSecondaryValues="true">
+					<core:Item key="{NomFamilyData>MemberType}" text="{NomFamilyData>MembertypeDesc}"
+						additionalText="{NomFamilyData>LastName}{NomFamilyData>FirstName}"/>
+					<!--<core:Item key="2" text="Un-Married"/>-->
+				</ComboBox>
+				<!--<Input value="{NomineeFormModel>RelationNew}" editable="true" liveChange="onValueChange" />-->
+				<!--liveChange="onValueChange"-->
+				<Label text="Date of Birth" design="Bold" required="true"/>
+				<DatePicker placeholder="Date of Birth"
+					value="{path: 'NomineeFormModel>DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Input value="{NomineeFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker id="idNomineDateBirthNew" placeholder="Date of Birth"
+					dateValue="{path: 'NomineeFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}" valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy"
+					editable="false" change="dateofBirthNominee"/>
+				<Label text="Share(%)" design="Bold" required="true"/>
+				<Input value="{NomineeFormModel>NomineShare}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>NomineShareNew}" editable="false" maxLength="3" liveChange="oHandleShareNomineeLiveChange"
+					change="oHandleShareNomineeChange"/>
+				<!--liveChange="onValueChange"-->
+				<!--<ComboBox editable="false" selectedKey="{NomineeFormModel>Gender}" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox editable="true" selectedKey="{NomineeFormModel>GenderNew}" change="genderFamilyChange">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<Label text="Nominee Address" design="Bold" required="true"/>
+				<Input value="{NomineeFormModel>Address}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>AddressNew}" editable="false"/>
+				<Label text=" Guardin's Address" design="Bold"/>
+				<Input value="{NomineeFormModel>GuardianAddress}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>GuardianAddressNew}" editable="false"/>
+				<Label text="Alternate Nominee Details" design="Bold" required="false"/>
+				<Input value="{NomineeFormModel>AlterNomineAge}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>AlterNomineAgeNew}" editable="false"/>
+				<Label text="Alternate Nominee Full Name " design="Bold" required="false"/>
+				<Input value="{NomineeFormModel>AlternateNomine}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>AlternateNomineNew}" editable="false" liveChange="onValueChange"/>
+				<!--<DatePicker placeholder="Date" value="{path: 'NomineeFormModel>MarriedSince',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"-->
+				<!--	displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" id="IdMarriedSinceNew" dateValue="{path: 'NomineeFormModel>MarriedSinceNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	change="dateofMarriedSince" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"-->
+				<!--	editable="{path:'NomineeFormModel>MaritalStatusNew',formatter:'.formatter.maritalSince'}"/>-->
+				<Label text="Alternate Nominee Address" design="Bold" required="false"/>
+				<Input value="{NomineeFormModel>AlterNomineAddres}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{NomineeFormModel>AlterNomineAddresNew}" editable="false"/>
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<!--<Button text="Ok" type="Emphasized" class="sapUiSmallMarginEnd" press="onOkNomineeDailog"/>-->
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelNomineeDailogDisplay"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

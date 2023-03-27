@@ -1,0 +1,135 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog id="idRecuringPaymentdetailsDailogStopPopup" contentHeight="80%" contentWidth="100%"
+		title="Basic Component Details - Stop" resizable="true" draggable="true">
+		<f:SimpleForm id="idRecuringPaymentdetailsDailogStopform" editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+			adjustLabelSpan="true" emptySpanXL="1" emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<Text text="{i18n>NewDetails}"/>
+				<!--Member Type-->
+				<Label text="Wage Type" design="Bold" required="true"/>
+				<Input value="{RecurringTabFormModel>CurrWageType}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{RecurringTabFormModel>NewWageType}" editable="false"/>
+				<Label text="Wage Type Description" design="Bold" required="true"/>
+				<Input value="{RecurringTabFormModel>CurrWagetypeText}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{RecurringTabFormModel>NewWagetypeText}" editable="false" liveChange="oHandleWageTypeAmountNewLiveChange"/>
+				<Label text="Wage Type Amount" design="Bold" required="true"/>
+				<Input value="{RecurringTabFormModel>CurrAmount}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Input value="{RecurringTabFormModel>NewAmount}" editable="false" liveChange="oHandleWageTypeAmountNewLiveChange"/>
+				<Label text="Start Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'RecurringTabFormModel>CurrBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<DatePicker id="idStartDateNew_RecuringPaymentDailog_Stop" placeholder="Date"
+					dateValue="{path: 'RecurringTabFormModel>NewBegda',formatter:'.formatter.DOBchange'}" valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy"
+					editable="false" change="startateChangeNewRecuringPayment" maxDate="{path:'RecurringTabFormModel>NewBegda', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'RecurringTabFormModel>NewBegda', formatter:'.formatter.DOBmindate'}"/>
+				<!--<ComboBox editable="false" selectedKey="{RecurringTabFormModel>Gender}" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox editable="true" selectedKey="{RecurringTabFormModel>GenderNew}" change="genderFamilyChange">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<Label text="End Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'RecurringTabFormModel>CurrEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Input value="{RecurringTabFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker id="idEndDateNewRecuringPaymentDailog_stop" placeholder="Date"
+					dateValue="{path: 'RecurringTabFormModel>NewEndda',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"
+					editable="true" change="EndDateChangeNewRecuringPayment" maxDate="{path:'RecurringTabFormModel>NewEndda', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'RecurringTabFormModel>NewEndda', formatter:'.formatter.DOBmindate'}"/>
+				<!--<Label text="Aadhaar Number" design="Bold" required="true"/>-->
+				<!--<Input value="{RecurringTabFormModel>Aadharnumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{RecurringTabFormModel>AadharnumberNew}" editable="false" maxLength="12" change="handleAadharno"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Phone Number" design="Bold"/>-->
+				<!--<Input value="{RecurringTabFormModel>PhoneNumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{RecurringTabFormModel>PhoneNumberNew}" editable="false" maxLength="10" change="oHandlePhoneNoChange"-->
+				<!--	liveChange="oHandleAadharLiveChange"/>-->
+				<!--<Label text="Marital Status" design="Bold" required="false"/>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>MaritalStatus}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>MaritalStatusNew}" editable="false" change="changeMaritalStatus">-->
+				<!--	<core:Item key="1" text="Married"/>-->
+				<!--	<core:Item key="0" text="Un-Married"/>-->
+				<!--	<core:Item key="2" text="Widow"/>-->
+				<!--	<core:Item key="3" text="Divor"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Married Since" design="Bold" required="{= ${RecurringTabFormModel>MaritalStatusNew} === '1' ? true : false}"/>-->
+				<!--<DatePicker placeholder="Date" value="{path: 'RecurringTabFormModel>MarriedSince',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy"-->
+				<!--	displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" id="IdMarriedSinceNew" dateValue="{path: 'RecurringTabFormModel>MarriedSinceNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	change="dateofMarriedSince" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+				<!--editable="{path:'RecurringTabFormModel>MaritalStatusNew',formatter:'.formatter.maritalSince'}"/>-->
+				<!--<DatePicker placeholder="Date of Birth"-->
+				<!--	dateValue="{path: 'RecurringTabFormModel>DateOfBirthNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" change="dateofBirthFamily"/>-->
+				<!--<Label text="Disablity" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>Disablity}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>DisablityNew}" editable="false" change="DisablityCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{RecurringTabFormModel>Disablity}" editable="false"/>
+				<Input value="{RecurringTabFormModel>Disablity}" editable="true"/>-->
+				<!--<Label text="Alive" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>Alive}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>AliveNew}" editable="false" change="aliveFamilyCahnge">-->
+				<!--	<core:Item key="X" text="Yes"/>-->
+				<!--	<core:Item key="N" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<Label text="Date of Death" design="Bold" required="{path:'RecurringTabFormModel>/AliveNew',formatter:'.formatter.alive'}"/>-->
+				<!--<DatePicker placeholder="Date"-->
+				<!--	value="{path: 'RecurringTabFormModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+				<!--	valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<DatePicker placeholder="Date" dateValue="{path: 'RecurringTabFormModel>DateOfDeathNew',formatter:'.formatter.DOBchange'}"-->
+				<!--	valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" change="dateofDeathFamily"/>-->
+				<!--editable="{= ${RecurringTabFormModel>AliveNew} === 'N' ? true : false}"-->
+				<!--<Input value="{RecurringTabFormModel>DateOfDeath}" editable="false"/>-->
+				<!--<Input value="{RecurringTabFormModel>DateOfDeath}" editable="true"/>-->
+				<!--<Label text="Govt Employe" design="Bold" required="true"/>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>GovtEmploye}" editable="false" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox selectedKey="{RecurringTabFormModel>GovtEmployeNew}" editable="false" change="onfamGovEmpchange">-->
+				<!--	<core:Item key="01" text="Yes"/>-->
+				<!--	<core:Item key="02" text="No"/>-->
+				<!--</ComboBox>-->
+				<!--	<Input value="{RecurringTabFormModel>GovtEmploye}" editable="false"/>
+				<Input value="{RecurringTabFormModel>GovtEmployeNew}" editable="true"/>-->
+				<!--<Label text="Service Type" design="Bold" required="{path:'RecurringTabFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{RecurringTabFormModel>ServiceType}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{RecurringTabFormModel>ServiceTypeNew}" editable="false"/>-->
+				<!--editable="{= ${RecurringTabFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Employee Code" design="Bold" required="{path:'RecurringTabFormModel>GovtEmployeNew',formatter:'.formatter.govtEmp'}"/>-->
+				<!--<Input value="{RecurringTabFormModel>Employeecode}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Input value="{RecurringTabFormModel>EmployeecodeNew}" editable="false"/>-->
+				<!--editable="{= ${RecurringTabFormModel>GovtEmployeNew} === '01' ? true : false}"-->
+				<!--<Label text="Opetation" design="Bold" required="true"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="Ok" type="Emphasized" class="sapUiSmallMarginEnd" press="onOkRecuringPaymentsDailog"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelRecuringPaymentDialog"/>
+			   <!--OnPressCancelBasicComponentsdetailsDialogStop-->
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

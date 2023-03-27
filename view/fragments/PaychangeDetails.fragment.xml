@@ -1,0 +1,534 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:m="sap.uxap">
+	<VBox>
+		<!--<f:SimpleForm id="idpaycangeform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"-->
+		<!--	adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="3" columnsL="3" columnsM="3"-->
+		<!--	singleContainerFullSize="false" maxContainerCols="1" visible="true">-->
+		<!--	<f:content>-->
+		<!--		<core:Title/>-->
+		<!--		<Label text="PayScale Type" design="Bold"/>-->
+		<!--		<Text editable="false" text="{PaychangeModel>/PayscaleTypedesc}({PaychangeModel>/PayscaleType})"/>-->
+		<!--		<Label text="PayScale Area" design="Bold"/>-->
+		<!--		<Text editable="false" text="{PaychangeModel>/PayscaleAreadesc}({PaychangeModel>/PayscaleArea})"/>-->
+		<!--		<core:Title/>-->
+		<!--		<Label text="PayScale Group" design="Bold"/>-->
+		<!--		<Text editable="false" text="{PaychangeModel>/PayscaleGroup}"/>-->
+		<!--		<Label text="PayScale Level" design="Bold"/>-->
+		<!--		<Text editable="false" text="{PaychangeModel>/PayscaleLevel}"/>-->
+		<!--		<core:Title/>-->
+		<!--		<Label text="Next Increament Date" design="Bold"/>-->
+		<!--		<Text text="{path: 'PaychangeModel>Nextincrementdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+		<!--			editable="false"/>-->
+		<!--		<Label text="Basic Amount" design="Bold"/>-->
+		<!--		<Text editable="false" text="{PaychangeModel>/Basicamount}"/>-->
+		<!--	</f:content>-->
+		<!--</f:SimpleForm>-->
+		<f:SimpleForm editable="true" layout="ColumnLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2" adjustLabelSpan="true" emptySpanXL="1"
+			emptySpanL="1" emptySpanM="1" emptySpanS="1" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" maxContainerCols="1"
+			visible="true">
+			<f:content>
+				<Label/>
+				<Text text="Current PayScale Info"/>
+				<Text text="New PayScale Info"/>
+				<!--Member Type-->
+				<Label text="Effective Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'PaychangeModel>/OldEffectivedate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>
+				<!--<Input value="{BasicComponentFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker id="idEffectivHeaderdateNewBasicComponetsDailog" placeholder="Date"
+					dateValue="{path: 'PaychangeModel>/NewEffectivedate',formatter:'.formatter.DOBchange'}" valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy"
+					editable="{oViewModel>/Editable}" change="dateofNewEffectiveHeaderDate" maxDate="{path:'PaychangeModel>NewEffectivedate', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'PaychangeModel>/NewEffectivedate', formatter:'.formatter.DOBmindate'}"/>
+				<Label text="PayScale Type" design="Bold" required="true"/>
+				<Input value="{PaychangeModel>/PayscaleTypedesc}({PaychangeModel>/PayscaleType})" editable="false"/>
+				<Input id="idPayScaleTypeNew" value="{PaychangeModel>/PayscaleTypedescNew}({PaychangeModel>/PayscaleTypeNew})" editable="false"
+					showValueHelp="true" valueHelpOnly="true" valueHelpRequest="handleReqPayscaleType" name="{PaychangeModel>/PayscaleTypeNew}"
+					tooltip="{PaychangeModel>/PayscaleTypeNew}"/>
+				<Label text="PayScale Area" design="Bold" required="true"/>
+				<Input value="{PaychangeModel>/PayscaleAreadesc}({PaychangeModel>/PayscaleArea})" editable="false"/>
+				<!--visible="{oViewModel>/EditVisibility}"-->
+				<Input id="idPayScaleAreaNew" value="{PaychangeModel>/PayscaleAreadescNew}" 	editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true"
+					valueHelpRequest="handleReqPayscaleArea" name="{PaychangeModel>/PayscaleAreaNew}" tooltip="{PaychangeModel>/PayscaleAreaNew}"/>
+				<Label text="PayScale Group" design="Bold" required="true"/>
+				<Input value="{PaychangeModel>/PayscaleGroup}" editable="false"/>
+				<Input id="idPayScaleGroupNew" value="{PaychangeModel>/PayscaleGroupNew}"	editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true"
+					valueHelpRequest="handleReqPayscaleGroup" name="{PaychangeModel>/PayscaleGroupNew}" tooltip="{PaychangeModel>/PayscaleGroupNew}"/>
+				<Label text="PayScale Level" design="Bold" required="true"/>
+				<Input value="{PaychangeModel>/PayscaleLevel}" editable="false"/>
+				<!--<Input value="{PaychangeModel>/NewAmount}" editable="true" liveChange="onValueNameChange"/>-->
+				<Input value="{PaychangeModel>/PayscaleLevelNew}" 	editable="{oViewModel>/Editable}" showValueHelp="true" valueHelpOnly="true"
+					valueHelpRequest="handleReqPayscaleLevel" name="{PaychangeModel>/PayscaleLevelNew}" tooltip="{PaychangeModel>/PayscaleLevelNew}"/>
+				<!--<ComboBox editable="false" selectedKey="{PaychangeModel>Gender}" visible="{oViewModel>/EditVisibility}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox editable="true" selectedKey="{PaychangeModel>GenderNew}" change="genderFamilyChange">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Transgender"/>-->
+				<!--</ComboBox>-->
+				<Label text="Next Increament Date" design="Bold" required="true"/>
+				<DatePicker placeholder="Date"
+					value="{path: 'PaychangeModel>/Nextincrementdate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>
+				<!--<Input value="{BasicComponentFormModel>DateOfBirth'}" editable="false"/>-->
+				<DatePicker id="idEndDateNewBasicComponetsDailog" placeholder="Date"
+					dateValue="{path: 'PaychangeModel>/NextincrementdateNew',formatter:'.formatter.DOBchange'}" valueFormat="MM.dd.yyyy"
+					displayFormat="dd.MM.yyyy" 	editable="{oViewModel>/Editable}" change="dateofNextIncreamentDate"/>
+				<!--	maxDate="{path:'PaychangeModel>NextincrementdateNew', formatter:'.formatter.DOBmaxdate'}"
+					minDate="{path: 'PaychangeModel>/NextincrementdateNew', formatter:'.formatter.DOBmindate'}"-->
+				<Label text="Basic Amount" design="Bold" required="true"/>
+				<Input value="{PaychangeModel>/Basicamount}" editable="false"/>
+				<Input value="{PaychangeModel>/BasicamountNew}" editable="{oViewModel>/Editable}"/>
+			</f:content>
+		</f:SimpleForm>
+		<IconTabBar id="idPaychangeDetailsBar" select="onSelIcTabFamily" expandable="false" upperCase="false"
+			selectedKey="{oMainViewModel>/SelectedTabFamily}">
+			<items>
+				<IconTabFilter id="idBasicComponentsDataTab" iconColor="" text="Basic Components" key="BasicComp">
+					<!--<ScrollContainer>-->
+					<Table id="idBasicComponentsTable" itemPress="BasicComponentsTablItempress" mode="MultiSelect" inset="false" items="{BasicComponentModel>/}"
+						visible="true" alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders"
+						class="sapUiLargeMarginTop">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Total Records: 0" id="idBasicComponentsTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+								<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+								<ToolbarSpacer/>
+								<Button text="Reset" icon="sap-icon://synchronize" type="Emphasized" press="onResetBasicCompoDetail" tooltip="Reset"/>
+								<Button text="Add New Wage Type" icon="sap-icon://add-contact" type="Emphasized" press="onAddBasicComponWageType" tooltip="Add Row"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Edit Wage type" icon="sap-icon://add-contact" type="Emphasized" press="onEditWageTypePaychange" tooltip="Edit Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Stop Wage Type" icon="sap-icon://stop" type="Emphasized" press="onStopWageTypePaychange" tooltip="Stop Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<!--BasicComponentMemberNewAddConfirm-->
+								<Button text="Delete Wage Type" icon="sap-icon://delete" type="Emphasized" press="onDeleteWageTypeyRow" tooltip="Delete Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Display Wage Type" icon="sap-icon://show" type="Emphasized" press="onDisplayWageTypePaychange" tooltip="Display Wage Type"
+									class="sapUiSmallMarginEnd"/>
+								<!--enabled="{oViewModel>/Editable}"-->
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar design="Transparent">
+							<OverflowToolbar  design="Transparent" >
+								<core:Icon src="sap-icon://color-fill" size="16px" color="green" tooltip="Newly Added Members"/>
+								<Text text="Newly Added"/>
+								<core:Icon src="sap-icon://border" size="16px" color="#" tooltip="Existing Record Members"/>
+								<Text text="Existing Record"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5af87" tooltip="Mark for Stop Members"/>
+								<Text text="Marked for Stop"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="red" tooltip="Mark for Deletion Members"/>
+								<Text text="Marked for Delete"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5d222" tooltip="Mark for Update Members"/>
+								<Text text="Marked for Update"/>
+							</OverflowToolbar>
+						</infoToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center">
+								<Label text="S No" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Description" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Amount" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Start Date" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="End Date" design="Bold"/>
+							</Column>
+							<Column hAlign="Center" visible="false">
+								<Label text="Date of Origin" design="Bold"/>
+							</Column>
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Govt Employe" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Service Type" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Employee Code" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Marital Status" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Married Since" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Disablity" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Alive" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Date of Death" design="Bold"/>-->
+							<!--</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<customData>
+									<core:CustomData key="Action" value="{BasicComponentModel>Operation}" writeToDom="true"/>
+								</customData>
+								<cells>
+									<Text text="{BasicComponentModel>Serialno}" editable="false"/>
+									<Text text="{BasicComponentModel>CurrWageType}" editable="false"/>
+									<Text text="{BasicComponentModel>CurrWagetypeText}" editable="false"/>
+									<!--{BasicComponentModel>Gender}-->
+									<Text text="{BasicComponentModel>NewAmount}" editable="false"/>
+									<!--{= ${BasicComponentModel>Gender} === '01' ? 'Yes' : 'No'}-->
+									<!--	<ComboBox selectedKey="{BasicComponentModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+									<!-- {path: 'BasicComponentModel>DateOfBirth', formatter: '.formatter.oDateFormatter'}-->
+									<Text text="{path: 'BasicComponentModel>NewBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+										editable="false"/>
+									<Text text="{path: 'BasicComponentModel>NewEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<Text text="{path: 'BasicComponentModel>CurrDateOfOrgin', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<!--<Text text="{BasicComponentModel>Aadharnumber}" editable="false"/>-->
+									<!--<Text text="{path: 'BasicComponentModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{path: 'BasicComponentModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{BasicComponentModel>PhoneNumber}" editable="false"/>-->
+									<!--<Text text="{= ${BasicComponentModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>-->
+									<!--<Text text="{BasicComponentModel>ServiceType}" editable="false"/>-->
+									<!--<Text text="{BasicComponentModel>Employeecode}" editable="false"/>-->
+									<!--<Text text="{BasicComponentModel>MaritalStatus}" editable="false"/>-->
+									<!--	<ComboBox selectedKey="{BasicComponentModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+									<!--<Text text="{path: 'BasicComponentModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+									<!--	<DatePicker placeholder="Date"
+							value="{path: 'BasicComponentModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+									<!--<Input value="{BasicComponentModel>MARRIED_SINCE}"/>-->
+									<!--<Input text="{BasicComponentModel>Disablity}" editable="false"/>-->
+									<!--<Text text="{BasicComponentModel>Alive}" editable="false"/>-->
+									<!--<ComboBox selectedKey="{BasicComponentModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+									<!--<Text text="{BasicComponentModel>DateOfDeath}" editable="false"/>-->
+									<!--<Text text="{path: 'BasicComponentModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					<!--</ScrollContainer>-->
+				</IconTabFilter>
+				<IconTabFilter id="idRecuringPaymentab" iconColor="" text="Recurring Payments / Deductions" key="RecuringPayment">
+					<!--		</m:ObjectPageSubSection>-->
+					<!--	</m:subSections>-->
+					<!--</m:ObjectPageSection>-->
+					<!--<m:ObjectPageSection title="Nominees">-->
+					<!--	<m:subSections>-->
+					<!--		<m:ObjectPageSubSection title="">-->
+					<Table id="idRecuringPaymentTable" itemPress="RecuringPaymentTablItempress" mode="MultiSelect" inset="false" items="{RecurringTabModel>/}"
+						visible="true" alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders"
+						class="sapUiLargeMarginTop">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Total Records: 0" id="idRecuringPaymentTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+							
+								<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+								<ToolbarSpacer/>
+								<Button text="Reset" icon="sap-icon://synchronize" type="Emphasized" press="onResetBasicCompoDetail" tooltip="Reset"/>
+								<Button text="Add New Wage Type" icon="sap-icon://add-contact" type="Emphasized" press="onAddBasicComponWageType" tooltip="Add Row"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Edit Wage type" icon="sap-icon://add-contact" type="Emphasized" press="onEditRecuringPaymentPaychange"
+									tooltip="Edit Wage Type" enabled="{oViewModel>/Editable}"/>
+								<Button text="Stop Wage Type" icon="sap-icon://stop" type="Emphasized" press="onStopRecuringPaymentPaychange" tooltip="Stop Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<!--BasicComponentMemberNewAddConfirm-->
+								<Button text="Delete Wage Type" icon="sap-icon://delete" type="Emphasized" press="onDeleteWageTypeyRow" tooltip="Delete Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Display Wage Type" icon="sap-icon://show" type="Emphasized" press="onDisplayRecurringPaymentsWageTypePaychange"
+									tooltip="Display Wage Type" class="sapUiSmallMarginEnd"/>
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+							<infoToolbar design="Transparent">
+							<OverflowToolbar  design="Transparent" >
+								<core:Icon src="sap-icon://color-fill" size="16px" color="green" tooltip="Newly Added Members"/>
+								<Text text="Newly Added"/>
+								<core:Icon src="sap-icon://border" size="16px" color="#" tooltip="Existing Record Members"/>
+								<Text text="Existing Record"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5af87" tooltip="Mark for Stop Members"/>
+								<Text text="Marked for Stop"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="red" tooltip="Mark for Deletion Members"/>
+								<Text text="Marked for Delete"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5d222" tooltip="Mark for Update Members"/>
+								<Text text="Marked for Update"/>
+							</OverflowToolbar>
+						</infoToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center">
+								<Label text="S No" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Description" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Amount" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Start Date" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="End Date" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Date of Origin" design="Bold"/>
+							</Column>
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Phone Number" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Govt Employe" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Service Type" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Employee Code" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Marital Status" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Married Since" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Disablity" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Alive" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Date of Death" design="Bold"/>-->
+							<!--</Column>-->
+							<!--	<Column visible="false" hAlign="Center">
+					<Label text="Operation" design="Bold"/>
+				</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<customData>
+									<core:CustomData key="Action" value="{RecurringTabModel>Operation}" writeToDom="true"/>
+								</customData>
+								<cells>
+									<Text text="{RecurringTabModel>Serialno}" editable="false"/>
+									<Text text="{RecurringTabModel>CurrWageType}" editable="false"/>
+									<Text text="{RecurringTabModel>CurrWagetypeText}" editable="false"/>
+									<Text text="{RecurringTabModel>NewAmount}" editable="false"/>
+									<!--{= ${FamilyModel>Gender} === '01' ? 'Yes' : 'No'}-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+									<Text text="{path: 'RecurringTabModel>NewBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<Text text="{path: 'RecurringTabModel>NewEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<Text text="{path: 'RecurringTabModel>CurrDateOfOrgin', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<!--<Text text="{RecurringTabFormModel>NomineShare}" editable="false"/>-->
+									<!--<Text text="{path: 'FamilyModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{path: 'FamilyModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{FamilyModel>PhoneNumber}" editable="false"/>-->
+									<!--<Text text="{= ${FamilyModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>ServiceType}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Employeecode}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>MaritalStatus}" editable="false"/>-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+									<!--<Text text="{path: 'FamilyModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+									<!--	<DatePicker placeholder="Date"
+							value="{path: 'FamilyModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+									<!--<Input value="{FamilyModel>MARRIED_SINCE}"/>-->
+									<!--<Input text="{FamilyModel>Disablity}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Alive}" editable="false"/>-->
+									<!--<ComboBox selectedKey="{FamilyModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+									<!--<Text text="{FamilyModel>DateOfDeath}" editable="false"/>-->
+									<!--<Text text="{path: 'FamilyModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+				<IconTabFilter id="idAdditionalPaymentstab" iconColor="" text="Additional Payments" key="AdditionalPayments">
+					<Table id="idAdditionalPaymentsTable" itemPress="AdditionalPaymentsTablItempress" mode="MultiSelect" inset="false"
+						items="{AdditionalPaymentsTabModel>/}" visible="true" alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false"
+						sticky="ColumnHeaders" class="sapUiLargeMarginTop">
+						<headerToolbar>
+							<Toolbar>
+								<Title text="Total Records: 0" id="idAdditionalPaymentstTableRec" class="sapUiLargeMarginEnd" level="H2"></Title>
+							
+								<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+								<ToolbarSpacer/>
+								<Button text="Reset" icon="sap-icon://synchronize" type="Emphasized" press="onResetBasicCompoDetail" tooltip="Reset"/>
+								<Button text="Add New Wage Type" icon="sap-icon://add-contact" type="Emphasized" press="onAddBasicComponWageType" tooltip="Add Row"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Edit Wage type" icon="sap-icon://add-contact" type="Emphasized" press="onEditAdditionalPaymentsPaychange"
+									tooltip="Edit Wage Type" enabled="{oViewModel>/Editable}"/>
+								<Button text="Stop Wage Type" icon="sap-icon://stop" type="Emphasized" press="onStopAdditionalPaymentsPaychange" tooltip="Stop Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<!--BasicComponentMemberNewAddConfirm-->
+								<Button text="Delete Wage Type" icon="sap-icon://delete" type="Emphasized" press="onDeleteWageTypeyRow" tooltip="Delete Wage Type"
+									enabled="{oViewModel>/Editable}"/>
+								<Button text="Display Wage Type" icon="sap-icon://show" type="Emphasized" press="onDisplayAdditionalPaymentsWageTypePaychange"
+									tooltip="Display Wage Type" class="sapUiSmallMarginEnd"/>
+								<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+							</Toolbar>
+						</headerToolbar>
+							<infoToolbar design="Transparent">
+							<OverflowToolbar  design="Transparent" >
+								<core:Icon src="sap-icon://color-fill" size="16px" color="green" tooltip="Newly Added Members"/>
+								<Text text="Newly Added"/>
+								<core:Icon src="sap-icon://border" size="16px" color="#" tooltip="Existing Record Members"/>
+								<Text text="Existing Record"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5af87" tooltip="Mark for Stop Members"/>
+								<Text text="Marked for Stop"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="red" tooltip="Mark for Deletion Members"/>
+								<Text text="Marked for Delete"/>
+								<core:Icon src="sap-icon://color-fill" size="16px" color="#f5d222" tooltip="Mark for Update Members"/>
+								<Text text="Marked for Update"/>
+							</OverflowToolbar>
+						</infoToolbar>
+						<columns>
+							<Column visible="true" hAlign="Center">
+								<Label text="S No" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Description" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Wage Type Amount" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="Start Date" design="Bold"/>
+							</Column>
+							<Column visible="false" hAlign="Center">
+								<Label text="End Date" design="Bold"/>
+							</Column>
+							<Column visible="true" hAlign="Center">
+								<Label text="Date of Origin" design="Bold"/>
+							</Column>
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Phone Number" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Govt Employe" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Service Type" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="true" hAlign="Center">-->
+							<!--	<Label text="Employee Code" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Marital Status" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Married Since" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Disablity" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Alive" design="Bold"/>-->
+							<!--</Column>-->
+							<!--<Column visible="false" hAlign="Center">-->
+							<!--	<Label text="Date of Death" design="Bold"/>-->
+							<!--</Column>-->
+							<!--	<Column visible="false" hAlign="Center">
+					<Label text="Operation" design="Bold"/>
+				</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+								<customData>
+									<core:CustomData key="Action" value="{AdditionalPaymentsTabModel>Operation}" writeToDom="true"/>
+								</customData>
+								<cells>
+									<Text text="{AdditionalPaymentsTabModel>MembertypeDesc}" editable="false"/>
+									<Text text="{AdditionalPaymentsTabModel>CurrWageType}" editable="false"/>
+									<Text text="{AdditionalPaymentsTabModel>CurrWagetypeText}" editable="false"/>
+									<Text text="{AdditionalPaymentsTabModel>NewAmount}" editable="false"/>
+									<!--{= ${FamilyModel>Gender} === '01' ? 'Yes' : 'No'}-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/GENDER}" editable="false">
+							<core:Item key="01" text="Yes"/>
+							<core:Item key="02" text="No"/>
+						</ComboBox>-->
+									<Text text="{path: 'AdditionalPaymentsTabModel>NewBegda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<Text text="{path: 'AdditionalPaymentsTabModel>NewEndda', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<Text text="{path: 'AdditionalPaymentsTabModel>NewDateOfOrgin', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "
+										editable="false"/>
+									<!--<Text text="{AdditionalPaymentsTabModel>NomineShare}" editable="false"/>-->
+									<!--<Text text="{path: 'FamilyModel>PHONE_NUMBER', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{path: 'FamilyModel>ReceivedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>-->
+									<!--<Text text="{FamilyModel>PhoneNumber}" editable="false"/>-->
+									<!--<Text text="{= ${FamilyModel>GovtEmploye} === '01' ? 'Yes' : 'No'}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>ServiceType}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Employeecode}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>MaritalStatus}" editable="false"/>-->
+									<!--	<ComboBox selectedKey="{FamilyModel>/MaritalStatus}" editable="false">
+							<core:Item key="1" text="Married"/>
+							<core:Item key="2" text="Un-Married"/>
+						</ComboBox>-->
+									<!--<Text text="{path: 'FamilyModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" editable="false"/>-->
+									<!--	<DatePicker placeholder="Date"
+							value="{path: 'FamilyModel>/MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+							valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="false"/>-->
+									<!--<Input value="{FamilyModel>MARRIED_SINCE}"/>-->
+									<!--<Input text="{FamilyModel>Disablity}" editable="false"/>-->
+									<!--<Text text="{FamilyModel>Alive}" editable="false"/>-->
+									<!--<ComboBox selectedKey="{FamilyModel>/Alive}" editable="false">
+							<core:Item key="X" text="True"/>
+							<core:Item key="" text="False"/>
+						</ComboBox>-->
+									<!--<Text text="{FamilyModel>DateOfDeath}" editable="false"/>-->
+									<!--<Text text="{path: 'FamilyModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} " editable="false"/>-->
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Reason for Change :" design="Bold" required="true"/>
+			<!--<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Reason for Change :"/>
+							</OverflowToolbar>
+						</headerToolbar>-->
+			<TextArea value="{PaychangeModel>/Comments}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

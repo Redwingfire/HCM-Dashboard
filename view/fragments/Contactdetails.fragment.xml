@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<f:SimpleForm id="IdContact" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2" labelSpanM="2"
+		adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="6" columnsXL="1" columnsL="1" columnsM="1"
+		singleContainerFullSize="false" maxContainerCols="1" visible="true">
+		<f:content>
+			<!--<core:Title/>-->
+			<core:Title text="Contact Details :"></core:Title>
+			<Label/>
+			<Text text="{i18n>CurrentDetails}"/>
+			<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+			<Label text="{i18n>Phonenumber}" design="Bold"/>
+			<Input value="{ContactModel>/PhoneNumber}" visible="true" id="contact2" editable="false"/>
+			<Input value="{ContactModel>/PhoneNumberNew}" visible="{oViewModel>/EditVisibility}" maxLength="10" change="oHandlePhoneNoChange" liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"/>
+			<Label text="{i18n>Emailaddress}" design="Bold"/>
+			<Input value="{ContactModel>/EmailId}" visible="true" id="contact4" editable="false" type="Email"/>
+			<Input value="{ContactModel>/EmailAddressNew}" visible="{oViewModel>/EditVisibility}" type="Email" change="oHanldeEmailChange" editable="{oViewModel>/Editable}"/>
+			<Label/>
+			<!--<Button text="Edit" press="onEditContactDetails" width="20%" type="Emphasized"/>-->
+		</f:content>
+	</f:SimpleForm>
+</core:FragmentDefinition>

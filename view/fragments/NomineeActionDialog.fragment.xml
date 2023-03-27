@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Nominee"
+		confirm="ConfirmNomineeDialog" liveChange="liveNomineeDailogsearch" cancel="CloseNomineeDialog" items="{NomineeDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{NomineeDialogModel>ValueDesc}" description="{NomineeDialogModel>ValueId}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

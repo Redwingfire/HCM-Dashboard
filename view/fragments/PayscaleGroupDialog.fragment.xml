@@ -1,0 +1,13 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Pay Scale Group"
+		confirm="ConfirmPayscaleGroupDialog" liveChange="livePayscaleGroupearch" cancel="ClosePayscaleGroupDialog" items="{PayscaleGroupDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{PayscaleGroupDialogModel>Payscalegroup}" />
+		<!--description="{PayscaleGroupDialogModel>Payscalegroup}"-->
+	</SelectDialog>
+</core:FragmentDefinition>

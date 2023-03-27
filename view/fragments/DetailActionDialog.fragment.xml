@@ -1,0 +1,12 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog resizable="true" title="Select Family Memeber"
+		confirm="ConfirmDetailDialog" liveChange="livechangesearch" cancel="CloseDisplayDialog" items="{FamilyAddMembDialogModel>/}"
+		draggable="true">
+		<StandardListItem title="{FamilyAddMembDialogModel>ValueDesc}" description="{FamilyAddMembDialogModel>ValueId}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

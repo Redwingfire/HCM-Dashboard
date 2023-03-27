@@ -1,0 +1,45 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="Checklist ">
+		<!--for {DetailEmployeeHeaderModel>/EmployeeName}'s Transfer-Admin Ground-->
+		<Table items="{CheckListModel>/results}">
+			<headerToolbar>
+				<OverflowToolbar>
+					<ToolbarSpacer/>
+					<Button id="AddCheckListBtnId" text="Add New Checklist" press="OnPressNewCheckList"/>
+				</OverflowToolbar>
+			</headerToolbar>
+			<columns>
+				<Column vAlign="Middle" width="7rem">
+					<Text text="Sr. No."/>
+				</Column>
+				<Column vAlign="Middle" width="40rem">
+					<Text text="Check list description"/>
+				</Column>
+				<Column vAlign="Middle" width="15rem">
+					<Text text="Yes/No/NA"/>
+				</Column>
+			</columns>
+			<ColumnListItem>
+				<Text text="{CheckListModel>Seqno}"/>
+				<Input editable="{CheckListModel>DescriptionEditable}" value="{CheckListModel>ChecklistDescription}"/>
+				<SegmentedButton id="SegmentBtnCheckListId" selectedItem="None" selectedKey="{CheckListModel>ChecklistValue}">
+					<items>
+						<SegmentedButtonItem visible="false" key=""/>
+						<SegmentedButtonItem text="Yes" key="Yes"/>
+						<SegmentedButtonItem text="No" key="No"/>
+						<SegmentedButtonItem text="N/A" key="NA"/>
+					</items>
+				</SegmentedButton>
+			</ColumnListItem>
+		</Table>
+		<buttons>
+			<Button id="SaveChecklistBtnId" text="Save" type="Emphasized" press="OnPressSaveCheckList"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelCheckList"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

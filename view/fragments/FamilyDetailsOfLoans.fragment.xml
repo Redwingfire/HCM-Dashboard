@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Table id="idFamilyTableofLoans" mode="None" inset="false" items="{FamilyLoansModel>/}" visible="true" alternateRowColors="true" growing="true"
+		growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders">
+		<columns>
+			<Column visible="true" hAlign="Center">
+				<Label text="Family Member" design="Bold"/>
+			</Column>
+			<Column visible="true" hAlign="Center">
+				<Label text="First Name" design="Bold"/>
+			</Column>
+			<Column visible="true" hAlign="Center">
+				<Label text="Last Name" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Gender" design="Bold"/>
+			</Column>
+			<Column visible="true" hAlign="Center">
+				<Label text="Date of Birth" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Aadhaar Number" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Phone Number" design="Bold"/>
+			</Column>
+			<Column visible="true" hAlign="Center">
+				<Label text="Govt Employe" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Service Type" design="Bold"/>
+			</Column>
+			<Column visible="true" hAlign="Center">
+				<Label text="Employee Code" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Marital Status" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Married Since" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Disablity" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Alive" design="Bold"/>
+			</Column>
+			<Column visible="false" hAlign="Center">
+				<Label text="Date of Death" design="Bold"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<Text text="{FamilyLoansModel>MembertypeDesc}"/>
+					<Text text="{FamilyLoansModel>FirstName}"/>
+					<Text text="{FamilyLoansModel>LastName}"/>
+					<Text text="{FamilyLoansModel>GenderDesc}"/>
+					<Text text="{path: 'FamilyLoansModel>DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+					<Text text="{FamilyLoansModel>Aadharnumber}"/>
+					<Text text="{FamilyLoansModel>PhoneNumber}"/>
+					<Text text="{= ${FamilyLoansModel>GovtEmploye} === '01' ? 'Yes' : 'No'}"/>
+					<Text text="{FamilyLoansModel>ServiceType}"/>
+					<Link text="{FamilyLoansModel>Employeecode}"  emphasized="true" press="onemphrinfo" ></Link>
+					<!--<Text text="{FamilyLoansModel>Employeecode}"/>-->
+					<Text text="{FamilyLoansModel>MaritalStatus}"/>
+					<Text text="{path: 'FamilyLoansModel>MarriedSince', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"/>
+					<Text text="{FamilyLoansModel>Disablity}"/>
+					<Text text="{FamilyLoansModel>Alive}"/>
+					<Text text="{path: 'FamilyLoansModel>DateOfDeath', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }} "/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

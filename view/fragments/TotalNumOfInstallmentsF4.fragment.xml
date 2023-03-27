@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--<SelectDialog resizable="true" title="Select Total Number Of Installments" confirm="ConfirmTotalNumOfInstallmentsDialog" growingThreshold="100"-->
+	<!--	liveChange="livechangeSearch" search="livechangeSearch" cancel="CloseAdvanceForwhomDialog"-->
+	<!--	items="{ path: '/', sorter: { path: 'MonthlyInstallmentAmt' } }" draggable="true">-->
+	<!--	<StandardListItem title="{MonthlyInstallmentAmt}" description="{Numberofinstalment}"/>-->
+	<!--</SelectDialog>-->
+	<TableSelectDialog contentWidth="50%" resizable="true" title="Select Total Number Of Installments"
+		confirm="ConfirmTotalNumOfInstallmentsDialog" growingThreshold="100" liveChange="livechangeSearch" search="livechangeSearch"
+		cancel="CloseAdvanceForwhomDialog" items="{/}" draggable="true">
+		<ColumnListItem vAlign="Middle">
+			<cells>
+				<Text text="{Numberofinstalment} Months"/>
+				<Text text="{MonthlyInstallmentAmt}"/>
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column>
+				<header>
+					<Text text="Number of Instalment"/>
+				</header>
+			</Column>
+			<Column>
+				<header>
+					<Text text="Installment Amount per Month"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

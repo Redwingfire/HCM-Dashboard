@@ -1,0 +1,205 @@
+{
+    "_version": "1.7.0",
+    "sap.app": {
+        "id": "com.hcm.dashZHCM_DASHBOARD",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "sourceTemplate": {
+            "id": "servicecatalog.connectivityComponent",
+            "version": "0.0.0"
+        },
+        "dataSources": {
+            "ZGW_HCM_ELCM_EASY_ACTION_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGW_HCM_ELCM_EASY_ACTION_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml",
+                    "annotations": [
+                        "ODataAnnotation1"
+                    ]
+                }
+            },
+            "ODataAnnotation1": {
+                "uri": "/sap/opu/odata/iwfnd/CATALOGSERVICE;v=0002/Annotations(TechnicalName='ZGW_HCM_ELCM_EASY_ACTIO_ANNO_MDL',Version='0001')/$value",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "/metadata.xml"
+                }
+            },
+            "ZGW_HCM_ESS_PF_SRV_01": {
+                "uri": "/sap/opu/odata/sap/ZGW_HCM_ESS_PF_SRV_01/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGW_HCM_ESS_PF_SRV_01/metadata.xml",
+                    "annotations": [
+                        "ODataAnnotation2"
+                    ]
+                }
+            },
+            "ODataAnnotation2": {
+                "uri": "/sap/opu/odata/iwfnd/CATALOGSERVICE;v=0002/Annotations(TechnicalName='ZGW_HCM_ESS_PF_ANNO_MDL',Version='0001')/$value",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "/metadata.xml"
+                }
+            },
+            "ZZHCMFAB_LEAVE_REQUEST_CR_SRV": {
+                "uri": "/sap/opu/odata/sap/ZZHCMFAB_LEAVE_REQUEST_CR_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZZHCMFAB_LEAVE_REQUEST_CR_SRV/metadata.xml"
+                }
+            },
+            "ZGW_HCM_UPDATE_PAY_AND_ATT_SRV": {
+                "uri": "/sap/opu/odata/sap/ZGW_HCM_UPDATE_PAY_AND_ATT_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/ZGW_HCM_UPDATE_PAY_AND_ATT_SRV/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_hcb",
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "com.hcm.dashZHCM_DASHBOARD.view.App",
+            "type": "XML"
+        },
+        "dependencies": {
+            "minUI5Version": "1.30.0",
+            "libs": {
+                "sap.collaboration": {},
+                "sap.m": {},
+                "sap.ui.comp": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.ushell": {},
+                "sap.uxap": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.hcm.dashZHCM_DASHBOARD.i18n.i18n"
+                }
+            },
+            "": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGW_HCM_ELCM_EASY_ACTION_SRV",
+                "preload": true
+            },
+            "leavereq": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZZHCMFAB_LEAVE_REQUEST_CR_SRV",
+                "preload": true
+            },
+            "GWHCMPAY": {
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "settings": {
+                    "defaultOperationMode": "Server",
+                    "defaultBindingMode": "OneTime",
+                    "defaultCountMode": "Request"
+                },
+                "dataSource": "ZGW_HCM_UPDATE_PAY_AND_ATT_SRV",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "targets": {
+                "Details": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Detailspage"
+                },
+                "Masterpage": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearAggregation": true,
+                    "viewName": "Masterpage"
+                }
+            },
+            "routes": [
+                {
+                    "name": "Details",
+                    "pattern": "Details/:reqGuid:/:empId:/:appName:/:procesTitle:/:empInf:",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Details"
+                    ]
+                },
+                {
+                    "name": "Masterpage",
+                    "pattern": "",
+                    "titleTarget": "",
+                    "greedy": false,
+                    "target": [
+                        "Masterpage"
+                    ]
+                }
+            ],
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewPath": "com.hcm.dashZHCM_DASHBOARD.view",
+                "viewType": "XML",
+                "controlId": "app",
+                "controlAggregation": "pages"
+            }
+        }
+    },
+    "sap.platform.abap": {
+        "uri": "/sap/bc/ui5_ui5/sap/zhcm_dashboard",
+        "_version": "1.1.0"
+    }
+}

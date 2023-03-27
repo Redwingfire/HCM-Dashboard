@@ -1,0 +1,117 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<VBox class="sapUiSmallMargin">
+		<HBox >
+			<!--<Label text="File Effecive Date" design="Bold" class="sapUiLargeMarginTopRight"/>-->
+			<Text text="Effective Date:" class="sapUiMediumMarginBegin sapUiTinyMarginTop"/>
+			<DatePicker placeholder="Date " class="sapUiSmallMarginBegin" id="idSeparationEffectDate"
+				value="{path: 'SeparationModel>/EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>
+		</HBox>
+		<!--<IconTabBar id="idIcTabBar" select="onSelIcTab" expandable="false" upperCase="true" selectedKey="{oMainViewModel>/SelectedTab}">-->
+		<!--	<items>-->
+		<!--		<IconTabFilter id="idBasicTab" iconColor="" text="Basic Details" key="Basic" >-->
+		<f:SimpleForm id="idSeparationDetailsform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			adjustLabelSpan="true" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="4" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<core:Title text="Separation Details :"></core:Title>
+				<!--<Label/>-->
+				<!--<Text text="{i18n>CurrentDetails}"/>-->
+				<!--<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>-->
+				<!--<Label text="{i18n>Title}" design="Bold"/>-->
+				<!--<ComboBox editable="false" selectedKey="{SeparationModel>/Title}">-->
+				<!--	<core:Item key="1" text="Ms"/>-->
+				<!--	<core:Item key="2" text="Mrs"/>-->
+				<!--	<core:Item key="3" text="Mr"/>-->
+				<!--	<core:Item key="4" text="Prof"/>-->
+				<!--	<core:Item key="6" text="Dr"/>-->
+				<!--	<core:Item key="7" text="TGNDR"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox visible="{oViewModel>/EditVisibility}" selectedKey="{SeparationModel>/TitleNew}" editable="{oViewModel>/Editable}">-->
+				<!--	<core:Item key="1" text="Ms"/>-->
+				<!--	<core:Item key="2" text="Mrs"/>-->
+				<!--	<core:Item key="3" text="Mr"/>-->
+				<!--	<core:Item key="4" text="Prof"/>-->
+				<!--	<core:Item key="6" text="Dr"/>-->
+				<!--	<core:Item key="7" text="TGNDR"/>-->
+				<!--</ComboBox>-->
+				<Label text="Position Info" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/FromPositionName} ({SeparationModel>/FromPositionId})"/>
+				<!--<Input value="{SeparationModel>/FirstnameNew}" visible="{oViewModel>/EditVisibility}" liveChange="onValueChange" editable="{oViewModel>/Editable}"/>-->
+				<Label text="Job Name" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/FromJobName}({SeparationModel>/FromJobId})"/>
+				<!--<Input value="{SeparationModel>/LastnameNew}" visible="{oViewModel>/EditVisibility}" liveChange="onValueChange" editable="{oViewModel>/Editable}"/>-->
+				<Label text="Office Name" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/FromOfficeName}({SeparationModel>/FromOfficeId})"/>
+				<!--<DatePicker editable="false" placeholder="Date of Birth"-->
+				<!--	value="{path: 'SeparationModel>/DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" displayFormat="dd.MM.yyyy"-->
+				<!--	id="dateofBirth" valueFormat="dd.MM.yyyy"/>-->
+				<!--<DatePicker visible="{oViewModel>/EditVisibility}" placeholder="Date of Birth"-->
+				<!--	value="{path: 'SeparationModel>/DateOfBirthNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" id="dateofBirthNew"-->
+				<!--	valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>-->
+				<Label text="DDO info" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/FromDdoName}({SeparationModel>/FromDdoId})"/>
+				<!--<ComboBox editable="false" selectedKey="{SeparationModel>/Gender}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Others"/>-->
+				<!--</ComboBox>-->
+				<!--<ComboBox visible="{oViewModel>/EditVisibility}" selectedKey="{SeparationModel>/GenderNew}" editable="{oViewModel>/Editable}">-->
+				<!--	<core:Item key="1" text="Male"/>-->
+				<!--	<core:Item key="2" text="Female"/>-->
+				<!--	<core:Item key="3" text="Others"/>-->
+				<!--</ComboBox>-->
+				<Label text="Date of Birth" design="Bold"/>
+				<!--<Input editable="false" value="{SeparationModel>/DateOfBirth}"/>-->
+				<DatePicker placeholder="Date "  editable="false"
+				value="{path: 'SeparationModel>/DateOfBirth', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" />
+				<Label text="Date of Joining" design="Bold"/>
+				<!--<Input editable="false" value="{SeparationModel>/DateOfJoining}"/>-->
+				<DatePicker placeholder="Date "  editable="false"
+				value="{path: 'SeparationModel>/DateOfJoining', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" />
+				<!--<DatePicker editable="false" value="{SeparationModel>/Marriedsince}" displayFormat="dd/MM/yyyy"  placeholder="Date"/>-->
+				<!--<DatePicker value="{path: 'SeparationModel>/MarriedsinceNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+				<!--	visible="{oViewModel>/EditVisibility}" displayFormat="dd/MM/yyyy" id="marriedSinceNew" placeholder="Date" valueFormat="dd.MM.yyyy"-->
+				<!--	editable="{oViewModel>/Editable}"/>-->
+				<!--<core:Title text="Personal ID's Details :"></core:Title>-->
+				<Label text="Expected Date of Separation" design="Bold"/>
+				<!--<Input value="{SeparationModel>/EffectiveDate}" editable="false"/>-->
+				<DatePicker placeholder="Date "  editable="false"
+				value="{path: 'SeparationModel>/EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+				valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" />
+				<Label text="Department info" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/DeptDesc}({SeparationModel>/DepartmentId})"/>
+				<Label text="Location Info" design="Bold"/>
+				<Input editable="false" value="{SeparationModel>/FromLocation}"/>
+				<!--<Input value="{SeparationModel>/AadharNew}" visible="{oViewModel>/EditVisibility}" maxLength="12" change="handleAadharno"-->
+				<!--	liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"/>-->
+				<!--<Label text="Employee Sub Group" design="Bold"/>-->
+				<!--<Input value="{SeparationModel>/EmployeeSubGroup}" editable="false"/>-->
+				<!--<Input value="{SeparationModel>/PannumberNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" change="handlePancard"/>-->
+				<!--<Label text="Date of receipt of the note" design="Bold"/>-->
+				<!--<DatePicker placeholder="Date " id="idSuspenDateOfReceiptNote"-->
+				<!--	value="{path: 'SeparationModel>/ReceiptNoteDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"-->
+					<!--displayFormat="dd.MM.yyyy" valueFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}"/>-->
+				<!--<Input value="{SeparationModel>/ReceiptNoteDate}"/>-->
+				<!--<Label text="Nature of the case" design="Bold"/>-->
+				<!--<Input value="{SeparationModel>/NatureOtTheCase}" editable="false" visible="{= ${SeparationModel>/ActionReasonId} === '01' ? true : false}"/>-->
+				<!--<Label text="Date of the order" design="Bold"/>-->
+				<!--<Input value="{SeparationModel>/OrderDate}" editable="false"-->
+				<!--	visible="{path:'SeparationModel>/ActionReasonId',formatter:'.formatter.suspenOrderDate'}"/>-->
+				<!--<Label text="Mod of the order received " design="Bold"/>-->
+				<!--<Input value="{SeparationModel>/OrderMode}" editable="false" visible="{= ${SeparationModel>/ActionReasonId} === '03' ? true : false}"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Reason for Separation :" design="Bold" required="true"/>
+			<headerToolbar>
+				<!--	<OverflowToolbar>
+						<Title text="Reason for Suspention :" required="true"/>
+					</OverflowToolbar>-->
+			</headerToolbar>
+			<TextArea value="{SeparationModel>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+	</VBox>
+</core:FragmentDefinition>

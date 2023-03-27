@@ -1,0 +1,87 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin"> 
+	<HBox >
+	<Label text="Batch Number " required="true" design="Bold" visible="true" id="lblbno" class="sapUiTinyMarginTop sapUiSmallMarginEnd"/>
+	<Input showValueHelp="true" valueHelpRequest="onPressbatchnoF4" id="inpbno" placeholder="Select Batch No" valueHelpOnly="true"
+		textAlign="Left" visible="true"/>
+		 </HBox>
+	<ScrollContainer >
+		<Table id="regularfrag" itemPress="GroupTrnsfTablItempress" mode="MultiSelect" inset="false" items="{GroupTransferModel>/}" visible="true"
+			alternateRowColors="true" growing="true" growingThreshold="50" fixedLayout="false" sticky="ColumnHeaders" class="sapUiLargeMarginTop">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Total Records: 0" id="idTabregulartit" level="H2"></Title>
+					<!--		<SearchField id="searchField" liveChange="onSearchInbox" tooltip="Search" width="auto"></SearchField>-->
+					<ToolbarSpacer/>
+					<!--<Button text="Add Employee" icon="sap-icon://add-contact" type="Emphasized" press="onAddEmployeeRow" tooltip="Add Row"
+						enabled="{oViewModel>/Editable}"/>
+					<Button text="Remove" icon="sap-icon://delete" type="Reject" press="onDeleteGrouptransferEmpRow" tooltip="Delete Row"
+						enabled="{oViewModel>/Editable}" class="sapUiSmallMarginEnd"/>-->
+					<!--<core:Icon src="sap-icon://excel-attachment" size="16px" color="green" press="onExcelDownload" tooltip="Download excel"/>-->
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Select" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Batch Number" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Employee Numebr" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Employee Name" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Overall Rank" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center" demandPopin="true">
+					<Label text="Designation name" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="Office Name" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="DDO Name" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="Department name" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="Date of Joining" design="Bold"/>
+				</Column>
+				<Column visible="false" hAlign="Center" demandPopin="true">
+					<Label text="Date of Regularization" design="Bold"/>
+				</Column>
+				<Column visible="true" hAlign="Center">
+					<Label text="Remarks" design="Bold"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Active" highlight="{path: 'Priority', formatter: '.formatter.gethighlightValue'}">
+					<customData>
+						<core:CustomData key="Action" value="{GroupTransferModel>Operation}" writeToDom="true"/>
+					</customData>
+					<cells>
+						<Text text="{GroupTransferModel>Sno}" editable="false"/>
+						<Text text="{GroupTransferModel>batchno}" editable="false"/>
+						<Link text="{GroupTransferModel>empno}" emphasized="true" press="onemphrinfo"></Link>
+						<Text text="{GroupTransferModel>empname}" editable="false"/>
+						<Input value="{GroupTransferModel>ovrarank}" editable="true"/>
+						<Text text="{GroupTransferModel>Desgname}" editable="false"/>
+						<Input value="{GroupTransferModel>ToPositionName}" showValueHelp="true" editable="false"/>
+						<!--editable="{GroupTransferModel>WithPosition}" -->
+						<Text text="{GroupTransferModel>ToOfficeName}({GroupTransferModel>Pernr})" editable="false"/>
+						<Text text="{GroupTransferModel>ToDdoName}({GroupTransferModel>ToDdoId})" editable="false"/>
+						<Text text="{GroupTransferModel>TransStatus}" editable="false"/>
+						<Text text="{GroupTransferModel>DeptDesc}" editable="false"/>
+						<Text text="{GroupTransferModel>FromLocation}" editable="false"/>
+						<core:Icon src="sap-icon://comment" color="#8875E7" press="employeeComments" tooltip="Employee comments"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</ScrollContainer>
+	 </VBox>
+</core:FragmentDefinition>

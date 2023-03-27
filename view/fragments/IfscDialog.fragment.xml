@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<!--	<SelectDialog resizable="true" title="Select Mandla"-->
+	<!--		confirm="ConfirmMandalDialog" liveChange="liveMandalsearch" cancel="CloseMandalDialog" items=" MandalDialogModel>/}"-->
+	<!--		draggable="true">-->
+	<!--		<StandardListItem title="{MandalDialogModel>Mandal}" description="{MandalDialogModel>Mandal_ID}"/>-->
+	<!--	</SelectDialog>-->
+	<TableSelectDialog  id ="IdIfscTabDailog" noDataText="No Ifsc Code Found" title="Select IFSC Code" search="handleSearch" liveChange="handleSearch"
+		confirm="handleIfscConfirm" cancel="handleIfscClose" showClearButton="true" items="{/ZC_HCM_IFSC}" growing="true"
+		growingThreshold="100" draggable="true" contentWidth="100%">
+		<ColumnListItem  selected="">
+			<!--IFSCDialogModel>-->
+			<!--ZHRC_BANKS_IFSCVH  ZC_HCM_IFSCType-->
+			<cells>
+				<ObjectIdentifier title="{IFSC_CODE} "/>
+				<Text text="{Bank_Branch}"/>
+				<Text text="{Bank_Name}"/>
+				<Text text="{Bank_City}"/>
+				<Text text="{Bank_Street}"/>
+				<Text text="{Bank_Region}"/>
+				<!--<ObjectNumber number=" WeightMeasure " unit=" WeightUnit "		state="  "/>-->
+				<!--<ObjectNumber number=" " unit=" CurrencyCode "/>-->
+			</cells>
+		</ColumnListItem>
+		<columns>
+			<Column width="8em" demandPopin="true">
+				<header>
+					<Text text="IFSC Code"/>
+				</header>
+			</Column>
+			<Column hAlign="End" width="15em" demandPopin="true">
+				<header>
+					<Text text="Bank Branch"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" width="15em">
+				<header>
+					<Text text="Bank Name"/>
+				</header>
+			</Column>
+			<Column hAlign="End" demandPopin="true">
+				<header>
+					<Text text="Bank City"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center" width="20em">
+				<header>
+					<Text text="Bank Street"/>
+				</header>
+			</Column>
+			<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" visible="false">
+				<header>
+					<Text text="Bank Region"/>
+				</header>
+			</Column>
+		</columns>
+	</TableSelectDialog>
+</core:FragmentDefinition>

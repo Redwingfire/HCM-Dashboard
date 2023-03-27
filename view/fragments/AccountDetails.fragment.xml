@@ -1,0 +1,48 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="idBankdetailsform" minWidth="1024" editable="true" layout="ResponsiveGridLayout" labelSpanXL="2" labelSpanL="2"
+			labelSpanM="2" adjustLabelSpan="true" emptySpanXL="1" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="1" visible="true">
+			<f:content>
+				<core:Title text="Account Details :"></core:Title>
+				<Label/>
+				<Text text="{i18n>CurrentDetails}"/>
+				<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Label text="Aadhar" design="Bold"/>-->
+				<!--<Input value="{AccountModel>/Aadhar}"  editable="false" />-->
+				<!--<Input value="{AccountModel>/AadharNew}" visible="{oViewModel>/EditVisibility}" maxLength="12" change="handleAadharno" liveChange="oHandlePhoneNoLiveChange" id="aadhar1" />-->
+				<!--<Label text="PAN" design="Bold"/>-->
+				<!--<Input value="{AccountModel>/Pannumber}" editable="false"  />-->
+				<!--<Input value="{AccountModel>/PannumberNew}" visible="{oViewModel>/EditVisibility}" id="pan" change="handlePancard"/>-->
+				<Label text="Bank Account Number" design="Bold"/>
+				<Input value="{AccountModel>/BankaccNumber}" editable="false"/>
+				<Input value="{AccountModel>/BankaccNumberNew}" visible="{oViewModel>/EditVisibility}" liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}" maxLength="20"/>
+				<Label text="IFSC Code" design="Bold"/>
+				<Input value="{AccountModel>/Ifsccode}" editable="false"/>
+				<Input value="{AccountModel>/IfsccodeNew}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="handleIFscF4" editable="{oViewModel>/Editable}"
+					visible="{oViewModel>/EditVisibility}"/>
+				<!--visible="{oViewModel>/EditVisibility}" -->
+				<Label text="Bank Name" design="Bold"/>
+				<Input value="{AccountModel>/Bankname}" editable="false"/>
+				<Input value="{AccountModel>/BanknameNew}"  editable="false" visible="{oViewModel>/EditVisibility}" liveChange="oHandlePhoneNoLiveChange"/>
+				<Label text="Branch" design="Bold"/>
+				<Input value="{AccountModel>/Bankbranch}" editable="false"/>
+				<Input value="{AccountModel>/BankbranchNew}" editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<Label text="City" design="Bold"/>
+				<Input value="{AccountModel>/Bankcity}" editable="false"/>
+				<Input value="{AccountModel>/BankcityNew}"  editable="false" visible="{oViewModel>/EditVisibility}"/>
+				<!--<Label/>-->
+				<!--<Button text="Edit" press="onEditAadharDetails" width="20%" type="Emphasized"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+		<Label text="Employee Comments :" design="Bold" required="true" />
+						<!--<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Reason for Change :"/>
+							</OverflowToolbar>
+						</headerToolbar>-->
+						<TextArea value="{AccountModel>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+					</Panel>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,31 @@
+<!-- 
+
+ Copyright (C) 2009-2019 SAP SE or an SAP affiliate company. All rights reserved.
+
+ -->
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog resizable="true" draggable="true" title="Reject">
+		<layout:VerticalLayout class="sapUiSmallMarginTop">
+			<layout:HorizontalLayout>
+				<HBox class="sapUiTinyMarginBegin">
+					<VBox>
+						<CheckBox id="TermsCheckBoxRejectId" text="Terms and Conditions*:"/>
+						<Text id="RejectDialogTermsTextId" wrapping="true" class="sapUiMediumMarginBegin" width="50rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+			<layout:HorizontalLayout class="sapUiSmallMarginTop">
+				<HBox class="sapUiSmallMarginBegin">
+					<VBox>
+						<Label id="RejectRemarksLabelId" text="Remarks:" required="true"/>
+						<TextArea id="RejectDialogRemarksId" placeholder="Please Enter your Remarks Here..." class="sapUiMediumMarginBegin" width="40rem"/>
+					</VBox>
+				</HBox>
+			</layout:HorizontalLayout>
+		</layout:VerticalLayout>
+		<buttons>
+			<Button text="Confirm" type="Emphasized" press="OnPressSendReject"/>
+			<Button text="Cancel" type="Emphasized" press="OnPressCancelReject"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,144 @@
+<core:FragmentDefinition xmlns="sap.ui.table" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:m="sap.m"
+	xmlns:uxap="sap.uxap">
+	<!--<VBox>-->
+	<!--<uxap:ObjectPageLayout>-->
+	<!--	<uxap:sections >-->
+	<!--		<uxap:ObjectPageSection title="">-->
+	<!--			<uxap:subSections>-->
+	<!--				<uxap:ObjectPageSubSection title="">-->
+	<Table rows="{AnnualIncrementModel>/}" selectionMode="None" visibleRowCount="{=${AnnualIncrementModel>/}.length}" paste="onPaste"
+		ariaLabelledBy="title">
+		<extension>
+			<m:OverflowToolbar>
+				<m:Title id="title" text=""/>
+			</m:OverflowToolbar>
+		</extension>
+		<columns>
+			<Column width="15rem">
+				<m:Label text="Employee Name"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>EmployeeName}" wrapping="false"/>
+					<!--<m:ObjectIdentifier title="{AnnualIncrementModel>EmployeeName}" text="{AnnualIncrementModel>Pernr}"/>-->
+				</template>
+			</Column>
+			<Column width="8rem">
+				<m:Label text="Employee No"/>
+				<template>
+					<!--<m:Text text="{AnnualIncrementModel>Pernr}" wrapping="false"/>-->
+					<m:Link text="{AnnualIncrementModel>Pernr}" emphasized="true" press="onemphrinfo" />
+						<!--visible="{= ${AnnualIncrementModel>/Pernr} === '00000000' ? false : true }"-->
+					<!--<m:ObjectIdentifier title="{AnnualIncrementModel>EmployeeName}" text="{AnnualIncrementModel>Pernr}"/>-->
+				</template>
+			</Column>
+			<Column width="15rem">
+				<m:Label text="Current Position"/>
+				<template>
+					<!--PositionName-->
+					<!--<m:ObjectIdentifier title="{AnnualIncrementModel>PositionName}" text="{AnnualIncrementModel>PositionId}"/>-->
+					<m:Text text="{AnnualIncrementModel>PositionName}"/>
+				</template>
+			</Column>
+			<Column width="20rem">
+				<m:Label text="Office Name"/>
+				<template>
+					<!--<m:ObjectIdentifier title="{AnnualIncrementModel>FromOfficeName}" text="{AnnualIncrementModel>FromOfficeId}"/>-->
+					<m:Text text="{AnnualIncrementModel>FromOfficeName}"/>
+				</template>
+			</Column>
+			<Column width="10rem">
+				<m:Label text="Current Basic pay"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>CurrentBasicPay}"/>
+				</template>
+			</Column>
+			<Column width="10rem">
+				<m:Label text="Revised basic pay"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>NewBasicPay}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Reference Number"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>ReferenceNumber}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Type"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>Payscaletype}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Area"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>Payscalearea}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Group"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>Payscalegroup}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Level"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>Payscalelevel}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Level New"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>PayscalelevelNew}"/>
+				</template>
+			</Column>
+			<Column visible="false">
+				<m:Label text="Pay Scale Desc"/>
+				<template>
+					<m:Text text="{AnnualIncrementModel>PayscaleDesc}"/>
+				</template>
+			</Column>
+			<Column width="10rem">
+				<m:Label text="Effective Date"/>
+				<template>
+					<!--<m:Text text="{AnnualIncrementModel>EffectiveDate}"/>-->
+					<!--visible="{oViewModel>/EditVisibility}" change="onChangeDobNewBasic" -->
+					<m:DatePicker placeholder="Date of Birth"
+								value="{path: 'AnnualIncrementModel>EffectiveDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" id="dateofEffectiveDateAnnualInc"
+								valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy" editable="{oViewModel>/Editable}" />
+				</template>
+			</Column>
+			<Column width="10rem">
+				<m:Label text="Confirmed"/>
+				<template>
+					<!--<m:Text text="{AnnualIncrementModel>OverallStatus}"/>-->
+					<!--state="{=${AnnualIncrementModel>Confirm}==='X' ? true : false}"-->
+					<m:Switch enabled="{oViewModel>/Editable}" state="{AnnualIncrementModel>Confirm}" customTextOn="Yes" customTextOff="No">
+						<m:layoutData>
+							<m:FlexItemData growFactor="1"/>
+						</m:layoutData>
+					</m:Switch>
+					<!--	<m:ComboBox editable="true" selectedKey="{AnnualIncrementModel>OverallStatus}">-->
+					<!--	<core:Item key="X" text="Yes"/>-->
+					<!--	<core:Item key="N" text="No"/>-->
+					<!--</m:ComboBox>-->
+				</template>
+			</Column>
+			<Column width="8rem">
+				<m:Label text="Remarks"/>
+				<template>
+					<!--visible="{oViewModel>/Editable}"-->
+					<core:Icon src="sap-icon://comment" color="#8875E7" press="annualComments" tooltip="Annualicrement comments"/>
+					<!--<m:Text text="{AnnualIncrementModel>Remarks}"/>-->
+				</template>
+			</Column>
+		</columns>
+	</Table>
+	<!--				</uxap:ObjectPageSubSection>-->
+	<!--			</uxap:subSections>-->
+	<!--		</uxap:ObjectPageSection>-->
+	<!--	</uxap:sections>-->
+	<!--</uxap:ObjectPageLayout>-->
+	<!--</VBox>-->
+</core:FragmentDefinition>
