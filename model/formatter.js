@@ -88,7 +88,7 @@ sap.ui.define([
 			}
 		},
 		DOBchange: function(val) {
-			if (val != undefined && val != null && val != "") {
+			if (val != undefined && val != null && val != "" && val.toString() != "Invalid Date") {
 				return new Date(val);
 			} else {
 				return null;

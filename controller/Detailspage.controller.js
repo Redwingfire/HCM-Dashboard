@@ -215,8 +215,12 @@ sap.ui.define([
 				var dateArray = [];
 				var fragement = "OnBoardingdetails";
 				// this.OnBoardingdetails(empno, reqGuid);
+<<<<<<< Upstream, based on 8230cfd6b8835ae409d3127b6fe5a8106225ccc1
 			}
 			else if (appName === "ELCM_Y3_ALL_SINGLE") {
+=======
+			} else if (appName === "ELCM_Y3_ALL_SINGLE") {
+>>>>>>> 7ee3890 on board application integration changes
 				/*Probetion */
 				var fragement = "ProbationDetails";
 				this.ProbationDetails(empno, reqGuid);
@@ -4746,7 +4750,14 @@ sap.ui.define([
 				if (typeof sData[i].NewEndda === 'string') {
 					sData[i].NewEndda = new Date(sData[i].NewEndda);
 				}
-
+				// changes for additional payment of pay change- cfms_ctm_npv(28_3_23)
+				if (typeof sData[i].CurrDateOfOrgin === 'string') {
+					sData[i].CurrDateOfOrgin = new Date(sData[i].CurrDateOfOrgin);
+				}
+				if (typeof sData[i].NewDateOfOrgin === 'string') {
+					sData[i].NewDateOfOrgin = new Date(sData[i].NewDateOfOrgin);
+				}
+				// changes for additional payment of pay change- cfms_ctm_npv(28_3_23) -end
 			}
 			return sData;
 		},
@@ -6493,9 +6504,9 @@ sap.ui.define([
 			this.oldAdditionalPaymentData = this.dataMaking(this.oldAdditionalPaymentData);
 			this.additionalPayFormModel = new sap.ui.model.json.JSONModel(this.oldAdditionalPaymentData);
 			this.getView().setModel(this.additionalPayFormModel, "AdditionalPaymentsTabFormModel");
-			this.recuringPaymentModel = new sap.ui.model.json.JSONModel(this.oldAdditionalPaymentData);
+			this.additionalPaymentModel = new sap.ui.model.json.JSONModel(this.oldAdditionalPaymentData);
 			// this.basicCompModel 
-			this.getView().setModel(this.recuringPaymentModel, "AdditionalPaymentsTabModel");
+			this.getView().setModel(this.additionalPaymentModel, "AdditionalPaymentsTabModel");
 
 			var oAdditionalData = this.getView().getModel("AdditionalPaymentsTabModel").getData();
 			this.getView().byId("idAdditionalPaymentstTableRec").setText("Total Records: " + oAdditionalData.length);
@@ -6615,6 +6626,13 @@ sap.ui.define([
 					this.oAdditionalPaymentdetailsDailog.getButtons()[0].setText("Ok");
 				}
 				this.oAdditionalPaymentdetailsDailog.open();
+				//field show / hide in form adde new records purpose
+				var oModel = new JSONModel({
+					EditVisibility: false,
+					Editable: false
+				});
+				this.getView().setModel(oModel, "oViewModel");
+				//end
 				/*	date picker only select (no need enter date) - in fragment - -start*/
 				// var dateArray = ["idStartDateNew_AdditionalPaymentDailog", "idEndDateNewAdditionalPaymentDailog"];
 				var dateArray = ["idNewDateOfOrgiAdditionalPaymentDailog"];
@@ -6814,11 +6832,12 @@ sap.ui.define([
 
 		},
 		NewDateOfOrginChangeAdditionalPayments: function(oEvent) {
-			var selValue = oEvent.getSource().getValue();
+			var selValue = oEvent.getSource().getDateValue();
 			// oEvent.getSource().setValue(selValue);
 			var itmePath = oEvent.getSource().getParent().getBindingContext("AdditionalPaymentsTabFormModel").sPath;
 			var AdditionalPayment = this.getView().getModel("AdditionalPaymentsTabFormModel");
-			AdditionalPayment.setProperty(itmePath + "/NewDateOfOrgin", new Date(selValue));
+			AdditionalPayment.setProperty(itmePath + "/NewDateOfOrgin", selValue);
+			// new Date(selValue));
 
 		},
 		/*	Additional Payments table -end*/
@@ -8147,6 +8166,13 @@ sap.ui.define([
 				this.getView().byId("idAdditionalPaymentstTableRec").setText("Total Records: " + RecuringPayment.length);
 				/* table count  update - puropse write  - end*/
 				// }
+				/* date of orgin field will edit  in form adde new records purpose - cfms_ctm_npv-start*/
+				var oModel = new JSONModel({
+					EditVisibility: false,
+					Editable: true
+				});
+				this.getView().setModel(oModel, "oViewModel");
+				/* date of orgin field will edit  in form adde new records purpose - cfms_ctm_npv-end*/
 
 			}
 		},

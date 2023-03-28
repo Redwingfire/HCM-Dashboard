@@ -17,7 +17,11 @@
   "build": {
     "buildRequired": false,
     "targetFolder": "dist",
+<<<<<<< Upstream, based on 8230cfd6b8835ae409d3127b6fe5a8106225ccc1
     "lastBuildDateTime": "Tue, 28 Mar 2023 07:01:19 GMT"
+=======
+    "lastBuildDateTime": "Tue, 28 Mar 2023 12:28:26 GMT"
+>>>>>>> 7ee3890 on board application integration changes
   },
   "generation": [
     {

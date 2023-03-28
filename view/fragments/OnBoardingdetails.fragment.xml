@@ -47,6 +47,7 @@
 		</f:SimpleForm>
 				</IconTabFilter>
 				<IconTabFilter id="idOnboardBasicInfoTab" iconColor="" text="Basic Info" key="BasicInfo">
+<<<<<<< Upstream, based on 8230cfd6b8835ae409d3127b6fe5a8106225ccc1
 					<f:SimpleForm id="idJoiningRetirementform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
 						adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"
 						singleContainerFullSize="false" maxContainerCols="1" visible="true">
@@ -132,6 +133,481 @@
 		</IconTabBar>
 		<Panel width="auto" class="sapUiResponsiveMargin">
 			<Label text="Employee Comments :" design="Bold" required="true"/>
+=======
+				<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:content>	
+				<core:Title />			
+				<Label text="First Name" required="true"/>
+				<Input required="true" value="{basicInfoModel>/FirstName}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Last Name" />				
+				<Input required="true" value="{basicInfoModel>/LlastName}" editable="true" liveChange="onChangeFamilyFields"/>
+								
+				<Label text="Gender" required="true"/>				
+				<Select id="genderSelect" change="basicGenderSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{basicInfoModel>/Gender}"
+				items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+				{ path : 'SourceName', operator : 'EQ', value1 : 'GENDER'}],
+				templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Date Of Birth" required="true"/>				
+				<DatePicker
+					dateValue="{path: 'basicInfoModel>/DateOfBirth',formatter:'.formatter.dateChange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" 
+					change="effectiveDateSelect" maxDate="{path:'', formatter:'.formatter.maxTodayDate'}"  
+					minDate="{path: 'officeModel>/BirthDate', formatter:'.formatter.DOBmindate'}"/>
+
+				<Label text="Aadhaar Number" required="true"/>				
+				<Input required="true" value="{basicInfoModel>/AadhaarNumber}" editable="true" 
+				liveChange="handleAadharNo" maxLength="12"/>
+
+				<Label text="Pan Number" required="true"/>				
+				<Input required="true" value="{basicInfoModel>/PanNumber}" 
+				editable="true" liveChange="onChangeFamilyFields" maxLength="10"/>
+
+				<Label text="Mobile Number" required="true"/>				
+				<Input required="true" value="{basicInfoModel>/MobilNumber}" 
+				editable="true" maxLength="10" liveChange="validateNumericInput"/>
+
+				<core:Title />
+				<Label text="Date Of Separation" required="true"/>				
+				<DatePicker dateValue="{path: 'basicInfoModel>/DateOfSeparation',formatter:'.formatter.dateChange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" 
+					change="effectiveDateSelect" maxDate="{path:'', formatter:'.formatter.maxTodayDate'}"  
+					minDate="{path: 'officeModel>/BirthDate', formatter:'.formatter.DOBmindate'}"/>
+
+				<Label text="Challenged" required="true"/>				
+				<Select selectedKey="{basicInfoModel>/Challenged}" editable="true" 
+				autoAdjustWidth="false" forceSelection="false" maxWidth="70%"
+				change="basicInfoChallengedSelect">
+					<core:Item key="true" text="Yes"/>
+					<core:Item key="false" text="No"/>
+				</Select>
+
+				<Label text="Challenge Group" required="true"/>				
+				<Select id="challengeGroupId" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{basicInfoModel>/ChallengeGroupId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'CHALLENGE_GROUP'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Degree Of Challenge" required="true"/>				
+				<Select id="degreeOfChallengeId" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%" selectedKey="{basicInfoModel>/DegreeOfChallenge}"
+				items="{degreeOfChallengeModel>/}">
+					<core:Item key="{degreeOfChallengeModel>degree}" text="{degreeOfChallengeModel>degree}"/>
+				</Select>
+
+				<Label text="Nationality" required="true"/>				
+				<Select id="nationalityId" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{basicInfoModel>/Nationality}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'NATIONALITY'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Religion" required="true"/>				
+				<Select id="religionId" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{basicInfoModel>/ReligionId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'RELIGION'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Ethnic Origin" required="true"/>				
+				<Select id="OriginId" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{basicInfoModel>/EthnicOrigionId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'ETHNIC_ORIGIN'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="idonBoardAddressTab" iconColor="" text="Address " key="Address">
+					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2" title="Current Address">
+			<f:toolbar>
+				<Toolbar>
+				<Label text="Current Address"/>		
+				</Toolbar>
+			</f:toolbar>
+			<f:content>	
+				<core:Title/>	
+				<Label text="Care Of" />				
+				<Input required="true" value="{addressModel>/CareOf}" editable="true" liveChange="onChangeFamilyFields"/>
+								
+				<Label text="Street" required="true"/>				
+				<Input required="true" value="{addressModel>/Street}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="House Number" required="true"/>				
+				<Input required="true" value="{addressModel>/HouseNumber}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Address" required="true"/>				
+				<Input required="true" value="{addressModel>/Address1}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Pin Code" required="true"/>				
+				<Input required="true" value="{addressModel>/PinCode}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="City" required="true"/>				
+				<Input required="true" value="{addressModel>/City}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<core:Title />
+				<Label text="Country" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/Country}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'COUNTRY'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="State" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/StateId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="District" required="true"/>				
+				<Select id="districtSelect" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/DistrictId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Mandal" required="true"/>				
+				<Select id="mandalSelect" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/MandalId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Village" required="true"/>				
+				<Select id="villageSelect" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/VillageId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Constituency" required="true"/>				
+				<Select id="constituencySelect" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{addressModel>/Constituency}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+				
+			</f:content>
+		</f:SimpleForm>
+
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:toolbar>
+				<Toolbar class="sapUiSmallMarginTop">
+				<Label text="Permanent Address"/>		
+				<ToolbarSpacer/>
+				<Label text="Copy Current Address"/>					
+				<Switch state="false" customTextOn="Yes" customTextOff="No" change="copyCurrentToPermAddress" >
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+				</Switch>					
+				</Toolbar>
+			</f:toolbar>
+			<f:content>	
+				<!-- <core:Title/>	 -->
+				<Label text="Care Of" />				
+				<Input required="true" value="{permanentAddressModel>/CareOf}" editable="true" liveChange="onChangeFamilyFields"/>
+								
+				<Label text="Street" required="true"/>				
+				<Input required="true" value="{permanentAddressModel>/Street}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="House Number" required="true"/>				
+				<Input required="true" value="{permanentAddressModel>/HouseNumber}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Address" required="true"/>				
+				<Input required="true" value="{permanentAddressModel>/Address1}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Pin Code" required="true"/>				
+				<Input required="true" value="{permanentAddressModel>/PinCode}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="City" required="true"/>				
+				<Input required="true" value="{permanentAddressModel>/City}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<core:Title />
+				<Label text="Country" required="true"/>				
+				<Select id="countrySelect" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/Country}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'COUNTRY'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="State" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/StateId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="District" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/DistrictId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Mandal" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/MandalId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Village" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/VillageId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Constituency" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{permanentAddressModel>/Constituency}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+				
+			</f:content>
+		</f:SimpleForm>
+
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:toolbar>
+				<Toolbar class="sapUiSmallMarginTop">
+				<Label text="Home Town"/>	
+				<ToolbarSpacer/>
+				<Label text="Copy Current Address"/>					
+				<Switch state="false" customTextOn="Yes" customTextOff="No" change="copyCurrentToHomeAddress" >
+				<layoutData>
+					<FlexItemData growFactor="1" />
+				</layoutData>
+				</Switch>					
+				</Toolbar>
+			</f:toolbar>
+			<f:content>	
+				<core:Title/>			
+				
+				<Label text="Care Of" />				
+				<Input required="true" value="{hometownAddressModel>/CareOf}" editable="true" liveChange="onChangeFamilyFields"/>
+								
+				<Label text="Street" required="true"/>				
+				<Input required="true" value="{hometownAddressModel>/Street}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="House Number" required="true"/>				
+				<Input required="true" value="{hometownAddressModel>/HouseNumber}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Address" required="true"/>				
+				<Input required="true" value="{hometownAddressModel>/Address1}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Pin Code" required="true"/>				
+				<Input required="true" value="{hometownAddressModel>/PinCode}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="City" required="true"/>				
+				<Input required="true" value="{hometownAddressModel>/City}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<core:Title />
+				<Label text="Country" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/Country}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'COUNTRY'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="State" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/StateId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="District" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/DistrictId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Mandal" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/MandalId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Village" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/VillageId}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+
+				<Label text="Constituency" required="true"/>				
+				<Select change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{hometownAddressModel>/Constituency}"
+						items="{ path: 'onBoardingService>/ValueHelpProviderSet', sorter: {path: 'ValueId'}, filters : [
+						{ path : 'SourceName', operator : 'EQ', value1 : 'STATE'}],
+						templateShareable:false}">
+					<core:Item key="{onBoardingService>ValueId}" text="{onBoardingService>ValueDesc}"/>
+				</Select>
+				
+			</f:content>
+		</f:SimpleForm>
+				</IconTabFilter>
+					<IconTabFilter id="idonBoardBankTab" iconColor="" text="Bank" key="Bank">
+							<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:content>	
+				<core:Title />			
+				<Label text="Bank Account Number" required="true"/>
+				<Input required="true" value="{bankModel>/BankAcNumber}" 
+				editable="true" liveChange="onChangeFamilyFields" />
+
+				<Label text="IFSC" />				
+				<Input required="true" value="{bankModel>/IfscCode}" editable="true" valueHelpOnly="true"
+				valueHelpRequest="handleIFscF4" showValueHelp="true"/>
+				<!-- <Input value="{AccountModel>/IfsccodeNew}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="handleIFscF4" editable="{oViewModel>/Editable}" -->
+
+				<core:Title />										
+				<Label text="Name as per Bank Account" required="true"/>				
+				<Input required="true" value="{bankModel>/NameAsPerBankAc}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Pincode" required="true"/>				
+				<Input required="true" value="{bankModel>/Pincode}" editable="true" liveChange="onChangeFamilyFields"/>
+
+			</f:content>
+		</f:SimpleForm>
+					</IconTabFilter>
+						<IconTabFilter id="idonBoardFamilyDetailsTab" iconColor="" text="Family Details" key="FamilyDetails">
+							
+						</IconTabFilter>
+							<IconTabFilter id="idonPaymentInfoTab" iconColor="" text="Payment Info" key="PaymentInfo">
+								<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:content>	
+				<core:Title />			
+				<!-- <Label text="Work Schedule" required="true"/>
+				<Input required="true" value="{familyFormModel>/FirstName}" editable="true" liveChange="onChangeFamilyFields"/> -->
+
+				<Label text="PRC Type" />				
+				<Select id="prcTypeSelect" change="readPayScaleArea" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%" selectedKey="{payInfoModel>/Payscalearea}"				
+						items="{ path: 'onBoardingService>/VHPayscaleAttributesSet', templateShareable:false}">
+					<core:Item key="{onBoardingService>Payscaletype}" text="{onBoardingService>Payscaletypetxt}"/>
+				</Select>
+												
+				<Label text="Pay Scale Area" required="true"/>				
+				<Select id="payScaleArea" change="readPayScaleGroup" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{payInfoModel>/Payscalegroup}">
+					<core:Item id="payScaleAreaItem" key="{Payscalearea}" text="{Payscaleareatxt}"/>
+				</Select>
+
+				<Label text="Pay Scale Group" required="true"/>				
+				<Select id="payScaleGroup" change="familyMemberTypeSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{payInfoModel>/Payscalegroup}">
+					<core:Item id="payScaleGroupItem" key="{onBoardingService>Payscalegroup}" text="{onBoardingService>Payscalegroup}"/>
+				</Select>
+				
+				<!-- http://localhost:8080/webidedispatcher/destinations/APCFS_New/sap/opu/odata/sap/ZGW_HCM_ONBOARD_SRV/VHPayscaleAttributesSet
+				?&$filter=Payscaletype%20eq%20%2703%27%20and%20Payscalearea%20eq%20%2708%27%20and%20Payscalegroup%20eq%20%27G-II%27 -->
+				<core:Title />	
+				<Label text="Pay Scale Level" required="true"/>				
+				<Input required="true" value="{familyFormModel>/FirstName}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Basic Pay" required="true"/>
+				<Input required="true" value="{familyFormModel>/FirstName}" editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Next Increment" required="true"/>				
+				<Input required="true" value="{familyFormModel>/FirstName}" editable="true" liveChange="onChangeFamilyFields"/>
+			
+			</f:content>
+		</f:SimpleForm>
+						</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Remarks:" design="Bold" required="true"/>
+>>>>>>> 7ee3890 on board application integration changes
 			<!--<headerToolbar>
 							<OverflowToolbar>
 								<Title text="Reason for Change :"/>

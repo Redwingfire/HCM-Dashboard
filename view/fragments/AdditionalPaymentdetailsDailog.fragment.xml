@@ -41,7 +41,7 @@
 					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="false" visible="{oViewModel>/EditVisibility}"/>
 				<DatePicker id="idNewDateOfOrgiAdditionalPaymentDailog" placeholder="Date"
 					dateValue="{path: 'AdditionalPaymentsTabFormModel>NewDateOfOrgin',formatter:'.formatter.DOBchange'}" valueFormat="dd.MM.yyyy" displayFormat="dd.MM.yyyy"
-					editable="false" change="NewDateOfOrginChangeAdditionalPayments" maxDate="{path:'AdditionalPaymentsTabFormModel>NewDateOfOrgin', formatter:'.formatter.DOBmaxdate'}"
+					editable="{oViewModel>/Editable}" change="NewDateOfOrginChangeAdditionalPayments" maxDate="{path:'AdditionalPaymentsTabFormModel>NewDateOfOrgin', formatter:'.formatter.DOBmaxdate'}"
 					minDate="{path: 'AdditionalPaymentsTabFormModel>NewDateOfOrgin', formatter:'.formatter.DOBmindate'}"/>
 				<!--<Label text="Aadhaar Number" design="Bold" required="true"/>-->
 				<!--<Input value="{AdditionalPaymentsTabFormModel>Aadharnumber}" editable="false" visible="{oViewModel>/EditVisibility}"/>-->
