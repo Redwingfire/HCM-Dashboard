@@ -1,0 +1,171 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<VBox class="sapUiSmallMargin">
+		<IconTabBar id="idIcTabBarOnBoarding" select="onSelIcTab" expandable="false" upperCase="false" selectedKey="{oMainViewModel>/SelectedTab}">
+			<items>
+				<IconTabFilter id="idOnboardOfficeTab" iconColor="" text="Office" key="Office">
+				<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+			emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"
+			singleContainerFullSize="false" maxContainerCols="2">
+			<f:content>	
+				<core:Title />
+				<Label text="Effective date" required="true"/>
+				<DatePicker id="effectiveDate"
+					dateValue="{path: 'officeModel>/Begda',formatter:'.formatter.dateChange'}"
+					valueFormat="MM.dd.yyyy" displayFormat="dd.MM.yyyy" editable="true" 
+					change="effectiveDateSelect" maxDate="{path:'', formatter:'.formatter.maxTodayDate'}"  
+					minDate="{path: 'officeModel>/BirthDate', formatter:'.formatter.DOBmindate'}"/>
+	
+				<Label text="Onboarding Reason" required="true"/>
+				<Select id="actionReasonSelect" change="familyMaritalSelect" autoAdjustWidth="false" 
+				forceSelection="false" maxWidth="70%"
+				selectedKey="{officeModel>/ActionReasonId}"
+						items="{ path: '/VHActionReasonSet', sorter: {path: 'Massg'}, filters : [
+						{ path : 'Massn', operator : 'EQ', value1 : 'Y1'}],
+						templateShareable:false}">
+					<core:Item key="{Massg}" text="{Mgtxt}"/>
+				</Select>
+
+				<Label text="Position Name" required="true"/>
+				<Input required="true" value="{officeModel>/PositionName}" description="{officeModel>/PositionId}"
+				 editable="true" liveChange="onChangeFamilyFields"
+				valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onPositionValueHelp"/>
+
+				<!-- <core:Title /> -->
+				<Label text="Office Name" />				
+				<Input required="true" value="{officeModel>/OfficeName}" description="{officeModel>/OfficeId}"
+				editable="true" liveChange="onChangeFamilyFields"/>
+					
+				<Label text="Department Name" required="true"/>				
+				<Input required="true" value="{officeModel>/DepartmentName}" description="{officeModel>/DepartmentId}"
+				editable="true" liveChange="onChangeFamilyFields"/>
+
+				<Label text="Ddo Name" required="true"/>				
+				<Input required="true" value="{officeModel>/DdoName}" description="{officeModel>/DdoId}"
+				 editable="true" liveChange="onChangeFamilyFields"/>
+			</f:content>
+		</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="idOnboardBasicInfoTab" iconColor="" text="Basic Info" key="BasicInfo">
+					<f:SimpleForm id="idJoiningRetirementform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+						adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Basic Details :"></core:Title>
+							<Label/>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+								<Label text="Date of Joining" design="Bold"/>
+							<DatePicker editable="false"
+								value=" {path: 'simple>DateOfJoin', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" displayFormat="dd/MM/yyyy"
+								id="DateofJoiningt" placeholder="Date"/>
+							<DatePicker value="{path: 'simple>/DateOfJoinNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+								visible="{oViewModel>/EditVisibility}" displayFormat="dd/MM/yyyy" id="DateofJoiningtNew" placeholder="Date" valueFormat="dd.MM.yyyy"
+								editable="{oViewModel>/Editable}"/>
+							<Label text="Date of Retirement" design="Bold"/>
+							<DatePicker editable="false"
+								value=" {path: 'simple>DateOfRetire', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}" displayFormat="dd/MM/yyyy"
+								id="DateofRetirement" placeholder="Date"/>
+							<DatePicker value="{path: 'simple>/DateOfRetireNew', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy' }}"
+								visible="{oViewModel>/EditVisibility}" displayFormat="dd/MM/yyyy" id="DateofRetirementNew" placeholder="Date" valueFormat="dd.MM.yyyy"
+								editable="{oViewModel>/Editable}"/>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter id="idPersonalIdTab" iconColor="" text="Personal ID Details " key="PesonalIds">
+					<f:SimpleForm id="idPersonIdform" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"
+						adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"
+						singleContainerFullSize="false" maxContainerCols="1" visible="true">
+						<f:content>
+							<core:Title text="Personal ID's Details :"></core:Title>
+							<Label/>
+							<Text text="{i18n>CurrentDetails}"/>
+							<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>
+							<Label text="AADHAAR No" design="Bold"/>
+							<Input value="{simple>/Aadhar}" editable="false"/>
+							<Input value="{simple>/AadharNew}" visible="{oViewModel>/EditVisibility}" maxLength="12" change="handleAadharno"
+								liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"/>
+							<Label text="PAN" design="Bold"/>
+							<Input value="{simple>/Pannumber}" editable="false"/>
+							<Input value="{simple>/PannumberNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" change="handlePancard"/>
+							<Label text="TAN" design="Bold"/>
+							<Input value="{simple>/Tannumber}" editable="false"/>
+							<Input value="{simple>/TannumberNew}" visible="{oViewModel>/EditVisibility}" change="handleTancard" editable="{oViewModel>/Editable}"/>
+							<Label text="APGLI" design="Bold"/>
+							<Input value="{simple>/Apgli}" editable="false"/>
+							<Input value="{simple>/ApgliNew}" visible="{oViewModel>/EditVisibility}" maxLength="9" liveChange="oHandlePhoneNoLiveChange"
+								change="changeAPGLI" editable="{oViewModel>/Editable}"/>
+							<Label text="GPF Type" design="Bold"/>
+							<ComboBox editable="false" selectedKey="{simple>/IdType}">
+								<!--<core:Item key="Z0" text="APGLI"/>-->
+								<core:Item key="Z1" text="GPF(AG)"/>
+								<core:Item key="Z2" text="GPF(Class-IV)"/>
+								<core:Item key="Z3" text="GPF(AIS)"/>
+								<core:Item key="Z4" text="GPF(ZP)"/>
+								<core:Item key="Z5" text="CPS / PRAN"/>
+								<!--<core:Item key="Z6" text="CSS"/>-->
+								<core:Item key="Z7" text="GPF(WC)"/>
+								<!--<core:Item key="Z8" text="Digital Signature No."/>-->
+								<!--<core:Item key="Z9" text="GIS"/>-->
+							</ComboBox>
+							<ComboBox visible="{oViewModel>/EditVisibility}" selectedKey="{simple>/IdTypeNew}" editable="{oViewModel>/Editable}"
+								change="onchangebasicCombo">
+								<!--<core:Item key="Z0" text="APGLI"/>-->
+								<core:Item key="Z1" text="GPF(AG)"/>
+								<core:Item key="Z2" text="GPF(Class-IV)"/>
+								<core:Item key="Z3" text="GPF(AIS)"/>
+								<core:Item key="Z4" text="GPF(ZP)"/>
+								<core:Item key="Z5" text="CPS / PRAN"/>
+								<!--<core:Item key="Z6" text="CSS"/>-->
+								<core:Item key="Z7" text="GPF(WC)"/>
+								<!--<core:Item key="Z8" text="Digital Signature No."/>-->
+								<!--<core:Item key="Z9" text="GIS"/>-->
+							</ComboBox>
+							<Label text="GPF / PRAN No" design="Bold"/>
+							<Input value="{simple>/IdValue}" editable="false"/>
+							<Input value="{simple>/IdValueNew}" visible="{oViewModel>/EditVisibility}" maxLength="20" liveChange="oHandleGPFLiveChange"
+								editable="{oViewModel>/Editable}"/>
+						</f:content>
+					</f:SimpleForm>
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Label text="Employee Comments :" design="Bold" required="true"/>
+			<!--<headerToolbar>
+							<OverflowToolbar>
+								<Title text="Reason for Change :"/>
+							</OverflowToolbar>
+						</headerToolbar>-->
+			<TextArea value="{simple>/Remarks}" width="100%" editable="{oViewModel>/Editable}"/>
+		</Panel>
+		<!--cfms_ctm_npv-->
+	</VBox>
+	<!--<f:SimpleForm id="idPesonalDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="3"-->
+	<!--	adjustLabelSpan="true" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="2" columnsXL="1" columnsL="1" columnsM="1"-->
+	<!--	singleContainerFullSize="false" maxContainerCols="1" visible="true">-->
+	<!--	<f:content>-->
+	<!--		<core:Title text="Personal ID's Details :"></core:Title>-->
+	<!--		<Label/>-->
+	<!--		<Text text="{i18n>CurrentDetails}"/>-->
+	<!--		<Text text="{i18n>NewDetails}" visible="{oViewModel>/EditVisibility}"/>-->
+	<!--		<Label text="Aadhar" design="Bold"/>-->
+	<!--		<Input value="{simple>/Aadhar}" editable="false"/>-->
+	<!--		<Input value="{simple>/AadharNew}" visible="{oViewModel>/EditVisibility}" maxLength="12" change="handleAadharno"-->
+	<!--			liveChange="oHandlePhoneNoLiveChange" editable="{oViewModel>/Editable}"/>-->
+	<!--		<Label text="PAN" design="Bold"/>-->
+	<!--		<Input value="{simple>/Pannumber}" editable="false"/>-->
+	<!--		<Input value="{simple>/PannumberNew}" visible="{oViewModel>/EditVisibility}" editable="{oViewModel>/Editable}" change="handlePancard"/>-->
+	<!--		<Label text="TAN" design="Bold"/>-->
+	<!--		<Input value="{simple>/Tannumber}" editable="false"/>-->
+	<!--		<Input value="{simple>/TannumberNew}" visible="{oViewModel>/EditVisibility}" change="handleTancard" editable="{oViewModel>/Editable}"/>-->
+	<!--		<Label text="APGLI" design="Bold"/>-->
+	<!--		<Input value="{simple>/Apgli}" editable="false"/>-->
+	<!--		<Input value="{simple>/ApgliNew}" visible="{oViewModel>/EditVisibility}" liveChange="oHandlePhoneNoLiveChange" change="changeAPGLI"-->
+	<!--			editable="{oViewModel>/Editable}"/>-->
+	<!--	</f:content>-->
+	<!--</f:SimpleForm>-->
+	<!--		</IconTabFilter>-->
+	<!--	</items>-->
+	<!--</IconTabBar>-->
+</core:FragmentDefinition>

@@ -209,6 +209,13 @@ sap.ui.define([
 			// 	var dateArray = [];
 
 			// }
+			else if (appName == "ELCM_Y1_ALL_SINGLE") {
+				/*onboarding Deatails*/
+				var detailPagTitle = "Personal Details";
+				var dateArray = [];
+				var fragement = "OnBoardingdetails";
+				// this.OnBoardingdetails(empno, reqGuid);
+			}
 			else if (appName === "ELCM_Y3_ALL_SINGLE") {
 				/*Probetion */
 				var fragement = "ProbationDetails";

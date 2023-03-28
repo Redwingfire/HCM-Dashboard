@@ -474,7 +474,7 @@
 									<core:CustomData key="Action" value="{AdditionalPaymentsTabModel>Operation}" writeToDom="true"/>
 								</customData>
 								<cells>
-									<Text text="{AdditionalPaymentsTabModel>MembertypeDesc}" editable="false"/>
+									<Text text="{AdditionalPaymentsTabModel>Serialno}" editable="false"/>
 									<Text text="{AdditionalPaymentsTabModel>CurrWageType}" editable="false"/>
 									<Text text="{AdditionalPaymentsTabModel>CurrWagetypeText}" editable="false"/>
 									<Text text="{AdditionalPaymentsTabModel>NewAmount}" editable="false"/>

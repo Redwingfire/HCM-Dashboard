@@ -1,187 +1,191 @@
 {
     "resources": [
         {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "index.html"
+        },
+        {
             "name": "css/style.css"
         },
         {
-            "name": ".project.json"
+            "name": "view/Detailspage.view.xml"
         },
         {
-            "name": "view/fragments/DistrictDialog.fragment.xml"
+            "name": "view/Masterpage.view.xml"
         },
         {
-            "name": "view/fragments/NomineeDialogdetails.fragment.xml"
+            "name": "view/App.view.xml"
         },
         {
-            "name": "view/fragments/FamilyDetailsOfLoans.fragment.xml"
+            "name": "view/fragments/BasicComWageTypeAdd.fragment.xml"
         },
         {
-            "name": "view/fragments/LoansReasonF4.fragment.xml"
-        },
-        {
-            "name": "view/fragments/NomineeDialogdetailsDisplay.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailSendDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/SurrenderLeave.fragment.xml"
-        },
-        {
-            "name": "view/fragments/CommunityTypeDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/SuspensionDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/Loans.fragment.xml"
-        },
-        {
-            "name": "view/fragments/RecurringPaymentsDisplayDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/AnnualIncreamentComments.fragment.xml"
-        },
-        {
-            "name": "view/fragments/SmartValueHelpDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailActionDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/NomineeAdd.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailSendBackDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/IfscDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailReturnMakerDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/EmployeeProfileDailog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/GroupTransferDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/FestivalDateF4.fragment.xml"
-        },
-        {
-            "name": "view/fragments/WageTypeF4Dialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/Leave.fragment.xml"
+            "name": "view/fragments/LoansTypeF4.fragment.xml"
         },
         {
             "name": "view/fragments/DetailApproveDialog.fragment.xml"
         },
         {
-            "name": "view/fragments/Contactdetails.fragment.xml"
+            "name": "view/fragments/DetailRemarks.fragment.xml"
         },
         {
-            "name": "view/fragments/FacorInchargeDetails.fragment.xml"
+            "name": "view/fragments/SurrenderLeave.fragment.xml"
         },
         {
-            "name": "view/fragments/OrgReassignment.fragment.xml"
-        },
-        {
-            "name": "view/fragments/AdditionalPaymentsDisplayDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/RecuringPaymentdetailsDailog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/FamilyDialogdetailsDisplay.fragment.xml"
-        },
-        {
-            "name": "view/fragments/RegularazationDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/GroupTransEmpComments.fragment.xml"
-        },
-        {
-            "name": "view/fragments/PayscaleLevelDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailAttachment.fragment.xml"
-        },
-        {
-            "name": "view/fragments/FamilyDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/MandalDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/PaychangeDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/FamilyDialogdetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/BasicComponentsdetailsDisplay.fragment.xml"
+            "name": "view/fragments/DetailRejectDialog.fragment.xml"
         },
         {
             "name": "view/fragments/AccountDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/BasicComponentsdetailsDailog.fragment.xml"
+            "name": "view/fragments/DistrictDialog.fragment.xml"
         },
         {
-            "name": "view/fragments/ReinstatementDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/Header.fragment.xml"
+            "name": "view/fragments/BasicComponentsdetailsStopDailog.fragment.xml"
         },
         {
             "name": "view/fragments/EligibleLoanAmountF4.fragment.xml"
         },
         {
-            "name": "view/fragments/SeparationDetails.fragment.xml"
+            "name": "view/fragments/AdditionalPaymentsDisplayDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/ApproverflowAddApproverPositionDialog.fragment.xml"
+            "name": "view/fragments/GroupTransEmpComments.fragment.xml"
         },
         {
-            "name": "view/fragments/MaritualStatusDialog.fragment.xml"
+            "name": "view/fragments/IfscDialog.fragment.xml"
         },
         {
-            "name": "view/fragments/ProbationDetails.fragment.xml"
+            "name": "view/fragments/ToSelectNewApprover.fragment.xml"
         },
         {
-            "name": "view/fragments/NomineeActionDialog.fragment.xml"
+            "name": "view/fragments/AnnualIncreamentComments.fragment.xml"
         },
         {
-            "name": "view/fragments/DeputationDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DisableTypeDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/DetailCheckList.fragment.xml"
-        },
-        {
-            "name": "view/fragments/AddressDetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/EmployeePositionDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/FamilyMemberAdd.fragment.xml"
-        },
-        {
-            "name": "view/fragments/TotalNumOfInstallmentsF4.fragment.xml"
+            "name": "view/fragments/DeputyFrnsrvoutDetails.fragment.xml"
         },
         {
             "name": "view/fragments/EmployeeGroupTransferAddDialog.fragment.xml"
         },
         {
+            "name": "view/fragments/SmartValueHelpDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/MandalDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/FamilyDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/Leave.fragment.xml"
+        },
+        {
+            "name": "view/fragments/Loans.fragment.xml"
+        },
+        {
+            "name": "view/fragments/PaychangeDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DisableTypeDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/AnnualIncrementDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailReturnMakerDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RegularazationDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailAttachment.fragment.xml"
+        },
+        {
+            "name": "view/fragments/PayScaleAreaDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/FamilyDetailsOfLoans.fragment.xml"
+        },
+        {
+            "name": "view/fragments/WageTypeF4Dialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailApproverPath.fragment.xml"
+        },
+        {
+            "name": "view/fragments/MaritualStatusDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/BasicComponentsdetailsDisplay.fragment.xml"
+        },
+        {
+            "name": "view/fragments/BasicComponentsdetailsDailog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/EarningsanDeductions.fragment.xml"
+        },
+        {
+            "name": "view/fragments/Contactdetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/EmployeePositionDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailSendDialog.fragment.xml"
+        },
+        {
             "name": "view/fragments/ConvertGPFFormDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/PayscaleGroupDialog.fragment.xml"
+            "name": "view/fragments/NomineeDialogdetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RecurringPaymentsDisplayDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/OnBoardingdetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailSendBackDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/FamilyMemberAdd.fragment.xml"
+        },
+        {
+            "name": "view/fragments/GroupTransferDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/NomineeDialogdetailsDisplay.fragment.xml"
+        },
+        {
+            "name": "view/fragments/PayScaleTypetDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/RecuringPaymentdetailsDailog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/OrgReassignment.fragment.xml"
+        },
+        {
+            "name": "view/fragments/LoansReasonF4.fragment.xml"
+        },
+        {
+            "name": "view/fragments/TotalNumOfInstallmentsF4.fragment.xml"
+        },
+        {
+            "name": "view/fragments/NomineeActionDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/FacorInchargeDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DisplayEmployeeDialog.fragment.xml"
         },
         {
             "name": "view/fragments/AdditionalPaymentdetailsDailog.fragment.xml"
@@ -190,67 +194,120 @@
             "name": "view/fragments/SmartValueHelpDialogIFSC.fragment.xml"
         },
         {
-            "name": "view/fragments/DetailRemarks.fragment.xml"
+            "name": "view/fragments/AdditionalPaymentdetailsStopDailog.fragment.xml"
         },
         {
-            "name": "view/fragments/PayScaleTypetDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/BasicComponentsdetailsStopDailog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/Basicdetails.fragment.xml"
-        },
-        {
-            "name": "view/fragments/ApproverPositionDialog.fragment.xml"
-        },
-        {
-            "name": "view/fragments/ToSelectNewApprover.fragment.xml"
-        },
-        {
-            "name": "view/fragments/AnnualIncrementDetails.fragment.xml"
+            "name": "view/fragments/FestivalDateF4.fragment.xml"
         },
         {
             "name": "view/fragments/AdvanceForwhomF4.fragment.xml"
         },
         {
-            "name": "view/fragments/BasicComWageTypeAdd.fragment.xml"
+            "name": "view/fragments/AddressDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/DisplayEmployeeDialog.fragment.xml"
+            "name": "view/fragments/DetailActionDialog.fragment.xml"
         },
         {
-            "name": "view/fragments/PayScaleAreaDialog.fragment.xml"
+            "name": "view/fragments/ApproverPositionDialog.fragment.xml"
         },
         {
-            "name": "view/fragments/AdditionalPaymentdetailsStopDailog.fragment.xml"
+            "name": "view/fragments/Header.fragment.xml"
+        },
+        {
+            "name": "view/fragments/ApproverflowAddApproverPositionDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/EmployeeProfileDailog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/SuspensionDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DetailCheckList.fragment.xml"
+        },
+        {
+            "name": "view/fragments/FamilyDialogdetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/SeparationDetails.fragment.xml"
+        },
+        {
+            "name": "view/fragments/NomineeAdd.fragment.xml"
+        },
+        {
+            "name": "view/fragments/PayscaleLevelDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/CommunityTypeDialog.fragment.xml"
+        },
+        {
+            "name": "view/fragments/DeputationDetails.fragment.xml"
         },
         {
             "name": "view/fragments/RecuringPaymentdetailsStopDailog.fragment.xml"
         },
         {
-            "name": "view/fragments/DeputyFrnsrvoutDetails.fragment.xml"
+            "name": "view/fragments/ReinstatementDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/DetailApproverPath.fragment.xml"
+            "name": "view/fragments/FamilyDialogdetailsDisplay.fragment.xml"
         },
         {
-            "name": "view/fragments/DetailRejectDialog.fragment.xml"
+            "name": "view/fragments/ProbationDetails.fragment.xml"
         },
         {
-            "name": "view/fragments/EarningsanDeductions.fragment.xml"
+            "name": "view/fragments/Basicdetails.fragment.xml"
         },
         {
-            "name": "view/fragments/LoansTypeF4.fragment.xml"
+            "name": "view/fragments/PayscaleGroupDialog.fragment.xml"
         },
         {
-            "name": "view/App.view.xml"
+            "name": "neo-app.json"
         },
         {
-            "name": "view/Detailspage.view.xml"
+            "name": "controller/BaseController.js"
         },
         {
-            "name": "view/Masterpage.view.xml"
+            "name": "controller/Detailspage.controller.js"
+        },
+        {
+            "name": "controller/App.controller.js"
+        },
+        {
+            "name": "controller/Masterpage.controller.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "README.md"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "localService/ZZHCMFAB_LEAVE_REQUEST_CR_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/ZGW_HCM_ESS_PF_SRV_01/metadata.xml"
+        },
+        {
+            "name": "localService/ZGW_HCM_UPDATE_PAY_AND_ATT_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
         },
         {
             "name": "model/formatter.js"
@@ -260,57 +317,6 @@
         },
         {
             "name": "model/models.js"
-        },
-        {
-            "name": "neo-app.json"
-        },
-        {
-            "name": "Component.js"
-        },
-        {
-            "name": ".user.project.json"
-        },
-        {
-            "name": "Component-preload.js",
-            "merged": true
-        },
-        {
-            "name": "index.html"
-        },
-        {
-            "name": "i18n/i18n.properties",
-            "raw": "i18n/i18n.properties"
-        },
-        {
-            "name": "resources.json",
-            "merged": true
-        },
-        {
-            "name": "controller/BaseController.js"
-        },
-        {
-            "name": "controller/Masterpage.controller.js"
-        },
-        {
-            "name": "controller/Detailspage.controller.js"
-        },
-        {
-            "name": "controller/App.controller.js"
-        },
-        {
-            "name": "manifest.json"
-        },
-        {
-            "name": "localService/metadata.xml"
-        },
-        {
-            "name": "localService/ZZHCMFAB_LEAVE_REQUEST_CR_SRV/metadata.xml"
-        },
-        {
-            "name": "localService/ZGW_HCM_UPDATE_PAY_AND_ATT_SRV/metadata.xml"
-        },
-        {
-            "name": "localService/ZGW_HCM_ESS_PF_SRV_01/metadata.xml"
         }
     ]
 }

@@ -88,11 +88,11 @@
 				<!--<Text id="ToBeTransferredIdFrnservout" xmlns="sap.m" text="Deputation Office Details" class="sapUiLargeMarginEnd"-->
 				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
 				<Label xmlns="sap.m" text="Deputy Designation Name" required="false" design="Bold"/>
-				<Input editable="true" xmlns="sap.m" id="CurrPositionIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvName}"/>
+				<Input editable="true" xmlns="sap.m" id="CurrPositionIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvName}"  editable="{oViewModel>/Editable}"/>
 				<!--<Input xmlns="sap.m" id="TransferPositionIdFrnservout" value="{DeputyFrnsrvoutModel>/ToPositionName}({DeputyFrnsrvoutModel>/ToPositionId})" valueHelpOnly="true"-->
 				<!--	showValueHelp="true" valueHelpRequest="onnewPositionValueHelp" visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
 				<Label xmlns="sap.m" text="Deputy Office Address" required="false" design="Bold"/>
-				<TextArea editable="true" xmlns="sap.m" id="CurrJobIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvAddc}"
+				<TextArea editable="true" xmlns="sap.m" id="CurrJobIdFrnservout" value="{DeputyFrnsrvoutModel>/ForiensrvAddc}"  editable="{oViewModel>/Editable}"
 				 />
 				<!--<Input editable="false" xmlns="sap.m" id="TransferJobIdFrnservout" value="{DeputyFrnsrvoutModel>/ToJobName}({DeputyFrnsrvoutModel>/ToJobId})"-->
 				<!--	visible="{= ${DeputyFrnsrvoutModel>/ActionId} === 'Y7' ? false : true }"/>-->
